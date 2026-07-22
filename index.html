@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -331,6 +332,90 @@ nav {
 
 .work-col .btn { margin-top: auto; align-self: flex-start; }
 
+
+/* ── UNIFIED WORK ITEMS ──────────────────────────────── */
+.work-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* button label inside item */
+.work-item-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--white);
+  border: 1.5px solid var(--beige);
+  text-align: center;
+  transition: background .2s, border-color .2s, transform .15s;
+}
+
+.work-item-label {
+  font-family: "DM Serif Display", serif;
+  font-size: 18px;
+  color: var(--black);
+  transition: color .2s;
+}
+
+/* image inside item */
+.work-item-img {
+  aspect-ratio: 16/10;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+
+.work-item-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease, filter .4s ease;
+  filter: grayscale(100%);
+}
+
+/* Attuned stays in color always */
+.work-item-featured .work-item-img img { filter: grayscale(0%); }
+.work-item-featured .work-item-btn { background: var(--blue); border-color: var(--blue); }
+
+/* hover — whole item lifts, button and image both react */
+.work-item:hover .work-item-btn {
+  background: var(--blue);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+.work-item:hover .work-item-btn .work-item-label {
+  color: var(--white);
+}
+.work-item:hover .work-item-btn .work-nav-sub {
+  color: rgba(255,255,255,0.7);
+}
+.work-item-featured:hover .work-item-btn {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+.work-item:hover .work-item-img {
+  box-shadow: 0 14px 36px rgba(20,20,20,0.16);
+  transform: translateY(-2px);
+}
+.work-item:hover .work-item-img img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+
 /* ── WORK NAV BUTTONS — 3 on same row ───────────────── */
 .work-btn-row {
   display: grid;
@@ -371,7 +456,7 @@ nav {
 }
 
 .work-nav-btn-featured .work-nav-sub { color: rgba(255,255,255,0.7); }
-.work-nav-name { color: #E8A882; }
+.work-nav-name { color: #E8A882; font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1; }
 
 .work-nav-btn-featured:hover {
   background: var(--black);
@@ -577,8 +662,22 @@ footer {
 /* ── IMAGE HOVER POP ─────────────────────────────────── */
 .work-img-slot { transition: box-shadow .3s ease, transform .3s ease; }
 .work-img-slot:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(20,20,20,0.18); }
-.work-img-slot img { transition: transform .4s ease; }
-.work-img-slot:hover img { transform: scale(1.04); }
+.work-img-slot img {
+  transition: transform .4s ease, filter .4s ease;
+  filter: grayscale(100%);
+}
+.work-img-slot:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+/* Attuned stays in color always */
+.work-img-slot-featured img {
+  filter: grayscale(0%);
+}
+.work-img-slot-featured:hover img {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
 
 .detail-img { overflow: hidden; transition: box-shadow .3s ease; }
 .detail-img img { transition: transform .4s ease; display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -798,32 +897,38 @@ footer {
   </div>
 
   <!-- 3 nav buttons — same row -->
-  <div class="work-btn-row">
-    <a href="#attuned" class="work-nav-btn work-nav-btn-featured fade-in fade-in-delay-1">
-      <span class="work-nav-name">Attuned</span>
-      <span class="work-nav-sub">AI Product</span>
-    </a>
-    <a href="#google-maps" class="work-nav-btn fade-in fade-in-delay-2">
-      Google Maps
-      <span class="work-nav-sub">Case Study</span>
-    </a>
-    <a href="#airbnb" class="work-nav-btn fade-in fade-in-delay-3">
-      Airbnb
-      <span class="work-nav-sub">Case Study</span>
-    </a>
-  </div>
+  <div class="work-items-grid">
 
-  <!-- image placeholders — same 3-col row -->
-  <div class="work-img-row">
-    <div class="work-img-slot work-img-slot-featured fade-in fade-in-delay-1" style="padding:0; border:none;">
-      <img src="img-attuned-coa.png" alt="Attuned Coa" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
-    </div>
-    <div class="work-img-slot fade-in fade-in-delay-2" style="padding:0; border:none;">
-      <img src="img-google-maps.png" alt="Google Maps" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
-    </div>
-    <div class="work-img-slot fade-in fade-in-delay-3" style="padding:0; border:none;">
-      <img src="img-airbnb.png" alt="Airbnb" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
-    </div>
+    <a href="#attuned" class="work-item work-item-featured fade-in fade-in-delay-1">
+      <div class="work-item-btn">
+        <span class="work-nav-name">Attuned</span>
+        <span class="work-nav-sub">AI Product</span>
+      </div>
+      <div class="work-item-img">
+        <img src="img-attuned-coa.png" alt="Attuned"/>
+      </div>
+    </a>
+
+    <a href="#google-maps" class="work-item fade-in fade-in-delay-2">
+      <div class="work-item-btn">
+        <span class="work-item-label">Google Maps</span>
+        <span class="work-nav-sub">Case Study</span>
+      </div>
+      <div class="work-item-img">
+        <img src="img-google-maps.png" alt="Google Maps"/>
+      </div>
+    </a>
+
+    <a href="#airbnb" class="work-item fade-in fade-in-delay-3">
+      <div class="work-item-btn">
+        <span class="work-item-label">Airbnb</span>
+        <span class="work-nav-sub">Case Study</span>
+      </div>
+      <div class="work-item-img">
+        <img src="img-airbnb.png" alt="Airbnb"/>
+      </div>
+    </a>
+
   </div>
 </section>
 
@@ -979,8 +1084,8 @@ footer {
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   // stagger work buttons and image slots
-  const workBtns = document.querySelectorAll('.work-nav-btn');
-  const workSlots = document.querySelectorAll('.work-img-slot');
+  const workBtns = document.querySelectorAll('.work-item');
+  const workSlots = [];
 
   const workObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -994,7 +1099,6 @@ footer {
   }, { threshold: 0.1 });
 
   workBtns.forEach(el => workObserver.observe(el));
-  workSlots.forEach(el => workObserver.observe(el));
 </script>
 </body>
 </html>
