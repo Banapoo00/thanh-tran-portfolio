@@ -805,6 +805,38 @@ footer {
 
 /* remove old photo circle CSS (override) */
 .photo-circle, .photo-accent { display: none; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .nav-logo { font-size: 15px; }
+  .nav-links a { font-size: 12px; padding: 6px 8px; }
+
+  #about {
+    flex-direction: column;
+    padding: 40px 20px 48px;
+    gap: 32px;
+  }
+  .about-photo { flex: none; display: flex; justify-content: center; }
+  .collage { width: 260px; height: 320px; }
+  .collage-main { width: 160px; height: 220px; }
+  .about-name { font-size: 40px; }
+
+  #work { padding: 48px 20px 64px; }
+  .work-heading { font-size: 36px; }
+  .work-items-grid { grid-template-columns: 1fr; }
+  .work-item-btn { padding: 14px; }
+
+  .detail-section,
+  .detail-section.flip { grid-template-columns: 1fr; direction: ltr; padding: 48px 20px; gap: 24px; }
+  .detail-section-case { grid-template-columns: 1fr; }
+  .detail-img, .detail-img-case { aspect-ratio: 16/9; }
+
+  #contact { padding: 48px 20px; }
+  .contact-heading { font-size: 32px; }
+
+  .work-nav-name { font-size: 18px; }
+}
+
 </style>
 </head>
 <body>
@@ -866,9 +898,9 @@ footer {
     <div class="eyebrow">AI Product Manager</div>
     <div class="about-name">Thanh Tran</div>
     <p class="about-bio">
-      Hey! I'm Thanh — a Product Manager with experience across data, growth,
-      and consumer product, spanning Barclays, a Top 20 European EdTech startup,
-      ecommerce, and AI product at a parenting wellness startup.
+      Hey! I'm Thanh — a Product Manager with experience across <span style="color:#C06B4A;font-weight:600;">data</span>, <span style="color:#C06B4A;font-weight:600;">growth</span>,
+      and <span style="color:#C06B4A;font-weight:600;">consumer product</span>, spanning Barclays, a Top 20 European EdTech startup,
+      ecommerce, and <span style="color:#C06B4A;font-weight:600;">AI product</span> at a parenting wellness startup.
     </p>
     <p class="about-bio" style="margin-top:14px; font-size:14px; color: var(--blue);">
       With a background spanning tech, business, psychology, and visual arts,
