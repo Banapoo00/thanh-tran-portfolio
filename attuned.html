@@ -295,8 +295,11 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   .journey-stages { grid-template-columns: 1fr; }
   .journey-stage::after { display: none; }
   .challenge-cards { grid-template-columns: 1fr; }
-  .persona-grid, .persona-full-outer, .persona-full-inner { grid-template-columns: 1fr; }
-  .ai-io-layout { grid-template-columns: 1fr; }
+  .persona-grid, .persona-full-outer, .persona-full-inner { grid-template-columns: 1fr !important; }
+  .ai-io-layout { grid-template-columns: 1fr !important; }
+  .ai-io-layout > div:first-child { grid-template-columns: 1fr !important; }
+  .ai-io-layout > div:first-child > div:nth-child(2) { display: none; }
+  .swipe-hint { display: block !important; }
   .scenario-divider { display: none; }
   .hero-img { display: flex; justify-content: center; margin: 32px auto 0; }
   .hero-img > div:first-child { left: -20px !important; top: -10px !important; }
@@ -631,7 +634,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     </div>
 
     <!-- Journey table -->
-    <div class="fade-in" style="overflow-x:auto;">
+    <div class="swipe-hint" style="display:none;font-size:11.5px;color:var(--muted);margin-bottom:8px;">← Swipe to see all 5 stages →</div>
+    <div class="fade-in" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <div style="min-width:780px;">
 
         <!-- Arrow / chevron phase headers -->
@@ -894,7 +898,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     <div class="fade-in">
       <div class="eyebrow">User Stories &amp; Acceptance Criteria</div>
     </div>
-    <div class="fade-in" style="overflow-x:auto;">
+    <div class="swipe-hint" style="display:none;font-size:11.5px;color:var(--muted);margin-bottom:8px;">← Swipe to see acceptance criteria →</div>
+    <div class="fade-in" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <div style="display:grid;grid-template-columns:150px 1fr 1fr;gap:1px;background:var(--beige);border-radius:12px;overflow:hidden;min-width:760px;">
 
         <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Category</div>
