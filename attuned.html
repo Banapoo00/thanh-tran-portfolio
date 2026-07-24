@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Attuned — Thanh Tran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── TOKENS ── */
+:root {
+  --white:       #FFFFFF;
+  --off-white:   #F5F5F5;
+  --cream:       #FAF6F1;
+  --off-cream:   #F0EDE8;
+  --beige-warm:  #E8D3C5;
+  --beige:       #E2D9D0;
+  --green-dark:  #546142;
+  --green-mid:   #728062;
+  --green-light: #AAB4A6;
+  --green-soft:  #8A9A7C;
+  --coral:       #C06B4A;
+  --coral-light: #E8A882;
+  --black:       #2C2A28;
+  --muted:       #7A7570;
+  --nav-h:       60px;
+  /* portfolio blue for nav continuity */
+  --blue:        #586E84;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Figtree', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; left: 0; right: 0; height: var(--nav-h);
+  background: rgba(255,255,255,0.98);
+  border-bottom: 1px solid var(--beige); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 48px;
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 500; color: var(--black); text-decoration: none; padding: 7px 14px; border-radius: 6px; transition: background .18s, color .18s; }
+.nav-links a:hover { background: var(--off-white); color: var(--blue); }
+.nav-back { color: var(--blue) !important; font-weight: 600 !important; }
+
+/* ── UTILS ── */
+.section-max { max-width: 1000px; margin: 0 auto; padding: 0 48px; }
+.eyebrow { font-family: 'DM Serif Display', serif; font-size: 42px; font-weight: 400; letter-spacing: -0.01em; text-transform: none; color: var(--black); margin-bottom: 28px; }
+.eyebrow-coral { color: var(--coral-light); }
+.section-heading { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--black); margin-bottom: 8px; line-height: 1.1; }
+.section-sub { font-size: 15px; color: var(--muted); margin-bottom: 48px; line-height: 1.65; }
+.divider { height: 1px; background: var(--beige); margin: 28px 0; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; background: var(--off-white); color: var(--blue); border: 1px solid var(--beige); }
+.tag-coral { background: #FAEDE6; color: var(--coral); border-color: var(--beige); }
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.placeholder-box { background: var(--off-white); border: 1.5px dashed #C8B8A8; border-radius: 12px; padding: 48px 24px; text-align: center; color: var(--muted); font-size: 13px; font-style: italic; }
+.placeholder-box strong { display: block; font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--black); font-style: normal; }
+
+
+/* ── DROPDOWN ── */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+.nav-dropdown > a::after { content: ''; display: block; width: 8px; height: 5px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cpath d='M1 1l3 3 3-3' stroke='%23141414' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--beige); border-radius: 10px; box-shadow: 0 8px 24px rgba(20,20,20,0.10); min-width: 180px; overflow: hidden; flex-direction: column; }
+.nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { display: flex; }
+.dropdown-menu a { font-size: 13px; padding: 10px 16px; border-radius: 0; border-bottom: 1px solid var(--off-white); display: flex; flex-direction: column; gap: 2px; }
+.dropdown-menu a:last-child { border-bottom: none; }
+.dropdown-tag { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  color: var(--black);
+  margin-bottom: 32px;
+  line-height: 1.1;
+}
+/* ── FADE IN ── */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: .1s; }
+.fade-in-delay-2 { transition-delay: .2s; }
+
+/* ── BTN ── */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Figtree', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 11px 22px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: background .2s, transform .15s, color .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-coral { background: var(--coral); color: var(--white); }
+.btn-coral:hover { background: #A5583A; }
+.btn-outline-green { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); }
+.btn-outline-green:hover { background: var(--blue); color: var(--white); }
+.btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5); }
+.btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: white; }
+
+/* ── SECTION NAV SIDEBAR ── */
+.section-nav {
+  position: sticky;
+  top: 90px;
+  flex-shrink: 0;
+  width: 130px;
+  margin-right: -144px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: calc(100vh - 110px);
+  overflow: visible;
+  align-self: flex-start;
+  padding: 4px;
+  margin-left: 10px;
+}
+.section-nav a {
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-left: 2px solid var(--beige);
+  background: var(--white);
+  border-radius: 0 6px 6px 0;
+  box-shadow: 0 2px 6px rgba(20,20,20,0.08);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  max-width: 130px;
+  display: none;
+}
+.section-nav a:hover {
+  color: var(--black);
+}
+.section-nav a.active {
+  color: var(--coral);
+  font-weight: 700;
+  border-left-color: var(--coral);
+  display: block;
+  box-shadow: 0 3px 10px rgba(20,20,20,0.14);
+}
+.section-nav:hover a {
+  display: block;
+}
+.section-nav:hover a.active {
+  color: var(--coral);
+}
+@media (max-width: 1400px) {
+  .section-nav { display: none; }
+}
+
+@keyframes whyTwoPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(88,110,132,0.35); }
+  50% { box-shadow: 0 0 0 10px rgba(88,110,132,0); }
+}
+.why-two-models {
+  animation: whyTwoPulse 2.8s ease-in-out infinite;
+}
+@keyframes coaType {
+  0% { width: 0; }
+  35% { width: 6.6em; }
+  75% { width: 6.6em; }
+  100% { width: 0; }
+}
+@keyframes coaCursorBlink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--black); }
+}
+.coa-bubble-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: 0;
+  border-right: 2px solid var(--black);
+  animation: coaType 4.5s steps(24, end) infinite, coaCursorBlink 0.8s step-end infinite;
+}
+#hero { background: var(--blue); padding: 80px 48px 88px; }
+.hero-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 260px; gap: 56px; align-items: center; }
+.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.hero-tag { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+.hero-title { font-family: 'DM Serif Display', serif; font-size: 72px; line-height: 1; color: var(--white); margin-bottom: 4px; letter-spacing: -.02em; }
+.hero-subtitle { font-size: 14px; font-weight: 500; letter-spacing: .10em; text-transform: uppercase; color: var(--coral-light); margin-bottom: 24px; }
+.hero-desc { font-size: 16px; line-height: 1.72; color: rgba(255,255,255,0.8); max-width: 480px; margin-bottom: 32px; }
+.hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-img { width: 220px; height: 220px; display: flex; align-items: center; justify-content: center; }
+.hero-img img { width: 100%; height: 100%; object-fit: contain; }
+.hero-role-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; padding: 10px 16px; font-size: 13px; color: rgba(255,255,255,0.85); margin-bottom: 24px; }
+.hero-role-badge strong { color: var(--white); }
+
+/* ── OVERVIEW ── */
+#overview { background: var(--white); padding: 52px 0; }
+.overview-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+.overview-text h2 { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--black); margin-bottom: 16px; }
+.overview-text p { font-size: 15px; line-height: 1.75; color: var(--black); margin-bottom: 14px; }
+.overview-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.stat-card { background: var(--off-white); border-radius: 12px; padding: 22px 20px; }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--blue); line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* ── CHALLENGE ── */
+#challenge { background: var(--off-white); padding: 52px 0; }
+.challenge-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+.challenge-card { background: var(--white); border-radius: 12px; padding: 28px 24px; }
+.challenge-icon { font-size: 28px; margin-bottom: 12px; }
+.challenge-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.challenge-text { font-size: 14px; line-height: 1.65; color: var(--muted); }
+.challenge-quote { background: var(--blue); border-radius: 12px; padding: 28px 32px; }
+.challenge-quote-text { font-family: 'Figtree', sans-serif; font-size: 19px; font-weight: 500; line-height: 1.5; color: var(--white); font-style: normal; margin-bottom: 10px; }
+.challenge-quote-source { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+/* ── PERSONA ── */
+#persona { background: var(--white); padding: 52px 0; }
+.persona-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; background: var(--white); border-radius: 16px; overflow: hidden; }
+.persona-left { background: var(--blue); padding: 36px 28px; }
+.persona-avatar { width: 90px; height: 90px; border-radius: 50%; background: var(--beige); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.persona-name { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--white); margin-bottom: 6px; }
+.persona-role { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
+.persona-demo-label { font-size: 10px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; margin-top: 14px; }
+.persona-demo-value { font-size: 13.5px; color: rgba(255,255,255,0.8); }
+.persona-right { padding: 36px; }
+.persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.persona-section-label { font-size: 11px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; }
+.persona-section-text { font-size: 14px; line-height: 1.65; color: var(--black); }
+
+/* ── JOURNEY MAP ── */
+#journey { background: var(--off-white); padding: 52px 0; }
+.journey-stages { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 40px; }
+.journey-stage { padding: 20px 16px; text-align: center; position: relative; }
+.journey-stage::after { content: '→'; position: absolute; right: -10px; top: 22px; color: var(--beige); font-size: 18px; }
+.journey-stage:last-child::after { display: none; }
+.journey-stage-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+.journey-stage-box { background: var(--white); border-radius: 10px; padding: 16px 12px; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+.journey-stage-text { font-size: 13px; line-height: 1.55; color: var(--muted); text-align: center; }
+
+/* ── PRODUCT ── */
+#product { background: var(--white); padding: 52px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.feature-card { background: var(--off-white); border-radius: 12px; padding: 24px; position: relative; }
+.feature-card-mine { border: 2px solid var(--blue); background: var(--white); }
+.feature-mine-badge { position: absolute; top: 16px; right: 16px; background: var(--blue); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; }
+.feature-label { font-size: 10px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.feature-name { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--black); margin-bottom: 8px; }
+.feature-name-mine { color: var(--blue); }
+.feature-desc { font-size: 14px; line-height: 1.65; color: var(--black); }
+
+/* ── USER STORIES ── */
+#stories { background: var(--off-white); padding: 52px 0; }
+.stories-list { display: grid; gap: 12px; }
+.story-card { background: var(--white); border-radius: 12px; padding: 24px; }
+.story-label { font-size: 10px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.story-text { font-size: 14px; line-height: 1.65; color: var(--black); }
+
+/* ── ACCEPTANCE CRITERIA ── */
+#criteria { background: var(--white); padding: 52px 0; }
+.criteria-list { display: grid; gap: 10px; }
+.criteria-row { background: var(--off-white); border-radius: 10px; padding: 18px 22px; display: grid; grid-template-columns: 2fr 3fr; gap: 24px; align-items: start; }
+.criteria-feature { font-size: 12px; font-weight: 700; color: var(--blue); }
+.criteria-text { font-size: 14px; line-height: 1.6; color: var(--black); }
+
+/* ── RISK ── */
+#risk { background: var(--off-white); padding: 52px 0; }
+.risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.risk-card { background: var(--white); border-radius: 12px; padding: 24px; }
+.risk-level { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+.risk-high { background: #FAEDE6; color: var(--coral); }
+.risk-med { background: #FFF8ED; color: #B8820A; }
+.risk-low { background: #EEF2EB; color: var(--blue); }
+.risk-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+.risk-text { font-size: 13.5px; line-height: 1.6; color: var(--muted); margin-bottom: 10px; }
+.risk-mitigation { font-size: 12px; font-weight: 600; color: var(--blue); }
+
+/* ── BUSINESS MODEL ── */
+#bizmodel { background: var(--white); padding: 52px 0; }
+
+/* ── SYSTEM ARCH ── */
+#architecture { background: var(--off-white); padding: 52px 0; }
+
+/* ── MVP ── */
+#mvp { background: var(--blue); padding: 52px 0; }
+.mvp-heading { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--white); margin-bottom: 8px; }
+.mvp-sub { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 48px; }
+.mvp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.mvp-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; border: 1px solid rgba(255,255,255,0.15); }
+.mvp-card-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--white); margin-bottom: 8px; }
+.mvp-card-text { font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.7); }
+.mvp-screens { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+.mvp-screen { border-radius: 12px; overflow: hidden; }
+.mvp-screen img { width: 100%; display: block; border-radius: 12px; }
+
+/* ── BACK ── */
+#back { background: var(--beige); padding: 60px 0; text-align: center; }
+.back-sub { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+
+/* ── FOOTER ── */
+footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: center; padding: 20px; font-size: 12px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-inner, .overview-grid, .persona-layout, .features-grid, .story-card, .criteria-row, .risk-grid, .mvp-grid, .mvp-screens { grid-template-columns: 1fr; }
+  .journey-stages { grid-template-columns: 1fr; }
+  .journey-stage::after { display: none; }
+  .challenge-cards { grid-template-columns: 1fr; }
+  .persona-grid, .persona-full-outer, .persona-full-inner { grid-template-columns: 1fr; }
+  .ai-io-layout { grid-template-columns: 1fr; }
+  .hero-img { display: none; }
+  nav, .section-max { padding-left: 20px; padding-right: 20px; }
+  #hero { padding: 56px 20px 64px; }
+  .hero-title { font-size: 48px; }
+}
+</style>
+</head>
+<body>
+
+<div style="display:flex; align-items:flex-start;">
+<!-- SECTION NAV SIDEBAR -->
+<aside class="section-nav" id="sectionNav">
+  <a href="#overview" data-target="overview">Overview</a>
+  <a href="#research" data-target="research">User Research</a>
+  <a href="#challenge" data-target="challenge">Customer Challenges</a>
+  <a href="#hypothesis" data-target="hypothesis">AI Hypothesis</a>
+  <a href="#segmentation" data-target="segmentation">Customer Segmentation</a>
+  <a href="#persona" data-target="persona">Customer Persona</a>
+  <a href="#journey" data-target="journey">Customer Journey Map</a>
+  <a href="#ai-model" data-target="ai-model">AI Model Overview</a>
+  <a href="#ai-io" data-target="ai-io">AI Input &amp; Output</a>
+  <a href="#pipeline" data-target="pipeline">Data Pipeline</a>
+  <a href="#validation" data-target="validation">AI Model Validation</a>
+  <a href="#roadmap" data-target="roadmap">Product Roadmap</a>
+  <a href="#stories" data-target="stories">User Stories &amp; Acceptance Criteria</a>
+  <a href="#risk" data-target="risk">Risk</a>
+  <a href="#bizmodel" data-target="bizmodel">Business Model</a>
+  <a href="#architecture" data-target="architecture">System Architecture</a>
+  <a href="#mvp" data-target="mvp">MVP</a>
+  <a href="#scalability" data-target="scalability">AI Scalability Strategy</a>
+</aside>
+
+<div style="flex:1; min-width:0;">
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="22" height="18" viewBox="0 0 24 20" fill="none" style="display:inline-block;vertical-align:middle;">
+      <path d="M12 10 C10 5 3 2 1.5 5.5 C0 9 5 12.5 12 10Z" fill="#586E84"/>
+      <path d="M12 10 C14 5 21 2 22.5 5.5 C24 9 19 12.5 12 10Z" fill="#586E84"/>
+      <path d="M12 10 C8.5 12.5 2.5 14 3 17 C3.5 19.5 7.5 18 12 13Z" fill="#586E84" opacity="0.7"/>
+      <path d="M12 10 C15.5 12.5 21.5 14 21 17 C20.5 19.5 16.5 18 12 13Z" fill="#586E84" opacity="0.7"/>
+      <path d="M12 7 L12 18" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 7 C11 5 10 3.5 9 2.5" stroke="#141414" stroke-width="1" stroke-linecap="round"/>
+      <path d="M12 7 C13 5 14 3.5 15 2.5" stroke="#141414" stroke-width="1" stroke-linecap="round"/>
+    </svg>Thanh Tran
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li class="nav-dropdown">
+      <a href="index.html#work">My Work</a>
+      <div class="dropdown-menu">
+        <a href="attuned.html"><span class="dropdown-tag">AI Product</span>Attuned</a>
+        <a href="google-maps.html"><span class="dropdown-tag">Case Study</span>Google Maps</a>
+        <a href="airbnb.html"><span class="dropdown-tag">Case Study</span>Airbnb</a>
+      </div>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="fade-in">
+      <div class="hero-tags">
+        <span class="hero-tag">AI Product</span>
+        <span class="hero-tag">Parenting Wellness</span>
+        <span class="hero-tag">0 → 1</span>
+      </div>
+      <div class="hero-title">Attuned</div>
+      <div class="hero-subtitle">AI Parenting Companion</div>
+      <div class="hero-role-badge">Role: <strong>AI PM — Know My Child</strong> · AI product from 0→1</div>
+      <p class="hero-desc">Hard parenting moments, gently understood. Attuned is an AI companion for parents — built for the moment right after a hard parenting moment, when parents need support to reconnect with their child.</p>
+      <div class="hero-links">
+        <a href="https://attuned-web.vercel.app/" target="_blank" rel="noopener" class="btn btn-coral">
+          View live app
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/attuned-ai/" target="_blank" rel="noopener" class="btn btn-outline-white">Attuned on LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-img fade-in fade-in-delay-1" style="position:relative;">
+      <div style="position:absolute;top:20px;left:-60px;background:var(--white);color:var(--black);font-family:'Figtree',sans-serif;font-weight:400;font-size:17px;padding:9px 18px;border-radius:20px;box-shadow:0 4px 12px rgba(0,0,0,0.15);white-space:nowrap;z-index:2;">
+        <span class="coa-bubble-text">Hi, I'm Coa</span>
+        <span style="position:absolute;bottom:-6px;right:22px;width:14px;height:14px;background:var(--white);clip-path:polygon(100% 0,0 0,100% 100%);"></span>
+      </div>
+      <img src="img-attuned-coa-mascot.png" alt="Coa — Attuned mascot"/>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="section-max">
+    <div class="overview-grid fade-in">
+      <div class="overview-text">
+        <div class="eyebrow">Overview</div>
+        <p>Attuned is built on a single insight from parent research: parents don't lack knowledge about how to respond to their child. They lose access to it when they're flooded with stress. The product is built to regulate the parent first — because a regulated parent is the one who can actually help their child.</p>
+        <p>The product spans four core experiences. I joined as the AI PM for <strong>Know My Child</strong> — the feature that builds a living, evolving portrait of a child across every Coa conversation, getting more specific over time rather than staying generic. I invite you to read about the product launch for Know My Child in depth below.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:80px;">
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Ask Coa</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">Real-time support in a hard moment</p></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Know My Child</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">An evolving portrait of who your child is becoming</p></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Growth</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A reflection space for the parent</p></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Bedtime</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A personalised story built from the week's patterns</p></div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
+      <div class="stat-card"><strong style="font-size:14px;color:var(--black);">My scope</strong><p style="font-size:14px;line-height:1.65;color:var(--muted);margin-top:6px;">Product strategy · AI prompt engineering · Feature spec · Engineering tickets · Design QA · Analytics · GTM copy</p></div>
+      <div class="stat-card"><strong style="font-size:14px;color:var(--black);">Team</strong><p style="font-size:14px;line-height:1.65;color:var(--muted);margin-top:6px;">4 PMs leading 8 engineers, 2 data scientists, 2 UX designers</p></div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- USER RESEARCH -->
+<section id="research" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">User Research</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;" class="fade-in">
+      <div style="background:var(--white);border-radius:12px;padding:28px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Voice of Customer Method</div>
+        <p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:8px;">35+ in-depth interviews + survey</p>
+        <p style="font-size:14px;line-height:1.65;color:var(--muted);">Parents across the US, Canada, Latin America, and India. Multiple parents independently — unprompted — asked for a real-time nudge to step away before they escalate. That was the strongest product-fit signal in the dataset.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:28px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">The core finding</div>
+        <p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:8px;">It's not a knowledge gap. It's an access gap.</p>
+        <p style="font-size:14px;line-height:1.65;color:var(--muted);">Not one parent located the problem purely in the child. Parents know what they should do — they can't access it when flooded.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;" class="fade-in">
+      <div style="background:var(--white);border-radius:10px;padding:24px 20px;border-top:4px solid var(--coral);box-shadow:0 6px 18px rgba(20,20,20,0.08);">
+        <div style="font-family:'DM Serif Display',serif;font-size:40px;font-weight:700;color:var(--coral);line-height:1;">81%</div>
+        <p style="font-family:'Figtree',sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px;">of parents hit a moment they <strong style="color:var(--black);">didn't handle the way they wanted</strong> — weekly or more</p>
+      </div>
+      <div style="background:var(--white);border-radius:10px;padding:24px 20px;border-top:4px solid var(--coral);box-shadow:0 6px 18px rgba(20,20,20,0.08);">
+        <div style="font-family:'DM Serif Display',serif;font-size:40px;font-weight:700;color:var(--coral);line-height:1;">100%</div>
+        <p style="font-family:'Figtree',sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px;">say their own <strong style="color:var(--black);">mood and stress</strong> makes a hard moment worse</p>
+      </div>
+      <div style="background:var(--white);border-radius:10px;padding:24px 20px;border-top:4px solid var(--coral);box-shadow:0 6px 18px rgba(20,20,20,0.08);">
+        <div style="font-family:'DM Serif Display',serif;font-size:40px;font-weight:700;color:var(--coral);line-height:1;">35%</div>
+        <p style="font-family:'Figtree',sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px;">have tried <strong style="color:var(--black);">no parenting tool</strong> — book, app, podcast, or therapy</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARENT QUOTE VISUAL -->
+<section style="background: var(--off-white); padding: 0 0 80px 0;">
+  <div class="section-max fade-in" style="display:flex;justify-content:center;">
+    <img src="img-parent-quote-mom.png" alt="A parent told us: I try very hard to not parent like my mom. I try to do the opposite of her." style="width:100%;max-width:480px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.08);"/>
+  </div>
+</section>
+
+<!-- CUSTOMER CHALLENGES -->
+<section id="challenge" style="background: var(--white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Customer Challenges</div>
+    </div>
+
+    <div class="challenge-quote fade-in">
+      <div class="challenge-quote-text">"The moments that catch parents most off-guard are never the ones anyone warned them about."</div>
+      <div class="challenge-quote-source">— Parent research insight</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;" class="fade-in">
+      <div style="background:var(--beige);border-radius:12px;padding:28px;">
+        <div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:var(--black);font-style:italic;margin-bottom:16px;">"It's not that I don't know what to say — it's more about needing time to calm down first."</div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(44,42,40,0.55);">— Divya, parent</div>
+      </div>
+      <div style="background:var(--beige);border-radius:12px;padding:28px;">
+        <div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:var(--black);font-style:italic;margin-bottom:16px;">"I don't gain a lot of knowledge just by reading. I need to experience it — or talk to someone I trust."</div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(44,42,40,0.55);">— Indiana Dad</div>
+      </div>
+      <div style="background:var(--beige);border-radius:12px;padding:28px;">
+        <div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1.55;color:var(--black);font-style:italic;margin-bottom:16px;">"Sometimes I'm just burnt out. I wish something could chime in and say 'Mom, go take a break.'"</div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(44,42,40,0.55);">— ADHD Mom</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI HYPOTHESIS -->
+<section id="hypothesis" style="background: linear-gradient(135deg, var(--white) 60%, #EBF0F4 100%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">AI Hypothesis</div>
+    </div>
+    <div class="fade-in">
+      <div style="background:var(--blue);border-radius:14px;padding:40px;margin-bottom:20px;">
+        <p style="font-family:'Figtree',sans-serif;font-weight:400;font-size:18px;line-height:1.65;color:white;font-style:normal;">"If the AI delivers <strong style="color:#F6DED2;font-weight:700;">warm</strong>, <strong style="color:#F6DED2;font-weight:700;">age-appropriate</strong>, <strong style="color:#F6DED2;font-weight:700;">framework-grounded responses</strong> with <strong style="color:#F6DED2;font-weight:700;">less than 15% age-stage misattribution rate</strong> to <strong style="color:#F6DED2;font-weight:700;">parents of children ages 2–12</strong>, they are able to recognize their own emotional triggers and <strong style="color:#F6DED2;font-weight:700;">respond to their child in the moment</strong> rather than react — which <strong style="color:#F6DED2;font-weight:700;">improves D7 session return rate</strong>, with 3+ sessions in the first 7 days predicting conversion, captured through <strong style="color:#F6DED2;font-weight:700;">free to paid conversion</strong> within the first 7 days."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER SEGMENTATION -->
+<section id="segmentation" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Customer Segmentation</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="fade-in">
+      <div style="background:var(--white);border-radius:12px;padding:24px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Primary user</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);margin-bottom:8px;">Parent of child aged 2–12</div>
+        <div style="font-size:14px;line-height:1.65;color:var(--muted);">Works full-time. Tech-comfortable. Has tried apps and books — nothing stuck. Motivated by not repeating their own upbringing.</div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:24px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Child age bands served</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);margin-bottom:8px;">2–3 · 4–5 · 6–8 · 9–12</div>
+        <div style="font-size:14px;line-height:1.65;color:var(--muted);">Different behaviors, triggers, and developmental context per band. Age-appropriate responses are core to the AI hypothesis.</div>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:24px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Geography</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);margin-bottom:8px;">US primary market</div>
+        <div style="font-size:14px;line-height:1.65;color:var(--muted);">Research spanned US, Canada, Latin America, and India — validating that the access gap is cross-cultural, not market-specific.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER PERSONA -->
+<section id="persona" style="background: linear-gradient(160deg, var(--white) 50%, #F0EDE8 100%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Customer Persona</div>
+    </div>
+    <div class="fade-in persona-full-outer" style="display:grid;grid-template-columns:280px 1fr;gap:24px;">
+
+      <!-- LEFT: avatar + demographics -->
+      <div style="background:#F8F7F3;border-radius:14px;padding:28px 24px;color:var(--green-dark);">
+        <div style="text-align:center;">
+          <svg width="88" height="88" viewBox="0 0 56 56" style="margin-bottom:14px;">
+            <defs><clipPath id="momAvatarClip"><circle cx="28" cy="28" r="27"/></clipPath></defs>
+            <circle cx="28" cy="28" r="27" fill="var(--white)" stroke="var(--green-soft)" stroke-width="2"/>
+            <g clip-path="url(#momAvatarClip)">
+              <path d="M2 58 C2 39 13 31 28 31 C43 31 54 39 54 58 Z" fill="var(--green-soft)"/>
+              <circle cx="28" cy="23" r="14" fill="var(--green-soft)"/>
+            </g>
+          </svg>
+          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--green-dark);margin-bottom:4px;">Maya</div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);margin-bottom:18px;">Parent, Decision Maker for the Household</div>
+        </div>
+        <p style="font-size:13px;line-height:1.6;color:var(--green-dark);margin-bottom:12px;">Maya is a stay-at-home mom to her 8-year-old daughter, largely parenting on her own since her husband, an army officer, is often unavailable. She brings a deliberate, conscious approach to how she handles hard moments.</p>
+        <p style="font-size:13px;line-height:1.6;color:var(--green-dark);font-style:italic;margin-bottom:22px;">"I want to give my child a childhood that feels different from my own — without losing myself trying."</p>
+
+        <div style="font-size:18px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--green-mid);margin-bottom:12px;">Demographics</div>
+        <div style="font-size:13px;line-height:1.9;color:var(--green-dark);">
+          <strong style="color:var(--green-dark);">Age:</strong> 30+<br/>
+          <strong style="color:var(--green-dark);">Gender:</strong> Female<br/>
+          <strong style="color:var(--green-dark);">Income:</strong> &lt;$150,000 annually<br/>
+          <strong style="color:var(--green-dark);">Education:</strong> Bachelor's degree<br/>
+          <strong style="color:var(--green-dark);">Employment:</strong> Mixed — stay-at-home and working/WFH parents<br/>
+          <strong style="color:var(--green-dark);">Family:</strong> Parent of a child, age 8
+        </div>
+      </div>
+
+      <!-- RIGHT: headline + two-column Q&A -->
+      <div>
+        <p style="font-family:'DM Serif Display',serif;font-size:19px;line-height:1.5;color:var(--green-dark);margin-bottom:20px;">Needs a way to stay regulated and access what she already knows — right when a hard moment hits, before it escalates.</p>
+
+        <div class="persona-full-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Product Interest</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">A tool that helps her recognize her own emotional triggers and respond calmly in the moment, rather than reacting the way she was raised to.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Learns About Product</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Parenting communities, word of mouth from other customers, and parenting conferences.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Buys &amp; Expects to Buy Product</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Direct app-store download, starting with a free trial before subscribing.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Will Get &amp; Expect to Get Product</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Instant, self-serve onboarding — no setup call or sales touch needed.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Would Persona Use Product</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);">Opens Coa in the moment of stress for real-time, in-the-moment support, then checks Know My Child through the week to see patterns forming.</p>
+          </div>
+
+          <div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Will Persona Be Billed &amp; Pay for Product</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">7-day free trial, then monthly or annual subscription billed through the app store.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">What &amp; How Customer Expects Post-Sale Support</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">In-app chat and a self-serve help center — she won't call a support line.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Product Needs</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Juggling parenting with work — whether that's a full-time job, working from home, or full-time at home. Knows what she should do but struggles to access it in the moment. Has tried apps and books — nothing stuck. Motivated by not repeating her own upbringing.</p>
+
+            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Top Pain Points (Related to Need for Product)</div>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--black);">Can't access what she knows when flooded with stress. Sees her own reactions clearly but can't interrupt the pattern in the moment. Worries every hard moment shapes who her child becomes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER JOURNEY MAP -->
+<section id="journey" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Customer Journey Map</div>
+    </div>
+
+    <!-- Compact persona + scenario row -->
+    <div class="fade-in" style="display:flex;align-items:center;gap:20px;background:var(--off-cream);border-radius:12px;padding:16px 24px;margin-bottom:16px;">
+      <svg width="52" height="52" viewBox="0 0 56 56" style="flex-shrink:0;">
+        <defs><clipPath id="journeyAvatarClip"><circle cx="28" cy="28" r="27"/></clipPath></defs>
+        <circle cx="28" cy="28" r="27" fill="var(--white)" stroke="var(--green-soft)" stroke-width="2"/>
+        <g clip-path="url(#journeyAvatarClip)">
+          <path d="M2 58 C2 39 13 31 28 31 C43 31 54 39 54 58 Z" fill="var(--green-soft)"/>
+          <circle cx="28" cy="23" r="14" fill="var(--green-soft)"/>
+        </g>
+      </svg>
+      <div style="flex-shrink:0;min-width:160px;">
+        <div style="font-family:'DM Serif Display',serif;font-size:17px;color:var(--black);">Maya</div>
+        <div style="font-size:11.5px;color:var(--muted);margin-top:2px;">30+, Female, Parent of a child age 8</div>
+      </div>
+      <div style="width:1px;align-self:stretch;background:var(--beige);flex-shrink:0;"></div>
+      <p style="font-size:12.5px;line-height:1.55;color:var(--black);"><strong style="color:var(--coral);">Scenario:</strong> Maya is a stay-at-home mom to her 8-year-old daughter, largely parenting on her own since her husband, an army officer, is often unavailable. She brings a deliberate, conscious approach to how she handles hard moments, but often feels flooded in the moment and worries about repeating her own upbringing.</p>
+    </div>
+
+    <!-- Journey table -->
+    <div class="fade-in" style="overflow-x:auto;">
+      <div style="min-width:780px;">
+
+        <!-- Arrow / chevron phase headers -->
+        <div style="display:flex;">
+          <div style="width:110px;flex-shrink:0;"></div>
+          <div style="display:flex;flex:1;">
+            <div style="flex:1;background:var(--blue);color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);padding:14px 26px 14px 16px;text-align:center;font-weight:700;font-size:13px;z-index:1;">Awareness</div>
+            <div style="flex:1;background:#608A8B;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:2;">Consideration</div>
+            <div style="flex:1;background:#68927E;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:3;">Purchase</div>
+            <div style="flex:1;background:#739773;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:4;">Onboarding</div>
+            <div style="flex:1;background:var(--green-soft);color:var(--white);clip-path:polygon(0 0,100% 0,100% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 16px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:5;">Advocacy</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:110px repeat(5,1fr);gap:1px;background:var(--beige);border-radius:12px;overflow:hidden;margin-top:2px;">
+
+          <!-- User Actions row -->
+          <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">User Actions</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Instagram posts, newsletters from friends/trusted influencers about Attuned</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Website visit, App Store reviews</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Download + App Store payment, starts free trial</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Profile setup, walkthrough of Ask Coa, Know My Child, Growth, Bedtime</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Word-of-mouth shares, in-app survey feedback</div>
+
+          <!-- Touchpoints row -->
+          <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">Touchpoints</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Social media, parenting communities</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Website, App Store listing</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">App Store payment, welcome email</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">In-app tutorial, interactive walkthrough</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Social media, in-app surveys</div>
+
+          <!-- Emotions row (mood line, monochrome) -->
+          <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">Emotions</div>
+          <div style="background:var(--white);grid-column:2 / span 5;padding:10px 30px;overflow:visible;">
+            <svg viewBox="0 0 900 100" style="width:100%;height:70px;display:block;overflow:visible;">
+              <line x1="0" y1="50" x2="900" y2="50" stroke="var(--beige)" stroke-width="1" stroke-dasharray="3,4"/>
+              <polyline points="90,30 270,55 450,85 630,45 810,12" fill="none" stroke="var(--black)" stroke-width="1.5"/>
+              <!-- Awareness: frustrated -->
+              <g transform="translate(90,30)"><circle r="13" fill="var(--white)" stroke="var(--black)" stroke-width="1.5"/><path d="M-5 3 Q0 -3 5 3" fill="none" stroke="var(--black)" stroke-width="1.5"/><line x1="-6" y1="-5" x2="-2" y2="-3" stroke="var(--black)" stroke-width="1.3"/><line x1="6" y1="-5" x2="2" y2="-3" stroke="var(--black)" stroke-width="1.3"/></g>
+              <!-- Consideration: thinking (raised brow, dot eyes, tilted mouth) -->
+              <g transform="translate(270,55)"><circle r="13" fill="var(--white)" stroke="var(--black)" stroke-width="1.5"/><circle cx="-4" cy="-2" r="1.3" fill="var(--black)"/><circle cx="4" cy="-2" r="1.3" fill="var(--black)"/><path d="M2 -8 L7 -9" stroke="var(--black)" stroke-width="1.3" stroke-linecap="round"/><path d="M-4 4 L4 2" stroke="var(--black)" stroke-width="1.5" stroke-linecap="round"/></g>
+              <!-- Purchase: neutral -->
+              <g transform="translate(450,85)"><circle r="13" fill="var(--white)" stroke="var(--black)" stroke-width="1.5"/><line x1="-4" y1="2" x2="4" y2="2" stroke="var(--black)" stroke-width="1.5"/><circle cx="-4" cy="-3" r="1.3" fill="var(--black)"/><circle cx="4" cy="-3" r="1.3" fill="var(--black)"/></g>
+              <!-- Onboarding: content -->
+              <g transform="translate(630,45)"><circle r="13" fill="var(--white)" stroke="var(--black)" stroke-width="1.5"/><path d="M-5 0 Q0 5 5 0" fill="none" stroke="var(--black)" stroke-width="1.5"/><circle cx="-4" cy="-3" r="1.3" fill="var(--black)"/><circle cx="4" cy="-3" r="1.3" fill="var(--black)"/></g>
+              <!-- Advocacy: delighted -->
+              <g transform="translate(810,12)"><circle r="13" fill="var(--white)" stroke="var(--black)" stroke-width="1.5"/><path d="M-6 -1 Q0 7 6 -1" fill="none" stroke="var(--black)" stroke-width="1.5"/><path d="M-6 -3 L-2 -5 L-6 -7" fill="none" stroke="var(--black)" stroke-width="1.2"/><path d="M6 -3 L2 -5 L6 -7" fill="none" stroke="var(--black)" stroke-width="1.2"/></g>
+            </svg>
+          </div>
+
+          <!-- Pain Points row -->
+          <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">Pain Points</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Overwhelmed, unsure which tool helps</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Worried the AI feels generic</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Hesitant without proof of long-term value</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">No time for a complicated setup</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Wants the product to grow with her child, backed by accurate, quality AI content</div>
+
+          <!-- Solutions row -->
+          <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;border-radius:0 0 0 12px;">Solutions</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Trusted recommendations from other parents</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Free trial, real parent reviews</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Simple pricing, free trial removes risk</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Guided, user-friendly onboarding to value in minutes</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);border-radius:0 0 12px 0;">Regular updates, visible feedback loop, a chance to be a trusted voice in the wider parenting community</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI MODEL OVERVIEW -->
+<section id="ai-model" style="background: linear-gradient(135deg, #EBF0F4 0%, var(--white) 70%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">AI Model Overview</div>
+    </div>
+
+    <!-- Design principle callout -->
+    <div class="fade-in" style="background:var(--beige);border-left:4px solid var(--coral);border-radius:0 10px 10px 0;padding:18px 24px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:6px;">Design Principle</div>
+      <p style="font-size:13.5px;line-height:1.6;color:var(--black);">Invest in proprietary data and retrieval layers, not model fine-tuning. The real moat is our proprietary approach and the parent memory that compounds over time — not the AI model itself.</p>
+    </div>
+
+    <!-- Two-model architecture: 4 model cards -->
+    <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Extraction</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">gpt-5-nano</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> pulls structured JSON — behavior, emotion, and need candidates — from the parent's raw message. Temperature = 0.</p>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> fast, cheap, deterministic. Runs before the parent sees anything.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Generation</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">GPT-5.4 mini</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> generates every Coa response — framework-grounded replies, pattern insights, bedtime stories — each with its own prompt.</p>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> receives extracted JSON + retrieved context from our proprietary framework + child profile; produces three risk-tiered candidate responses per message.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Embeddings</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">text-embedding-3-small</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> converts our proprietary reference material, session summaries, and parent memory into vectors for semantic retrieval.</p>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> powers retrieval across every feature via pgvector, stored in Supabase Postgres.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Safety Judge</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">gpt-5-nano</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> reviews each candidate against a clinical safety rubric — diagnosis, treatment claims, unsupported causal claims. Evaluates only, never generates.</p>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> a binary classification task, so it adds minimal latency to the response pipeline.</p>
+      </div>
+      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);grid-column:1 / -1;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Retrieval (RAG)</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">pgvector, within Supabase Postgres</div>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> retrieves the closest matching context via semantic similarity, filtered by the child's age band, and pulls per-parent session history to power pattern synthesis over time.</p>
+        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> lives inside the existing Postgres database — no separate vector store to run or maintain. This is the layer that makes Coa feel like it remembers a family, not just a single message.</p>
+      </div>
+    </div>
+
+    <!-- Why two models — summary -->
+    <div class="fade-in why-two-models" style="background:var(--blue);border-radius:12px;padding:24px 28px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F6DED2;margin-bottom:10px;">Why Two Models</div>
+      <p style="font-size:14px;line-height:1.65;color:var(--white);font-weight:600;margin-bottom:10px;">gpt-5-nano handles extraction and safety judging; GPT-5.4 mini is reserved only for generation — the one task that actually needs it.</p>
+      <p style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,0.8);">Both extraction and safety judging are fast, cheap, deterministic tasks — well suited to a smaller model. Generation is where quality matters most, so that's the only place the more expensive model is used. Because intelligence lives in the retrieval layer, not the model, either model can be swapped for an open-source alternative (Mistral, Llama 4) at scale without rebuilding anything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI INPUT AND OUTPUT -->
+<section id="ai-io" style="background: linear-gradient(160deg, var(--white) 40%, #EBF0F4 100%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">AI Input and AI Output</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr auto;gap:28px;align-items:stretch;" class="fade-in ai-io-layout">
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch;">
+        <div style="background:var(--beige);border-radius:14px;padding:28px;display:flex;flex-direction:column;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;">Input</div>
+          <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-between;">
+            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:var(--coral);margin-bottom:3px;">Child profile</div><div style="font-size:13px;color:var(--black);">Age, traits, known sensitivities, family context</div></div>
+            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:var(--coral);margin-bottom:3px;">Ask Coa session history</div><div style="font-size:13px;color:var(--black);">Behaviour patterns, emotional themes, escalation levels across all sessions</div></div>
+            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:var(--coral);margin-bottom:3px;">Feedback signals</div><div style="font-size:13px;color:var(--black);">Tried It, Didn't Fit, This Resonates, Not Right Now — from previous cycles</div></div>
+          </div>
+        </div>
+        <div style="text-align:center;font-size:26px;color:var(--blue);display:flex;align-items:center;justify-content:center;">→</div>
+        <div style="background:var(--blue);border-radius:14px;padding:28px;display:flex;flex-direction:column;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:20px;">Output</div>
+          <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-between;">
+            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:#F6DED2;margin-bottom:3px;">Child's portrait paragraph</div><div style="font-size:13px;color:rgba(255,255,255,0.85);">80–120 word warm description of who the child is right now</div></div>
+            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:#F6DED2;margin-bottom:3px;">What the child is working through</div><div style="font-size:13px;color:rgba(255,255,255,0.85);">Pattern label, need tag, 1-sentence explanation, micro-action</div></div>
+            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:#F6DED2;margin-bottom:3px;">What has been helping the child</div><div style="font-size:13px;color:rgba(255,255,255,0.85);">30–50 word confirmatory reflection of what the parent has been doing</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone mockup of the real output screen -->
+      <div style="width:220px;background:#1a1a1a;border-radius:36px;padding:10px;box-shadow:0 16px 32px rgba(20,20,20,0.25);justify-self:center;align-self:center;">
+        <div style="background:#000;border-radius:26px;overflow:hidden;position:relative;">
+          <!-- Status bar -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 4px;background:var(--off-white);">
+            <span style="font-size:12px;font-weight:700;color:var(--black);">9:41</span>
+            <div style="display:flex;align-items:center;gap:4px;">
+              <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M8 10.5C8.6 10.5 9.1 10 9.1 9.4C9.1 8.8 8.6 8.3 8 8.3C7.4 8.3 6.9 8.8 6.9 9.4C6.9 10 7.4 10.5 8 10.5Z" fill="var(--black)"/><path d="M5.4 7.3C6.1 6.6 6.9 6.2 8 6.2C9.1 6.2 9.9 6.6 10.6 7.3" stroke="var(--black)" stroke-width="1.1" stroke-linecap="round"/><path d="M3 4.8C4.6 3.2 6.2 2.4 8 2.4C9.8 2.4 11.4 3.2 13 4.8" stroke="var(--black)" stroke-width="1.1" stroke-linecap="round"/></svg>
+              <svg width="22" height="11" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="2.5" stroke="var(--black)" stroke-width="1"/><rect x="2.5" y="2.5" width="16" height="7" rx="1.2" fill="var(--black)"/><rect x="21" y="4" width="1.6" height="4" rx="0.8" fill="var(--black)"/></svg>
+            </div>
+          </div>
+          <!-- Notch -->
+          <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);width:70px;height:18px;background:#000;border-radius:10px;z-index:2;"></div>
+          <img src="img-my-child-screen.png" alt="Know My Child screen showing the child's portrait, patterns, and helping insight" style="width:100%;display:block;"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA PIPELINE -->
+<section id="pipeline" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Data Pipeline</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:start;margin-top:40px;" class="fade-in">
+      <div style="text-align:center;padding:0 8px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--blue);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">1</div>
+        <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px;">Ask Coa session</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Parent describes the moment to Coa</div>
+      </div>
+      <div style="text-align:center;padding-top:20px;color:var(--muted);font-size:20px;">→</div>
+      <div style="text-align:center;padding:0 8px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--blue);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">2</div>
+        <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px;">Memory summary</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Session extracted and stored in memory_summaries</div>
+      </div>
+      <div style="text-align:center;padding-top:20px;color:var(--muted);font-size:20px;">→</div>
+      <div style="text-align:center;padding:0 8px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">3</div>
+        <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;">KMC synthesis</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;">3 parallel prompts triggered at session 3. Guardrail reviews all output.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;align-items:start;margin-top:32px;max-width:400px;margin-left:auto;margin-right:auto;" class="fade-in">
+      <div style="text-align:center;padding:0 8px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">4</div>
+        <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;">child_reports</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Portrait, patterns, and insight written to database</div>
+      </div>
+      <div style="text-align:center;padding:0 8px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">5</div>
+        <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;">Parent sees it</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Know My Child tab renders the evolving portrait</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI MODEL VALIDATION -->
+<section id="validation" style="background: linear-gradient(135deg, var(--white) 60%, #F0EDE8 100%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">AI Model Validation</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="fade-in">
+      <div>
+        <div class="placeholder-box" style="min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <strong>Validation results</strong>
+          Prompt output samples tested against the voice spec, scored against target thresholds — coming soon
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:var(--white);border-radius:10px;padding:22px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">What was tested</div>
+          <p style="font-size:14px;line-height:1.65;color:var(--black);">Output tone — does it sound like Coa? Clinical language detection. Portrait specificity across different child profiles. Pattern card distinctiveness. Guardrail rejection rate.</p>
+        </div>
+        <div style="background:var(--white);border-radius:10px;padding:22px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Iterations made</div>
+          <p style="font-size:14px;line-height:1.65;color:var(--black);">Placeholder — key prompt iterations and what changed between versions coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT ROADMAP -->
+<section id="roadmap" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Product Roadmap</div>
+    </div>
+    <div class="placeholder-box fade-in" style="min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <strong>Roadmap</strong>
+      Phased rollout across near-term, mid-term, and long-term milestones — coming soon
+    </div>
+  </div>
+</section>
+
+<!-- USER STORIES -->
+<!-- USER STORIES & ACCEPTANCE CRITERIA -->
+<section id="stories" style="background: linear-gradient(135deg, var(--white) 60%, #F0EDE8 100%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">User Stories &amp; Acceptance Criteria</div>
+    </div>
+    <div class="fade-in" style="overflow-x:auto;">
+      <div style="display:grid;grid-template-columns:150px 1fr 1fr;gap:1px;background:var(--beige);border-radius:12px;overflow:hidden;min-width:760px;">
+
+        <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Category</div>
+        <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">User Story</div>
+        <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Acceptance Criteria</div>
+
+        <div style="background:var(--white);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Portrait Synthesis</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to see a warm portrait of who my child is right now, so that I can understand their behaviour without feeling blamed or judged.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">Portrait is 80–120 words, written in Coa's voice, includes at least one positive trait, and ends with a normalising forward-looking statement. No clinical language. Renders within 3 seconds of tab open.</div>
+
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Pattern Cards</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to see the patterns behind my child's hard moments, so that the same situations start to make sense instead of feeling random.</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">Exactly 2 pattern cards. Each includes a plain-language label (3–6 words), a single approved need tag, a one-sentence explanation (max 20 words), and a micro-action. Patterns must be genuinely distinct from each other.</div>
+
+        <div style="background:var(--white);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">What's Been Helping</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to know what I've been doing that's helping my child, so that I feel my effort is being noticed and I'm encouraged to keep going.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">Insight only generates after ≥2 Tried It signals. Insight is 30–50 words, confirmatory (what parent has done) not prescriptive (what to do next). Warm placeholder renders when threshold not met.</div>
+
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Feedback Signals</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to give feedback on whether a pattern resonates, so that future portraits feel increasingly accurate to my specific child.</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">This Resonates and Not Right Now signals log to the database immediately on tap — not deferred. Not Right Now patterns excluded from next synthesis cycle. Back button after This Resonates returns parent to read-only card.</div>
+
+        <div style="background:var(--white);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Unlock &amp; Analytics</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want Know My Child to unlock naturally after enough sessions, so the insights feel earned rather than arbitrary.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">know_my_child_unlocked PostHog event fires exactly once per child profile at session 3. All P0 analytics events verified in PostHog live stream before ticket closes. No PII sent to PostHog.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section id="risk" style="background: linear-gradient(160deg, var(--white) 50%, #EBF0F4 100%); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">Risk</div>
+    </div>
+    <div class="risk-grid fade-in">
+      <div class="risk-card"><span class="risk-level risk-high">High</span><div class="risk-title">AI output tone</div><div class="risk-text">Synthesis could produce clinical, diagnostic, or shame-inducing content about a real child.</div><div class="risk-mitigation">→ Output guardrail prompt reviews every component before it reaches the parent. Retry and fallback logic built in.</div></div>
+      <div class="risk-card"><span class="risk-level risk-high">High</span><div class="risk-title">Synthesis failure</div><div class="risk-text">Agentic workflow fails silently — parent opens tab and sees broken or empty content.</div><div class="risk-mitigation">→ Fallback to last successful synthesis. If none exists, warm waiting state renders. Parent never sees an error screen.</div></div>
+      <div class="risk-card"><span class="risk-level risk-med">Medium</span><div class="risk-title">Low session volume</div><div class="risk-text">Parents don't reach the 3-session unlock, so Know My Child never surfaces.</div><div class="risk-mitigation">→ Lock screen designed to preview what unlocks. Progress bar shows momentum. Unlock celebration rewards reaching threshold.</div></div>
+      <div class="risk-card"><span class="risk-level risk-med">Medium</span><div class="risk-title">Portrait feels generic</div><div class="risk-text">Synthesis produces output that doesn't feel specific to this child — destroying trust.</div><div class="risk-mitigation">→ Child profile + family context + session history all passed into Prompt 1. Low temperature (0.3) keeps output grounded.</div></div>
+      <div class="risk-card"><span class="risk-level risk-low">Low</span><div class="risk-title">Pattern card duplication</div><div class="risk-text">Two pattern cards surface the same underlying theme — eroding credibility.</div><div class="risk-mitigation">→ patterns_are_distinct validation in Prompt 2. Model must revise until both patterns are genuinely distinct.</div></div>
+      <div class="risk-card"><span class="risk-level risk-low">Low</span><div class="risk-title">Cost scaling</div><div class="risk-text">3 synthesis prompts per child per cycle could become costly at scale.</div><div class="risk-mitigation">→ Prompt caching on system roles reduces input costs 75–90%. Synthesis only triggers per child profile, not per session.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS MODEL -->
+<section id="bizmodel" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max fade-in">
+    <div class="eyebrow">Business Model</div>
+    <div class="placeholder-box" style="min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><strong>Business Model</strong>Subscription model, pricing tiers, TAM/SAM/SOM — coming soon</div>
+  </div>
+</section>
+
+<!-- DATA PIPELINE / SYSTEM ARCHITECTURE -->
+<section id="architecture" style="background: linear-gradient(135deg, var(--white) 60%, #EBF0F4 100%); padding: 52px 0;">
+  <div class="section-max fade-in">
+    <div class="eyebrow">System Architecture</div>
+    <div class="placeholder-box" style="min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><strong>System Architecture Diagram</strong>Agentic workflow, Supabase schema, API pipeline — coming soon</div>
+  </div>
+</section>
+
+<!-- MVP -->
+<section id="mvp" style="background: var(--blue); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow" style="color:rgba(255,255,255,0.55);">MVP — Demo Day August 2026</div>
+      <div class="mvp-heading">What ships</div>
+      <p class="mvp-sub">Know My Child must be fully populated with synthesised content for both demo profiles before August 11.</p>
+    </div>
+    <div class="mvp-grid fade-in">
+      <div class="mvp-card"><div class="mvp-card-title">Lock → Unlock Flow</div><p class="mvp-card-text">Lock screen with progress bar and What Unlocks preview. Celebration unlock screen. All copy and interaction states built to spec.</p></div>
+      <div class="mvp-card"><div class="mvp-card-title">3-Component Portrait</div><p class="mvp-card-text">Where [Name] Is Now portrait, 2 pattern cards with need tags, and What's Been Helping — all rendering from real synthesised content for both demo child profiles.</p></div>
+      <div class="mvp-card"><div class="mvp-card-title">Feedback & Profile</div><p class="mvp-card-text">This Resonates / Not Right Now flow, avatar picker, multi-profile switching — all validated against the feature spec before demo day.</p></div>
+    </div>
+    <div class="mvp-screens fade-in">
+      <div class="mvp-screen"><img src="img-attuned.png" alt="Attuned app screen"/></div>
+      <div class="mvp-screen"><img src="img-kmc-screen.png" alt="Know My Child screen showing 'You've been showing up' unlock message with Get Started button"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SCALABILITY STRATEGY -->
+<section id="scalability" style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="fade-in">
+      <div class="eyebrow">AI Scalability Strategy</div>
+    </div>
+    <div class="placeholder-box fade-in" style="min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <strong>Scaling plan</strong>
+      How the model, prompts, and infrastructure hold up as usage and child profiles grow — coming soon
+    </div>
+  </div>
+</section>
+
+<!-- BACK -->
+<section id="back">
+  <p class="back-sub">Want to see more of my work?</p>
+  <a href="index.html#work" class="btn btn-coral">← Back to portfolio</a>
+</section>
+
+<footer>© 2026 Thanh Tran · Built with care</footer>
+</div>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+<script>
+(function() {
+  var navLinks = document.querySelectorAll('.section-nav a');
+  var sections = Array.from(navLinks).map(function(link) {
+    return document.getElementById(link.getAttribute('data-target'));
+  }).filter(Boolean);
+
+  function setActive(id) {
+    navLinks.forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('data-target') === id);
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    var visible = entries.filter(function(e) { return e.isIntersecting; });
+    if (visible.length > 0) {
+      visible.sort(function(a, b) {
+        return Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top);
+      });
+      setActive(visible[0].target.id);
+    }
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(function(section) { observer.observe(section); });
+
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(link.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  if (sections.length > 0) setActive(sections[0].id);
+})();
+</script>
+</body>
+</html>
