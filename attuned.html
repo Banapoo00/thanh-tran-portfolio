@@ -72,6 +72,9 @@ nav {
 .dropdown-menu a { font-size: 13px; padding: 10px 16px; border-radius: 0; border-bottom: 1px solid var(--off-white); display: flex; flex-direction: column; gap: 2px; }
 .dropdown-menu a:last-child { border-bottom: none; }
 .dropdown-tag { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+.dropdown-item-disabled { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-bottom: 1px solid var(--off-white); cursor: not-allowed; opacity: 0.55; font-size: 13px; }
+.dropdown-item-disabled .dropdown-tag { color: var(--muted); }
+.dropdown-soon { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; color: var(--coral); margin-left: 4px; }
 
 .section-heading {
   font-family: 'DM Serif Display', serif;
@@ -156,8 +159,8 @@ nav {
 }
 @keyframes coaType {
   0% { width: 0; }
-  35% { width: 6.6em; }
-  75% { width: 6.6em; }
+  35% { width: 5em; }
+  75% { width: 5em; }
   100% { width: 0; }
 }
 @keyframes coaCursorBlink {
@@ -296,6 +299,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero-inner, .overview-grid, .persona-layout, .features-grid, .story-card, .criteria-row, .risk-grid, .mvp-grid, .mvp-screens { grid-template-columns: 1fr; }
+  .overview-grid { gap: 24px; }
+  .overview-cards { margin-top: 0 !important; }
   .journey-stages { grid-template-columns: 1fr; }
   .journey-stage::after { display: none; }
   .challenge-cards { grid-template-columns: 1fr; }
@@ -364,8 +369,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       <a href="index.html#work" class="nav-current">My Work</a>
       <div class="dropdown-menu">
         <a href="attuned.html" class="nav-current"><span class="dropdown-tag">AI Product</span>Attuned</a>
-        <a href="google-maps.html"><span class="dropdown-tag">Case Study</span>Google Maps</a>
-        <a href="airbnb.html"><span class="dropdown-tag">Case Study</span>Airbnb</a>
+        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Google Maps</span>
+        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Airbnb</span>
       </div>
     </li>
     <li><a href="index.html#contact">Contact</a></li>
@@ -409,10 +414,10 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     <div class="overview-grid fade-in">
       <div class="overview-text">
         <h2 class="eyebrow">Overview</h2>
-        <p>Attuned is built on a single insight from parent research: parents don't lack knowledge about how to respond to their child. They lose access to it when they're flooded with stress. The product is built to regulate the parent first — because a regulated parent is the one who can actually help their child.</p>
+        <p><strong>Attuned</strong> is built on a single insight from parent research: parents don't lack knowledge about how to respond to their child. They lose access to it when they're <strong>flooded with stress</strong>. The product is built to regulate the parent first — because a regulated parent is the one who can actually help their child.</p>
         <p>The product spans four core experiences. I joined as the AI PM for <strong>Know My Child</strong> — the feature that builds a living, evolving portrait of a child across every Coa conversation, getting more specific over time rather than staying generic. I invite you to read about the product launch for Know My Child in depth below.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:80px;">
+      <div class="overview-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:80px;">
         <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Ask Coa</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">Real-time support in a hard moment</p></div>
         <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Know My Child</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">An evolving portrait of who your child is becoming</p></div>
         <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Growth</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A reflection space for the parent</p></div>

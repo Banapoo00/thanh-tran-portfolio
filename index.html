@@ -117,6 +117,9 @@ nav {
   letter-spacing: .08em; text-transform: uppercase;
   color: var(--blue);
 }
+.dropdown-item-disabled { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-bottom: 1px solid var(--off-white); cursor: not-allowed; opacity: 0.55; font-size: 13px; }
+.dropdown-item-disabled .dropdown-tag { color: var(--muted); }
+.dropdown-soon { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; color: var(--coral); margin-left: 4px; }
 
 /* ── SHARED UTILS ────────────────────────────────────── */
 .eyebrow {
@@ -866,8 +869,8 @@ footer {
       <a href="#work">My Work</a>
       <div class="dropdown-menu">
         <a href="attuned.html"><span class="dropdown-tag">AI Product</span>Attuned</a>
-        <a href="google-maps.html"><span class="dropdown-tag">Case Study</span>Google Maps</a>
-        <a href="airbnb.html"><span class="dropdown-tag">Case Study</span>Airbnb</a>
+        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Google Maps</span>
+        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Airbnb</span>
       </div>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -1035,12 +1038,9 @@ footer {
         📌 Problem framing, analysis, recommendations, and outcomes coming soon.
       </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="google-maps.html" class="btn btn-fill">
-          Full case study
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <span class="btn btn-fill" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
+          Full case study — Coming Soon
+        </span>
         <a href="#work" class="btn btn-outline">↑ Back to My Work</a>
       </div>
     </div>
@@ -1069,12 +1069,9 @@ footer {
         📌 Problem framing, analysis, recommendations, and outcomes coming soon.
       </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <a href="airbnb.html" class="btn btn-fill">
-          Full case study
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <span class="btn btn-fill" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
+          Full case study — Coming Soon
+        </span>
         <a href="#work" class="btn btn-outline">↑ Back to My Work</a>
       </div>
     </div>
