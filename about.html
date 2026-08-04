@@ -56,9 +56,6 @@ nav {
 .dropdown-menu a { font-size: 13px; padding: 10px 16px; border-radius: 0; border-bottom: 1px solid var(--off-white); display: flex; flex-direction: column; gap: 2px; }
 .dropdown-menu a:last-child { border-bottom: none; }
 .dropdown-tag { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-.dropdown-item-disabled { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-bottom: 1px solid var(--off-white); cursor: not-allowed; opacity: 0.55; font-size: 13px; }
-.dropdown-item-disabled .dropdown-tag { color: var(--muted); }
-.dropdown-soon { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; color: var(--coral); margin-left: 4px; }
 
 /* ── UTILS ── */
 .section-max { max-width: 1000px; margin: 0 auto; padding: 0 48px; }
@@ -183,15 +180,14 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html" class="nav-current">About</a></li>
     <li class="nav-dropdown">
       <a href="index.html#work">My Work</a>
       <div class="dropdown-menu">
         <a href="attuned.html"><span class="dropdown-tag">AI Product</span>Attuned</a>
-        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Google Maps</span>
-        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Airbnb</span>
+        <a href="barclays.html"><span class="dropdown-tag">Enterprise Data · NDA</span>Barclays</a>
       </div>
     </li>
+    <li><a href="about.html" class="nav-current">About</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>

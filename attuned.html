@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Attuned case study — how I led Know My Child, an AI-powered parenting companion feature, from research through launch."/>
+<meta name="description" content="Attuned — how Thanh Tran led Know My Child, an AI-powered parenting companion feature, from research through launch."/>
 <link rel="icon" type="image/png" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="favicon.png"/>
 <title>Attuned — Thanh Tran</title>
@@ -32,6 +32,10 @@
   --blue:        #586E84;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* text selection colour */
+::selection { background: #CAD1D8; color: #141414; }
+::-moz-selection { background: #CAD1D8; color: #141414; }
 html { scroll-behavior: smooth; }
 body { font-family: 'Figtree', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
@@ -72,9 +76,6 @@ nav {
 .dropdown-menu a { font-size: 13px; padding: 10px 16px; border-radius: 0; border-bottom: 1px solid var(--off-white); display: flex; flex-direction: column; gap: 2px; }
 .dropdown-menu a:last-child { border-bottom: none; }
 .dropdown-tag { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-.dropdown-item-disabled { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-bottom: 1px solid var(--off-white); cursor: not-allowed; opacity: 0.55; font-size: 13px; }
-.dropdown-item-disabled .dropdown-tag { color: var(--muted); }
-.dropdown-soon { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; color: var(--coral); margin-left: 4px; }
 
 .section-heading {
   font-family: 'DM Serif Display', serif;
@@ -192,8 +193,8 @@ nav {
 /* ── OVERVIEW ── */
 #overview { background: var(--white); padding: 52px 0; }
 .overview-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
-.overview-text h2 { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--black); margin-bottom: 16px; }
-.overview-text p { font-size: 15px; line-height: 1.75; color: var(--black); margin-bottom: 14px; }
+.overview-text h2 { font-family: 'DM Serif Display', serif; font-size: 42px; font-weight: 400; letter-spacing: -0.01em; color: var(--black); margin-bottom: 28px; }
+.overview-text p { font-size: 16px; line-height: 1.8; color: var(--black); margin-bottom: 16px; }
 .overview-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .stat-card { background: var(--off-white); border-radius: 12px; padding: 22px 20px; }
 .stat-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--blue); line-height: 1; margin-bottom: 4px; }
@@ -279,26 +280,46 @@ nav {
 
 /* ── MVP ── */
 #mvp { background: var(--blue); padding: 52px 0; }
-.mvp-heading { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--white); margin-bottom: 8px; }
-.mvp-sub { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 48px; }
+.mvp-heading { font-family: 'DM Serif Display', serif; font-size: 46px; color: var(--white); margin-bottom: 12px; text-align: center; }
+.mvp-sub { font-size: 16px; color: rgba(255,255,255,0.68); margin: 0 auto 48px; text-align: center; max-width: 720px; line-height: 1.75; }
 .mvp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .mvp-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; border: 1px solid rgba(255,255,255,0.15); }
 .mvp-card-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--white); margin-bottom: 8px; }
 .mvp-card-text { font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.7); }
-.mvp-screens { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
-.mvp-screen { border-radius: 12px; overflow: hidden; }
-.mvp-screen img { width: 100%; display: block; border-radius: 12px; }
+.mvp-screens { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 36px; }
+.mvp-screen { background: #1a1a1a; border-radius: 32px; padding: 8px; box-shadow: 0 18px 38px rgba(0,0,0,0.34); }
+.mvp-screen > div { background: #000; border-radius: 25px; overflow: hidden; line-height: 0; }
+.mvp-screen img { width: 100%; display: block; }
+.mvp-caption { text-align: center; font-size: 12.5px; letter-spacing: .04em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,0.6); margin-top: 10px; }
 
 /* ── BACK ── */
 #back { background: var(--beige); padding: 60px 0; text-align: center; }
-.back-sub { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+.back-sub { font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.contact-icons { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; }
+.contact-icons a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: var(--blue); color: var(--white); border: none; transition: background .2s, transform .15s; }
+.contact-icons a:hover { background: var(--black); transform: translateY(-2px); }
 
 /* ── FOOTER ── */
 footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: center; padding: 20px; font-size: 12px; }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1340px) {
+  .opp-wrap { padding: 0 24px !important; }
+}
+@media (max-width: 1150px) and (min-width: 901px) {
+  .opp-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 1150px) and (min-width: 901px) {
+  .mvp-screens { grid-template-columns: repeat(3, 1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 1000px) {
+  .roadmap-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .roadmap-grid { min-width: 900px; }
+}
 @media (max-width: 900px) {
-  .hero-inner, .overview-grid, .persona-layout, .features-grid, .story-card, .criteria-row, .risk-grid, .mvp-grid, .mvp-screens { grid-template-columns: 1fr; }
+  .hero-inner, .overview-grid, .persona-layout, .features-grid, .story-card, .criteria-row, .risk-grid, .mvp-grid { grid-template-columns: 1fr; }
+  .mvp-screens { grid-template-columns: 1fr !important; max-width: 300px; margin-left: auto; margin-right: auto; }
+  .poc-mascot { display: none; }
   .overview-grid { gap: 24px; }
   .overview-cards { margin-top: 0 !important; }
   .journey-stages { grid-template-columns: 1fr; }
@@ -310,6 +331,13 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   .ai-io-layout > div:first-child > div:nth-child(2) { display: none; }
   .swipe-hint { display: block !important; }
   .mobile-3col-stack { grid-template-columns: 1fr !important; }
+  .opp-grid { grid-template-columns: 1fr !important; }
+  .arch-fork { grid-template-columns: 1fr !important; }
+  .arch-flow div[style*="polygon"] { width: 250px !important; height: 104px !important; padding: 0 30px !important; }
+  .arch-flow div[style*="polygon"] > div { font-size: 11.5px !important; }
+  .opp-wrap { padding: 0 24px !important; }
+  .pipe-stage { grid-template-columns: 1fr !important; }
+  .pipe-stage > div:last-child { max-width: 250px; justify-self: center; margin-top: 8px; }
   .scenario-divider { display: none; }
   .hero-img { display: flex; justify-content: center; margin: 32px auto 0; }
   .hero-img > div:first-child { left: -20px !important; top: -10px !important; }
@@ -338,7 +366,9 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   <a href="#ai-model" data-target="ai-model">AI Model Overview</a>
   <a href="#ai-io" data-target="ai-io">AI Input &amp; Output</a>
   <a href="#pipeline" data-target="pipeline">Data Pipeline</a>
-  <a href="#validation" data-target="validation">AI Model Validation</a>
+  <a href="#validation" data-target="validation">AI Proof of Concept</a>
+  <a href="#techstack" data-target="techstack">Technologies</a>
+  <a href="#opportunities" data-target="opportunities">Product Opportunities</a>
   <a href="#roadmap" data-target="roadmap">Product Roadmap</a>
   <a href="#stories" data-target="stories">User Stories &amp; Acceptance Criteria</a>
   <a href="#risk" data-target="risk">Risk</a>
@@ -364,15 +394,14 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
     <li class="nav-dropdown">
       <a href="index.html#work" class="nav-current">My Work</a>
       <div class="dropdown-menu">
         <a href="attuned.html" class="nav-current"><span class="dropdown-tag">AI Product</span>Attuned</a>
-        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Google Maps</span>
-        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Airbnb</span>
+        <a href="barclays.html"><span class="dropdown-tag">Enterprise Data · NDA</span>Barclays</a>
       </div>
     </li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
@@ -418,16 +447,16 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
         <p>The product spans four core experiences. I joined as the AI PM for <strong>Know My Child</strong> — the feature that builds a living, evolving portrait of a child across every Coa conversation, getting more specific over time rather than staying generic. I invite you to read about the product launch for Know My Child in depth below.</p>
       </div>
       <div class="overview-cards" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:80px;">
-        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Ask Coa</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">Real-time support in a hard moment</p></div>
-        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Know My Child</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">An evolving portrait of who your child is becoming</p></div>
-        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Growth</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A reflection space for the parent</p></div>
-        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:15px;color:var(--coral);">Bedtime</strong><p style="font-size:13.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A personalised story built from the week's patterns</p></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:16px;color:var(--coral);">Ask Coa</strong><p style="font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:6px;">Real-time support in a hard moment</p></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:16px;color:var(--coral);">Know My Child</strong><p style="font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:6px;">An evolving portrait of who your child is becoming</p><span style="display:inline-block;margin-top:8px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:var(--white);border:1px solid var(--beige);border-radius:20px;padding:3px 10px;">Agentic Memory Synthesis · RAG</span></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:16px;color:var(--coral);">Growth</strong><p style="font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A reflection space for the parent</p></div>
+        <div style="background:var(--off-cream);border-radius:12px;padding:20px 18px;"><strong style="font-size:16px;color:var(--coral);">Bedtime</strong><p style="font-size:14.5px;line-height:1.5;color:var(--muted);margin-top:6px;">A personalised story built from the week's patterns</p></div>
       </div>
     </div>
 
     <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
-      <div class="stat-card"><strong style="font-size:14px;color:var(--black);">My scope</strong><p style="font-size:14px;line-height:1.65;color:var(--muted);margin-top:6px;">Product strategy · AI prompt engineering · Feature spec · Engineering tickets · Design QA · Analytics · GTM copy</p></div>
-      <div class="stat-card"><strong style="font-size:14px;color:var(--black);">Team</strong><p style="font-size:14px;line-height:1.65;color:var(--muted);margin-top:6px;">4 PMs leading 8 engineers, 2 data scientists, 2 UX designers</p></div>
+      <div class="stat-card"><strong style="font-size:15px;color:var(--black);">My scope</strong><p style="font-size:15px;line-height:1.65;color:var(--muted);margin-top:6px;">Product strategy · AI prompt engineering · Feature spec · Engineering tickets · Design QA · Analytics · GTM copy</p></div>
+      <div class="stat-card"><strong style="font-size:15px;color:var(--black);">Team</strong><p style="font-size:15px;line-height:1.65;color:var(--muted);margin-top:6px;">4 PMs leading 8 engineers, 2 data scientists, 2 UX designers</p></div>
     </div>
 
 
@@ -441,29 +470,29 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       <h2 class="eyebrow">User Research</h2>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;" class="fade-in">
-      <div style="background:var(--white);border-radius:12px;padding:28px;">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:28px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Voice of Customer Method</div>
-        <p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:8px;">35+ in-depth interviews + survey</p>
-        <p style="font-size:14px;line-height:1.65;color:var(--muted);">Parents across the US, Canada, Latin America, and India. Multiple parents independently — unprompted — asked for a real-time nudge to step away before they escalate. That was the strongest product-fit signal in the dataset.</p>
+        <p style="font-size:16px;font-weight:600;color:var(--black);margin-bottom:8px;">35+ in-depth interviews + survey</p>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted);">Parents across the US, Canada, Latin America, and India. Multiple parents independently — unprompted — asked for a real-time nudge to step away before they escalate. That was the strongest product-fit signal in the dataset.</p>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:28px;">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:28px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">The core finding</div>
-        <p style="font-size:15px;font-weight:600;color:var(--black);margin-bottom:8px;">It's not a knowledge gap. It's an access gap.</p>
-        <p style="font-size:14px;line-height:1.65;color:var(--muted);">Not one parent located the problem purely in the child. Parents know what they should do — they can't access it when flooded.</p>
+        <p style="font-size:16px;font-weight:600;color:var(--black);margin-bottom:8px;">It's not a knowledge gap. It's an access gap.</p>
+        <p style="font-size:15px;line-height:1.65;color:var(--muted);">Not one parent located the problem purely in the child. Parents know what they should do — they can't access it when flooded.</p>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;" class="fade-in mobile-3col-stack">
-      <div style="background:var(--white);border-radius:10px;padding:24px 20px;border-top:4px solid var(--coral);box-shadow:0 6px 18px rgba(20,20,20,0.08);">
-        <div style="font-family:'DM Serif Display',serif;font-size:40px;font-weight:700;color:var(--coral);line-height:1;">81%</div>
-        <p style="font-family:'Figtree',sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px;">of parents hit a moment they <strong style="color:var(--black);">didn't handle the way they wanted</strong> — weekly or more</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:24px;padding:8px 4px;" class="fade-in mobile-3col-stack">
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:76px;font-weight:400;color:var(--coral);line-height:0.95;letter-spacing:-0.02em;">81%</div>
+        <p style="font-family:'Figtree',sans-serif;font-size:14.5px;line-height:1.6;color:var(--muted);margin-top:14px;max-width:230px;">of parents hit a moment they <strong style="color:var(--black);">didn't handle the way they wanted</strong> — weekly or more</p>
       </div>
-      <div style="background:var(--white);border-radius:10px;padding:24px 20px;border-top:4px solid var(--coral);box-shadow:0 6px 18px rgba(20,20,20,0.08);">
-        <div style="font-family:'DM Serif Display',serif;font-size:40px;font-weight:700;color:var(--coral);line-height:1;">100%</div>
-        <p style="font-family:'Figtree',sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px;">say their own <strong style="color:var(--black);">mood and stress</strong> makes a hard moment worse</p>
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:76px;font-weight:400;color:var(--coral);line-height:0.95;letter-spacing:-0.02em;">100%</div>
+        <p style="font-family:'Figtree',sans-serif;font-size:14.5px;line-height:1.6;color:var(--muted);margin-top:14px;max-width:230px;">say their own <strong style="color:var(--black);">mood and stress</strong> makes a hard moment worse</p>
       </div>
-      <div style="background:var(--white);border-radius:10px;padding:24px 20px;border-top:4px solid var(--coral);box-shadow:0 6px 18px rgba(20,20,20,0.08);">
-        <div style="font-family:'DM Serif Display',serif;font-size:40px;font-weight:700;color:var(--coral);line-height:1;">35%</div>
-        <p style="font-family:'Figtree',sans-serif;font-size:13px;line-height:1.5;color:var(--muted);margin-top:12px;">have tried <strong style="color:var(--black);">no parenting tool</strong> — book, app, podcast, or therapy</p>
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:76px;font-weight:400;color:var(--coral);line-height:0.95;letter-spacing:-0.02em;">35%</div>
+        <p style="font-family:'Figtree',sans-serif;font-size:14.5px;line-height:1.6;color:var(--muted);margin-top:14px;max-width:230px;">have tried <strong style="color:var(--black);">no parenting tool</strong> — book, app, podcast, or therapy</p>
       </div>
     </div>
   </div>
@@ -526,20 +555,20 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       <h2 class="eyebrow">Customer Segmentation</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="fade-in mobile-3col-stack">
-      <div style="background:var(--white);border-radius:12px;padding:24px;">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Primary user</div>
         <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);margin-bottom:8px;">Parent of child aged 2–12</div>
-        <div style="font-size:14px;line-height:1.65;color:var(--muted);">Works full-time. Tech-comfortable. Has tried apps and books — nothing stuck. Motivated by not repeating their own upbringing.</div>
+        <div style="font-size:15px;line-height:1.65;color:var(--muted);">Works full-time. Tech-comfortable. Has tried apps and books — nothing stuck. Motivated by not repeating their own upbringing.</div>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:24px;">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Child age bands served</div>
         <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);margin-bottom:8px;">2–3 · 4–5 · 6–8 · 9–12</div>
-        <div style="font-size:14px;line-height:1.65;color:var(--muted);">Different behaviors, triggers, and developmental context per band. Age-appropriate responses are core to the AI hypothesis.</div>
+        <div style="font-size:15px;line-height:1.65;color:var(--muted);">Different behaviors, triggers, and developmental context per band. Age-appropriate responses are core to the AI hypothesis.</div>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:24px;">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Geography</div>
         <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);margin-bottom:8px;">US primary market</div>
-        <div style="font-size:14px;line-height:1.65;color:var(--muted);">Research spanned US, Canada, Latin America, and India — validating that the access gap is cross-cultural, not market-specific.</div>
+        <div style="font-size:15px;line-height:1.65;color:var(--muted);">Research spanned US, Canada, Latin America, and India — validating that the access gap is cross-cultural, not market-specific.</div>
       </div>
     </div>
   </div>
@@ -556,22 +585,15 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       <!-- LEFT: avatar + demographics -->
       <div style="background:#F8F7F3;border-radius:14px;padding:28px 24px;color:var(--green-dark);">
         <div style="text-align:center;">
-          <svg width="88" height="88" viewBox="0 0 56 56" style="margin-bottom:14px;">
-            <defs><clipPath id="momAvatarClip"><circle cx="28" cy="28" r="27"/></clipPath></defs>
-            <circle cx="28" cy="28" r="27" fill="var(--white)" stroke="var(--green-soft)" stroke-width="2"/>
-            <g clip-path="url(#momAvatarClip)">
-              <path d="M2 58 C2 39 13 31 28 31 C43 31 54 39 54 58 Z" fill="var(--green-soft)"/>
-              <circle cx="28" cy="23" r="14" fill="var(--green-soft)"/>
-            </g>
-          </svg>
+          <img src="img-maya-persona.png" alt="Maya persona" style="width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:50% 50%;border:2px solid var(--green-soft);margin-bottom:14px;"/>
           <div style="font-family:'DM Serif Display',serif;font-size:28px;color:var(--green-dark);margin-bottom:4px;">Maya</div>
-          <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);margin-bottom:18px;">Parent, Decision Maker for the Household</div>
+          <div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral);margin-bottom:18px;">Parent, Household Decision-Maker</div>
         </div>
-        <p style="font-size:13px;line-height:1.6;color:var(--green-dark);margin-bottom:12px;">Maya is a stay-at-home mom to her 8-year-old daughter, largely parenting on her own since her husband, an army officer, is often unavailable. She brings a deliberate, conscious approach to how she handles hard moments.</p>
-        <p style="font-size:13px;line-height:1.6;color:var(--green-dark);font-style:italic;margin-bottom:22px;">"I want to give my child a childhood that feels different from my own — without losing myself trying."</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--green-dark);margin-bottom:12px;">Maya is a stay-at-home mom to her 8-year-old daughter, largely parenting on her own since her husband, an army officer, is often unavailable. She brings a deliberate, conscious approach to how she handles hard moments.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--green-dark);font-style:italic;margin-bottom:22px;">"I want to give my child a childhood that feels different from my own — without losing myself trying."</p>
 
         <div style="font-size:18px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--green-mid);margin-bottom:12px;">Demographics</div>
-        <div style="font-size:13px;line-height:1.9;color:var(--green-dark);">
+        <div style="font-size:14px;line-height:1.9;color:var(--green-dark);">
           <strong style="color:var(--green-dark);">Age:</strong> 30+<br/>
           <strong style="color:var(--green-dark);">Gender:</strong> Female<br/>
           <strong style="color:var(--green-dark);">Income:</strong> &lt;$150,000 annually<br/>
@@ -587,34 +609,34 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 
         <div class="persona-full-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
           <div>
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Product Interest</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">A tool that helps her recognize her own emotional triggers and respond calmly in the moment, rather than reacting the way she was raised to.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Product Interest</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">A tool that helps her recognize her own emotional triggers and respond calmly in the moment, rather than reacting the way she was raised to.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Learns About Product</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Parenting communities, word of mouth from other customers, and parenting conferences.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Learns About Product</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Parenting communities, word of mouth from other customers, and parenting conferences.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Buys &amp; Expects to Buy Product</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Direct app-store download, starting with a free trial before subscribing.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Buys &amp; Expects to Buy Product</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Direct app-store download, starting with a free trial before subscribing.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Will Get &amp; Expect to Get Product</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Instant, self-serve onboarding — no setup call or sales touch needed.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Persona Will Get &amp; Expect to Get Product</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Instant, self-serve onboarding — no setup call or sales touch needed.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Would Persona Use Product</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);">Opens Coa in the moment of stress for real-time, in-the-moment support, then checks Know My Child through the week to see patterns forming.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Would Persona Use Product</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);">Opens Coa in the moment of stress for real-time, in-the-moment support, then checks Know My Child through the week to see patterns forming.</p>
           </div>
 
           <div>
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Will Persona Be Billed &amp; Pay for Product</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">7-day free trial, then monthly or annual subscription billed through the app store.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">How Will Persona Be Billed &amp; Pay for Product</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">7-day free trial, then monthly or annual subscription billed through the app store.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">What &amp; How Customer Expects Post-Sale Support</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">In-app chat and a self-serve help center — she won't call a support line.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">What &amp; How Customer Expects Post-Sale Support</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">In-app chat and a self-serve help center — she won't call a support line.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Product Needs</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Juggling parenting with work — whether that's a full-time job, working from home, or full-time at home. Knows what she should do but struggles to access it in the moment. Has tried apps and books — nothing stuck. Motivated by not repeating her own upbringing.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Product Needs</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);margin-bottom:20px;">Juggling parenting with work — whether that's a full-time job, working from home, or full-time at home. Knows what she should do but struggles to access it in the moment. Has tried apps and books — nothing stuck. Motivated by not repeating her own upbringing.</p>
 
-            <div style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Top Pain Points (Related to Need for Product)</div>
-            <p style="font-size:13.5px;line-height:1.6;color:var(--black);">Can't access what she knows when flooded with stress. Sees her own reactions clearly but can't interrupt the pattern in the moment. Worries every hard moment shapes who her child becomes.</p>
+            <div style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);border-bottom:1px solid var(--coral);padding-bottom:4px;margin-bottom:8px;">Persona Top Pain Points (Related to Need for Product)</div>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--black);">Can't access what she knows when flooded with stress. Sees her own reactions clearly but can't interrupt the pattern in the moment. Worries every hard moment shapes who her child becomes.</p>
           </div>
         </div>
       </div>
@@ -631,24 +653,17 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 
     <!-- Compact persona + scenario row -->
     <div class="fade-in" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;background:var(--off-cream);border-radius:12px;padding:16px 24px;margin-bottom:16px;">
-      <svg width="52" height="52" viewBox="0 0 56 56" style="flex-shrink:0;">
-        <defs><clipPath id="journeyAvatarClip"><circle cx="28" cy="28" r="27"/></clipPath></defs>
-        <circle cx="28" cy="28" r="27" fill="var(--white)" stroke="var(--green-soft)" stroke-width="2"/>
-        <g clip-path="url(#journeyAvatarClip)">
-          <path d="M2 58 C2 39 13 31 28 31 C43 31 54 39 54 58 Z" fill="var(--green-soft)"/>
-          <circle cx="28" cy="23" r="14" fill="var(--green-soft)"/>
-        </g>
-      </svg>
+      <img src="img-maya-persona.png" alt="Maya persona" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 50%;border:2px solid var(--green-soft);flex-shrink:0;"/>
       <div style="flex-shrink:0;">
         <div style="font-family:'DM Serif Display',serif;font-size:17px;color:var(--black);">Maya</div>
-        <div style="font-size:11.5px;color:var(--muted);margin-top:2px;">30+, Female, Parent of a child age 8</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:2px;">30+, Female, Parent of a child age 8</div>
       </div>
       <div class="scenario-divider" style="width:1px;align-self:stretch;background:var(--beige);flex-shrink:0;"></div>
-      <p style="font-size:12.5px;line-height:1.55;color:var(--black);flex:1;min-width:200px;"><strong style="color:var(--coral);">Scenario:</strong> Maya is a stay-at-home mom to her 8-year-old daughter, largely parenting on her own since her husband, an army officer, is often unavailable. She brings a deliberate, conscious approach to how she handles hard moments, but often feels flooded in the moment and worries about repeating her own upbringing.</p>
+      <p style="font-size:13.5px;line-height:1.55;color:var(--black);flex:1;min-width:200px;"><strong style="color:var(--coral);">Scenario:</strong> Maya is a stay-at-home mom to her 8-year-old daughter, largely parenting on her own since her husband, an army officer, is often unavailable. She brings a deliberate, conscious approach to how she handles hard moments, but often feels flooded in the moment and worries about repeating her own upbringing.</p>
     </div>
 
     <!-- Journey table -->
-    <div class="swipe-hint" style="display:none;font-size:11.5px;color:var(--muted);margin-bottom:8px;">← Swipe to see all 5 stages →</div>
+    <div class="swipe-hint" style="display:none;font-size:12.5px;color:var(--muted);margin-bottom:8px;">← Swipe to see all 5 stages →</div>
     <div class="fade-in" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <div style="min-width:780px;">
 
@@ -656,11 +671,11 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
         <div style="display:flex;">
           <div style="width:110px;flex-shrink:0;"></div>
           <div style="display:flex;flex:1;">
-            <div style="flex:1;background:var(--blue);color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);padding:14px 26px 14px 16px;text-align:center;font-weight:700;font-size:13px;z-index:1;">Awareness</div>
-            <div style="flex:1;background:#608A8B;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:2;">Consideration</div>
-            <div style="flex:1;background:#68927E;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:3;">Purchase</div>
-            <div style="flex:1;background:#739773;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:4;">Onboarding</div>
-            <div style="flex:1;background:var(--green-soft);color:var(--white);clip-path:polygon(0 0,100% 0,100% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 16px 14px 26px;text-align:center;font-weight:700;font-size:13px;z-index:5;">Advocacy</div>
+            <div style="flex:1;background:var(--blue);color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%);padding:14px 26px 14px 16px;text-align:center;font-weight:700;font-size:14px;z-index:1;">Awareness</div>
+            <div style="flex:1;background:#608A8B;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:14px;z-index:2;">Consideration</div>
+            <div style="flex:1;background:#68927E;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:14px;z-index:3;">Purchase</div>
+            <div style="flex:1;background:#739773;color:var(--white);clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 26px 14px 26px;text-align:center;font-weight:700;font-size:14px;z-index:4;">Onboarding</div>
+            <div style="flex:1;background:var(--green-soft);color:var(--white);clip-path:polygon(0 0,100% 0,100% 100%,0 100%,10% 50%);margin-left:-16px;padding:14px 16px 14px 26px;text-align:center;font-weight:700;font-size:14px;z-index:5;">Advocacy</div>
           </div>
         </div>
 
@@ -668,19 +683,19 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 
           <!-- User Actions row -->
           <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">User Actions</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Instagram posts, newsletters from friends/trusted influencers about Attuned</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Website visit, App Store reviews</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Download + App Store payment, starts free trial</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Profile setup, walkthrough of Ask Coa, Know My Child, Growth, Bedtime</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Word-of-mouth shares, in-app survey feedback</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Instagram posts, newsletters from friends/trusted influencers about Attuned</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Website visit, App Store reviews</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Download + App Store payment, starts free trial</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Profile setup, walkthrough of Ask Coa, Know My Child, Growth, Bedtime</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Word-of-mouth shares, in-app survey feedback</div>
 
           <!-- Touchpoints row -->
           <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">Touchpoints</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Social media, parenting communities</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Website, App Store listing</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">App Store payment, welcome email</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">In-app tutorial, interactive walkthrough</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Social media, in-app surveys</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Social media, parenting communities</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Website, App Store listing</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">App Store payment, welcome email</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">In-app tutorial, interactive walkthrough</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Social media, in-app surveys</div>
 
           <!-- Emotions row (mood line, monochrome) -->
           <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">Emotions</div>
@@ -703,19 +718,19 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 
           <!-- Pain Points row -->
           <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;">Pain Points</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Overwhelmed, unsure which tool helps</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Worried the AI feels generic</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Hesitant without proof of long-term value</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">No time for a complicated setup</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Wants the product to grow with her child, backed by accurate, quality AI content</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Overwhelmed, unsure which tool helps</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Worried the AI feels generic</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Hesitant without proof of long-term value</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">No time for a complicated setup</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Wants the product to grow with her child, backed by accurate, quality AI content</div>
 
           <!-- Solutions row -->
           <div style="background:var(--beige);padding:14px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;border-radius:0 0 0 12px;">Solutions</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Trusted recommendations from other parents</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Free trial, real parent reviews</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Simple pricing, free trial removes risk</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);">Guided, user-friendly onboarding to value in minutes</div>
-          <div style="background:var(--white);padding:14px 12px;font-size:12.5px;line-height:1.5;color:var(--black);border-radius:0 0 12px 0;">Regular updates, visible feedback loop, a chance to be a trusted voice in the wider parenting community</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Trusted recommendations from other parents</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Free trial, real parent reviews</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Simple pricing, free trial removes risk</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);">Guided, user-friendly onboarding to value in minutes</div>
+          <div style="background:var(--white);padding:14px 12px;font-size:13.5px;line-height:1.5;color:var(--black);border-radius:0 0 12px 0;">Regular updates, visible feedback loop, a chance to be a trusted voice in the wider parenting community</div>
         </div>
       </div>
     </div>
@@ -732,48 +747,54 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     <!-- Design principle callout -->
     <div class="fade-in" style="background:var(--beige);border-left:4px solid var(--coral);border-radius:0 10px 10px 0;padding:18px 24px;margin-bottom:24px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:6px;">Design Principle</div>
-      <p style="font-size:13.5px;line-height:1.6;color:var(--black);">Invest in proprietary data and retrieval layers, not model fine-tuning. The real moat is our proprietary approach and the parent memory that compounds over time — not the AI model itself.</p>
+      <p style="font-size:14.5px;line-height:1.6;color:var(--black);">Invest in proprietary data and retrieval layers, not model fine-tuning. The real moat is our proprietary approach and the parent memory that compounds over time — not the AI model itself.</p>
+    </div>
+
+    <!-- Agentic workflow callout — Know My Child specifically -->
+    <div class="fade-in" style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:20px 24px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">How Know My Child Runs</div>
+      <p style="font-size:14.5px;line-height:1.6;color:var(--black);">Know My Child runs as an <strong>agentic memory-synthesis workflow</strong> — an async Inngest job (shared with Growth and Bedtime Together) that reasons across every session rather than responding to a single message. Each session end triggers GPT-5.4 mini to distill an updated, living portrait of the child from the parent's pgvector memory — getting more specific over time instead of staying generic.</p>
     </div>
 
     <!-- Two-model architecture: 4 model cards -->
     <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
-      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:26px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Extraction</div>
         <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">gpt-5-nano</div>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> pulls structured JSON — behavior, emotion, and need candidates — from the parent's raw message. Temperature = 0.</p>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> fast, cheap, deterministic. Runs before the parent sees anything.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> pulls structured JSON — behavior, emotion, and need candidates — from the parent's raw message. Temperature = 0.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> fast, cheap, deterministic. Runs before the parent sees anything.</p>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:26px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Generation</div>
         <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">GPT-5.4 mini</div>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> generates every Coa response — framework-grounded replies, pattern insights, bedtime stories — each with its own prompt.</p>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> receives extracted JSON + retrieved context from our proprietary framework + child profile; produces three risk-tiered candidate responses per message.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> generates every Coa response — framework-grounded replies, pattern insights, bedtime stories — each with its own prompt.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> receives extracted JSON + retrieved context from our proprietary framework + child profile; produces three risk-tiered candidate responses per message.</p>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:26px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Embeddings</div>
         <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">text-embedding-3-small</div>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> converts our proprietary reference material, session summaries, and parent memory into vectors for semantic retrieval.</p>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> powers retrieval across every feature via pgvector, stored in Supabase Postgres.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> converts our proprietary reference material, session summaries, and parent memory into vectors for semantic retrieval.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> powers retrieval across every feature via pgvector, stored in Supabase Postgres.</p>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:26px;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Safety Judge</div>
         <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">gpt-5-nano</div>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> reviews each candidate against a clinical safety rubric — diagnosis, treatment claims, unsupported causal claims. Evaluates only, never generates.</p>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> a binary classification task, so it adds minimal latency to the response pipeline.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> reviews each candidate against a clinical safety rubric — diagnosis, treatment claims, unsupported causal claims. Evaluates only, never generates.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> a binary classification task, so it adds minimal latency to the response pipeline.</p>
       </div>
-      <div style="background:var(--white);border-radius:12px;padding:26px;border-top:4px solid var(--coral);box-shadow:0 8px 22px rgba(20,20,20,0.07);grid-column:1 / -1;">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:26px;grid-column:1 / -1;">
         <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Retrieval (RAG)</div>
         <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:10px;">pgvector, within Supabase Postgres</div>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> retrieves the closest matching context via semantic similarity, filtered by the child's age band, and pulls per-parent session history to power pattern synthesis over time.</p>
-        <p style="font-size:13px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> lives inside the existing Postgres database — no separate vector store to run or maintain. This is the layer that makes Coa feel like it remembers a family, not just a single message.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:8px;"><strong style="color:var(--black);font-weight:600;">Purpose:</strong> retrieves the closest matching context via semantic similarity, filtered by the child's age band, and pulls per-parent session history to power pattern synthesis over time.</p>
+        <p style="font-size:14px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);font-weight:600;">Characteristics:</strong> lives inside the existing Postgres database — no separate vector store to run or maintain. This is the layer that makes Coa feel like it remembers a family, not just a single message.</p>
       </div>
     </div>
 
     <!-- Why two models — summary -->
     <div class="fade-in why-two-models" style="background:var(--blue);border-radius:12px;padding:24px 28px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#F6DED2;margin-bottom:10px;">Why Two Models</div>
-      <p style="font-size:14px;line-height:1.65;color:var(--white);font-weight:600;margin-bottom:10px;">gpt-5-nano handles extraction and safety judging; GPT-5.4 mini is reserved only for generation — the one task that actually needs it.</p>
-      <p style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,0.8);">Both extraction and safety judging are fast, cheap, deterministic tasks — well suited to a smaller model. Generation is where quality matters most, so that's the only place the more expensive model is used. Because intelligence lives in the retrieval layer, not the model, either model can be swapped for an open-source alternative (Mistral, Llama 4) at scale without rebuilding anything.</p>
+      <p style="font-size:15px;line-height:1.65;color:var(--white);font-weight:600;margin-bottom:10px;">gpt-5-nano handles extraction and safety judging; GPT-5.4 mini is reserved only for generation — the one task that actually needs it.</p>
+      <p style="font-size:14.5px;line-height:1.65;color:rgba(255,255,255,0.8);">Both extraction and safety judging are fast, cheap, deterministic tasks — well suited to a smaller model. Generation is where quality matters most, so that's the only place the more expensive model is used. Because intelligence lives in the retrieval layer, not the model, either model can be swapped for an open-source alternative (Mistral, Llama 4) at scale without rebuilding anything.</p>
     </div>
   </div>
 </section>
@@ -783,24 +804,41 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   <div class="section-max">
     <div class="fade-in">
       <h2 class="eyebrow">AI Input and AI Output</h2>
+      <p style="font-size:15.5px;line-height:1.7;color:var(--black);max-width:660px;margin-bottom:24px;">Know My Child can only be as good as what Ask Coa captures. Each session gets reduced to a structured record, and once there's enough new signal those records get pulled together into an updated portrait.</p>
+    </div>
+
+    <!-- Upstream: Ask Coa (subordinate strip) -->
+    <div class="fade-in" style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:20px 24px;margin-bottom:22px;">
+      <div style="font-size:10.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Upstream · Ask Coa: one live session</div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;font-size:14px;">
+        <span style="background:var(--white);border:1px solid var(--beige);border-radius:6px;padding:6px 12px;color:var(--black);">Parent message</span>
+        <span style="color:var(--muted);">→</span>
+        <span style="background:var(--white);border:1px solid var(--beige);border-radius:6px;padding:6px 12px;color:var(--black);">Extraction <span style="color:var(--muted);">(gpt-5-nano)</span></span>
+        <span style="color:var(--muted);">→</span>
+        <span style="background:var(--white);border:1px solid var(--beige);border-radius:6px;padding:6px 12px;color:var(--black);">Session summary</span>
+        <span style="color:var(--muted);">→</span>
+        <span style="background:var(--white);border:1px solid var(--beige);border-radius:6px;padding:6px 12px;color:var(--black);">Embedded to pgvector</span>
+      </div>
+      <p style="font-size:14px;line-height:1.6;color:var(--black);margin-bottom:6px;"><strong>What each session leaves behind:</strong> a summary paragraph plus structured fields — behavior codes, emotion candidates, need candidates, escalation level, what helped, what to avoid.</p>
+      <p style="font-size:13.5px;line-height:1.55;color:var(--muted);font-style:italic;">The same session memory feeds Know My Child, Growth, and Bedtime Together.</p>
     </div>
     <div style="display:grid;grid-template-columns:1.4fr auto;gap:28px;align-items:stretch;" class="fade-in ai-io-layout">
       <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch;">
         <div style="background:var(--beige);border-radius:14px;padding:28px;display:flex;flex-direction:column;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;">Input</div>
+          <div style="font-size:16px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;">Input</div>
           <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-between;">
-            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:var(--coral);margin-bottom:3px;">Child profile</div><div style="font-size:13px;color:var(--black);">Age, traits, known sensitivities, family context</div></div>
-            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:var(--coral);margin-bottom:3px;">Ask Coa session history</div><div style="font-size:13px;color:var(--black);">Behaviour patterns, emotional themes, escalation levels across all sessions</div></div>
-            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:var(--coral);margin-bottom:3px;">Feedback signals</div><div style="font-size:13px;color:var(--black);">Tried It, Didn't Fit, This Resonates, Not Right Now — from previous cycles</div></div>
+            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:13px;font-weight:600;color:var(--coral);margin-bottom:3px;">Child profile</div><div style="font-size:14px;color:var(--black);">Age band (2–3 / 4–5 / 6–8 / 9–12), traits, care moments, known sensitivities, household structure and major family context</div><div style="font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--off-white);">Age band matters more than it sounds: the same behaviour means something different at 3 than at 11.</div></div>
+            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:13px;font-weight:600;color:var(--coral);margin-bottom:3px;">Session memory</div><div style="font-size:14px;color:var(--black);">Behavior codes, emotion candidates, need candidates, escalation level, what helped, what to avoid — across all prior sessions</div><div style="font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--off-white);">Pulled by semantic similarity from pgvector, filtered to that child, in one fetch rather than several.</div></div>
+            <div style="background:var(--white);border-radius:8px;padding:14px 16px;"><div style="font-size:13px;font-weight:600;color:var(--coral);margin-bottom:3px;">Feedback signals</div><div style="font-size:14px;color:var(--black);">Tried It, Didn't Fit, This Resonates, Not Right Now, from the previous cycle's patterns</div><div style="font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px solid var(--off-white);">Each signal is tied back to the pattern it answered, so the next run knows what to keep and what to drop.</div></div>
           </div>
         </div>
         <div style="text-align:center;font-size:26px;color:var(--blue);display:flex;align-items:center;justify-content:center;">→</div>
         <div style="background:var(--blue);border-radius:14px;padding:28px;display:flex;flex-direction:column;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:20px;">Output</div>
+          <div style="font-size:16px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:20px;">Output</div>
           <div style="display:flex;flex-direction:column;gap:10px;flex:1;justify-content:space-between;">
-            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:#F6DED2;margin-bottom:3px;">Child's portrait paragraph</div><div style="font-size:13px;color:rgba(255,255,255,0.85);">80–120 word warm description of who the child is right now</div></div>
-            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:#F6DED2;margin-bottom:3px;">What the child is working through</div><div style="font-size:13px;color:rgba(255,255,255,0.85);">Pattern label, need tag, 1-sentence explanation, micro-action</div></div>
-            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:12px;font-weight:600;color:#F6DED2;margin-bottom:3px;">What has been helping the child</div><div style="font-size:13px;color:rgba(255,255,255,0.85);">30–50 word confirmatory reflection of what the parent has been doing</div></div>
+            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:13px;font-weight:600;color:#F6DED2;margin-bottom:3px;">Where your child is now</div><div style="font-size:14px;color:rgba(255,255,255,0.85);">80–120 word plain-language developmental portrait</div><div style="font-size:12.5px;line-height:1.5;color:rgba(255,255,255,0.6);margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.15);">Temperature 0.3, with clinical language banned in the system prompt and the output written to Coa's voice spec.</div></div>
+            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:13px;font-weight:600;color:#F6DED2;margin-bottom:3px;">What they're working through</div><div style="font-size:14px;color:rgba(255,255,255,0.85);">Exactly 2 patterns, each with a pattern label, primary need, one-sentence explanation, and a micro-action</div><div style="font-size:12.5px;line-height:1.5;color:rgba(255,255,255,0.6);margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.15);">Temperature 0.2, JSON validated in code. If we don't get exactly two patterns, or the two come back too similar, we throw the response away and call again. We measure that distance ourselves rather than asking the model to grade itself.</div></div>
+            <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:14px 16px;"><div style="font-size:13px;font-weight:600;color:#F6DED2;margin-bottom:3px;">What's been helping</div><div style="font-size:14px;color:rgba(255,255,255,0.85);">30–50 word confirmatory reflection of what the parent has been doing</div><div style="font-size:12.5px;line-height:1.5;color:rgba(255,255,255,0.6);margin-top:6px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.15);">Gated before the model runs. We need at least two Tried It signals and evidence that escalation actually came down afterwards. If not, the card shows a waiting state — and that call is made in the backend, never by the model.</div></div>
           </div>
         </div>
       </div>
@@ -810,7 +848,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
         <div style="background:#000;border-radius:26px;overflow:hidden;position:relative;">
           <!-- Status bar -->
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 4px;background:var(--off-white);">
-            <span style="font-size:12px;font-weight:700;color:var(--black);">9:41</span>
+            <span style="font-size:13px;font-weight:700;color:var(--black);">9:41</span>
             <div style="display:flex;align-items:center;gap:4px;">
               <svg width="15" height="11" viewBox="0 0 16 12" fill="none"><path d="M8 10.5C8.6 10.5 9.1 10 9.1 9.4C9.1 8.8 8.6 8.3 8 8.3C7.4 8.3 6.9 8.8 6.9 9.4C6.9 10 7.4 10.5 8 10.5Z" fill="var(--black)"/><path d="M5.4 7.3C6.1 6.6 6.9 6.2 8 6.2C9.1 6.2 9.9 6.6 10.6 7.3" stroke="var(--black)" stroke-width="1.1" stroke-linecap="round"/><path d="M3 4.8C4.6 3.2 6.2 2.4 8 2.4C9.8 2.4 11.4 3.2 13 4.8" stroke="var(--black)" stroke-width="1.1" stroke-linecap="round"/></svg>
               <svg width="22" height="11" viewBox="0 0 24 12" fill="none"><rect x="1" y="1" width="19" height="10" rx="2.5" stroke="var(--black)" stroke-width="1"/><rect x="2.5" y="2.5" width="16" height="7" rx="1.2" fill="var(--black)"/><rect x="21" y="4" width="1.6" height="4" rx="0.8" fill="var(--black)"/></svg>
@@ -822,6 +860,12 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
         </div>
       </div>
     </div>
+
+    <!-- Trigger / cadence -->
+    <div class="fade-in" style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:20px 24px;margin-top:22px;">
+      <div style="font-size:10.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">When this runs</div>
+      <p style="font-size:14.5px;line-height:1.65;color:var(--black);">Fires asynchronously when a session closes, but only regenerates if there's enough new signal to justify it — otherwise the existing report stays put and we don't pay to rewrite an unchanged portrait. The three components generate in parallel, each with its own quality gates, then publish together in a single atomic transaction so a parent never sees a half-written report.</p>
+    </div>
   </div>
 </section>
 
@@ -830,78 +874,138 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
   <div class="section-max">
     <div class="fade-in">
       <h2 class="eyebrow">Data Pipeline</h2>
+      <p style="font-size:15.5px;line-height:1.7;color:var(--black);max-width:660px;margin-bottom:32px;">Five stages and a loop. What a parent tells Coa becomes memory, that memory becomes a portrait once there's enough new signal, and what they say about the portrait shapes the next one.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:start;margin-top:40px;" class="fade-in">
-      <div style="text-align:center;padding:0 8px;">
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--blue);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">1</div>
-        <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px;">Ask Coa session</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Parent describes the moment to Coa</div>
+
+    <!-- STAGE 1 -->
+    <div class="fade-in pipe-stage" style="display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:center;margin-bottom:28px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--blue);color:white;font-family:'DM Serif Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center;">1</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);">Capture: Ask Coa session</div>
+        </div>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--black);margin-bottom:8px;">The parent either types freely about what happened, or taps one of five suggested openers — <em>"We had a hard moment today," "I'm not sure what [Child] needs right now."</em> The openers exist because a parent who is already overwhelmed often can't find the words to start. Free text covers everything else.</p>
+        <p style="font-size:13.5px;line-height:1.6;color:var(--muted);">Either way we end up with the same thing: a real moment described in the parent's own words. That's the raw input to the AI pipeline.</p>
       </div>
-      <div style="text-align:center;padding-top:20px;color:var(--muted);font-size:20px;">→</div>
-      <div style="text-align:center;padding:0 8px;">
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--blue);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">2</div>
-        <div style="font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px;">Memory summary</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Session extracted and stored in memory_summaries</div>
-      </div>
-      <div style="text-align:center;padding-top:20px;color:var(--muted);font-size:20px;">→</div>
-      <div style="text-align:center;padding:0 8px;">
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">3</div>
-        <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;">KMC synthesis</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.5;">3 parallel prompts triggered at session 3. Guardrail reviews all output.</div>
-      </div>
+      <div style="background:#1a1a1a;border-radius:30px;padding:8px;box-shadow:0 12px 26px rgba(20,20,20,0.22);justify-self:center;"><div style="background:#000;border-radius:23px;overflow:hidden;line-height:0;"><img src="img-ask-coa-screen.png" alt="Ask Coa chat screen with suggested openers and free-text input" style="width:100%;display:block;"/></div></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;align-items:start;margin-top:32px;max-width:400px;margin-left:auto;margin-right:auto;" class="fade-in">
-      <div style="text-align:center;padding:0 8px;">
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">4</div>
-        <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;">child_reports</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Portrait, patterns, and insight written to database</div>
+
+    <!-- STAGE 2 -->
+    <div class="fade-in" style="margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div style="width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--blue);color:white;font-family:'DM Serif Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center;">2</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--black);">Extract: session memory</div>
       </div>
-      <div style="text-align:center;padding:0 8px;">
-        <div style="width:48px;height:48px;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">5</div>
-        <div style="font-size:12px;font-weight:700;color:var(--coral);margin-bottom:6px;">Parent sees it</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.5;">Know My Child tab renders the evolving portrait</div>
+      <p style="font-size:14.5px;line-height:1.7;color:var(--black);max-width:760px;">At <strong>session end</strong> — not per message — an <strong>LLM</strong> (GPT-5.4 mini) summarizes the conversation and reduces it to structured fields: behavior codes, emotion candidates, need candidates, escalation level, what helped, what to avoid. The summary is embedded via <strong>text-embedding-3-small</strong> and stored in <strong>pgvector</strong>, becoming retrievable memory rather than a transcript.</p>
+    </div>
+
+    <!-- STAGE 3 -->
+    <div class="fade-in" style="margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div style="width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center;">3</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--coral);">Synthesize: three parallel prompts</div>
       </div>
+      <p style="font-size:14.5px;line-height:1.7;color:var(--black);max-width:760px;">An <strong>Inngest</strong> workflow fires when a session closes, then checks whether there's enough new signal to be worth regenerating. If there is, one consolidated fetch assembles the profile, <strong>RAG</strong>-retrieved memory from the last 10 sessions, and prior feedback; three <strong>LLM</strong> components then run in parallel as isolated Inngest steps. Every component has its own quality gates, and all three must pass before anything publishes — if one fails, the cycle retries rather than shipping a partial report.</p>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="fade-in" style="margin-bottom:28px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div style="width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center;">4</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--coral);">Persist: one atomic commit</div>
+      </div>
+      <p style="font-size:14.5px;line-height:1.7;color:var(--black);max-width:760px;">The three <strong>LLM</strong> outputs are consolidated and written together in a single atomic SQL transaction alongside the feature unlock state — so a partial failure can't leave the parent looking at a half-rendered profile.</p>
+    </div>
+
+    <!-- STAGE 5 -->
+    <div class="fade-in pipe-stage" style="display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:center;margin-bottom:28px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:38px;height:38px;flex-shrink:0;border-radius:50%;background:var(--coral);color:white;font-family:'DM Serif Display',serif;font-size:17px;display:flex;align-items:center;justify-content:center;">5</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--coral);">Render: and ask the parent</div>
+        </div>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--black);margin-bottom:8px;">Each pattern is shown with two responses: <strong>This Resonates</strong> or <strong>Not Right Now</strong>. Before enough evidence accumulates, the what's-been-helping card shows a designed waiting state rather than a guess — <em>"Coa is noticing what's working. Keep going."</em></p>
+        <p style="font-size:13.5px;line-height:1.6;color:var(--muted);">I pushed for the empty state rather than a placeholder guess. Getting something wrong about someone's child costs far more trust than admitting we don't know yet.</p>
+      </div>
+      <div style="background:#1a1a1a;border-radius:30px;padding:8px;box-shadow:0 12px 26px rgba(20,20,20,0.22);justify-self:center;"><div style="background:#000;border-radius:23px;overflow:hidden;line-height:0;"><img src="img-kmc-feedback.png" alt="Know My Child patterns with This Resonates and Not Right Now buttons" style="width:100%;display:block;"/></div></div>
+    </div>
+
+    <!-- FEEDBACK LOOP -->
+    <div class="fade-in pipe-stage" style="display:grid;grid-template-columns:1fr 200px;gap:32px;align-items:center;background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px 28px;">
+      <div>
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">↺ Back to stage 3: the loop</div>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--black);margin-bottom:10px;">Feedback returns through two channels. <strong>Explicit:</strong> each tap is stored against the specific pattern ID it answered, then joined back in the next cycle and injected into the <strong>LLM</strong> prompt — telling the model which patterns were validated and which to drop. <strong>Implicit:</strong> when the parent returns to Ask Coa, Coa asks whether anything has changed — and that new conversation re-enters the pipeline at stage 1.</p>
+        <p style="font-size:13.5px;line-height:1.6;color:var(--muted);">That's the part that makes the memory compound. We're not rewriting the portrait from scratch each cycle — the parent corrects it, and we carry the correction forward.</p>
+      </div>
+      <div style="background:#1a1a1a;border-radius:30px;padding:8px;box-shadow:0 12px 26px rgba(20,20,20,0.22);justify-self:center;"><div style="background:#000;border-radius:23px;overflow:hidden;line-height:0;"><img src="img-kmc-waiting.png" alt="Know My Child waiting state before enough feedback has accumulated" style="width:100%;display:block;"/></div></div>
     </div>
   </div>
 </section>
 
 <!-- AI MODEL VALIDATION -->
-<section id="validation" style="background: linear-gradient(135deg, var(--white) 60%, #F0EDE8 100%); padding: 52px 0;">
+<section id="validation" style="background: linear-gradient(135deg, var(--white) 60%, #F0EDE8 100%); padding: 52px 0; position: relative; overflow: hidden;">
+  <div class="section-max" style="position:relative;">
+    <div class="fade-in">
+      <h2 class="eyebrow">AI Proof of Concept</h2>
+    </div>
+    <div class="fade-in" style="max-width:760px;">
+      <p style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1.65;color:var(--black);margin-bottom:20px;">
+        The AI validation proof of concept (POC) for Know My Child successfully demonstrated the accuracy and effectiveness of our AI models in synthesizing portraits and behavioural patterns from Ask Coa sessions.
+      </p>
+      <p style="font-size:16px;line-height:1.8;color:var(--black);margin-bottom:18px;">
+        We validated the <strong>extraction and generation models</strong>' ability to produce portraits with <strong>90% or higher accuracy</strong> — appropriate to the child's age band, grounded in what the parent actually reported, and free of clinical language — delivering personalised, genuinely usable content to parents. This validation confirmed the viability of our retrieval-grounded AI approach, providing a strong foundation for future scaling and user impact.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span style="font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--blue);background:var(--off-cream);border:1px solid var(--beige);border-radius:20px;padding:5px 14px;">Age-band appropriateness</span>
+        <span style="font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--blue);background:var(--off-cream);border:1px solid var(--beige);border-radius:20px;padding:5px 14px;">Grounded in parent-reported detail</span>
+        <span style="font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--blue);background:var(--off-cream);border:1px solid var(--beige);border-radius:20px;padding:5px 14px;">No clinical language</span>
+        <span style="font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--blue);background:var(--off-cream);border:1px solid var(--beige);border-radius:20px;padding:5px 14px;">Coa voice held across output</span>
+      </div>
+    </div>
+    <img src="img-attuned-coa-mascot.png" alt="" aria-hidden="true" class="poc-mascot"
+         style="position:absolute;right:0;bottom:-14px;width:104px;height:auto;opacity:0.9;pointer-events:none;"/>
+  </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section id="techstack" style="background: var(--off-white); padding: 52px 0;">
   <div class="section-max">
     <div class="fade-in">
-      <h2 class="eyebrow">AI Model Validation</h2>
+      <h2 class="eyebrow">Technologies</h2>
+      <p style="font-size:15.5px;line-height:1.7;color:var(--black);max-width:680px;margin-bottom:28px;">We kept the hard thinking in the retrieval and orchestration layers, which means the models stay replaceable.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="fade-in">
-      <div>
-        <div class="placeholder-box" style="min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <strong>Validation results</strong>
-          Prompt output samples tested against the voice spec, scored against target thresholds — coming soon
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div style="background:var(--white);border-radius:10px;padding:22px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">What was tested</div>
-          <p style="font-size:14px;line-height:1.65;color:var(--black);">Output tone — does it sound like Coa? Clinical language detection. Portrait specificity across different child profiles. Pattern card distinctiveness. Guardrail rejection rate.</p>
-        </div>
-        <div style="background:var(--white);border-radius:10px;padding:22px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Iterations made</div>
-          <p style="font-size:14px;line-height:1.65;color:var(--black);">Placeholder — key prompt iterations and what changed between versions coming soon.</p>
-        </div>
-      </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="fade-in mobile-3col-stack">
+<div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;"><div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">AI &amp; Models</div><ul style="list-style:none;padding:0;margin:0;"><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>gpt-5-nano:</strong> extraction and safety judging — fast, cheap, deterministic tasks</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>GPT-5.4 mini:</strong> generation of portraits, patterns, and reflections</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>text-embedding-3-small:</strong> embeds session summaries and reference material for retrieval</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>OpenAI API:</strong> model access across the pipeline</span></li></ul></div><div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;"><div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Retrieval &amp; Data</div><ul style="list-style:none;padding:0;margin:0;"><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>pgvector:</strong> semantic similarity search over parent and child memory</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>Supabase Postgres:</strong> our main database, and vector search runs inside it, so there's no second datastore to maintain</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>JSONB:</strong> stores generated pattern arrays as structured, queryable documents</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>RAG:</strong> retrieval-grounded generation, tying every response to real session history</span></li></ul></div><div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;"><div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Orchestration</div><ul style="list-style:none;padding:0;margin:0;"><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>Inngest:</strong> async workflow engine handling event triggers, isolated retryable steps, and parallel execution</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>Event-driven triggers:</strong> synthesis fires on session completion, gated by business rules</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>Atomic SQL transactions:</strong> report and unlock state commit together or not at all</span></li></ul></div><div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:24px;"><div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;">Backend &amp; Delivery</div><ul style="list-style:none;padding:0;margin:0;"><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>NestJS:</strong> API layer and workflow handlers</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>TypeScript:</strong> end-to-end typing, plus in-code validation of model output</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>REST APIs:</strong> feedback capture, session logging, and report retrieval</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>Vercel:</strong> hosting and deployment for the web app</span></li><li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;"><span style="flex:0 0 5px;width:5px;height:5px;border-radius:50%;background:var(--coral);margin-top:7px;"></span><span style="font-size:14.5px;line-height:1.55;color:var(--black);"><strong>PostHog:</strong> product analytics and event tracking, with no PII sent</span></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT OPPORTUNITIES -->
+<section id="opportunities" style="background: linear-gradient(135deg, var(--white) 60%, #EBF0F4 100%); padding: 52px 0;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;" class="opp-wrap">
+    <div class="fade-in">
+      <h2 class="eyebrow">Product Opportunities &amp; Prioritization</h2>
+      <p style="font-size:15px;line-height:1.7;color:var(--black);max-width:720px;margin-bottom:28px;">Onboarding plus four features came out of the research, each aimed at a different moment. Know My Child was mine end to end.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:start;" class="fade-in opp-grid">
+<div style="border:2px solid transparent;padding:14px 11px 16px;"><div style="background:var(--blue);color:var(--white);border-radius:10px;padding:11px 10px;margin-bottom:6px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:16.5px;line-height:1.2;">Onboarding</div><div style="font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:.75;margin-top:4px;">Setup · No model</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Parent state</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Captures the parent’s own stress, worry, and tiredness before anything about the child.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Child profile</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Age band, traits, sensitivities, and how they like to be cared for.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Hardest moments</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Drop-off, bedtime, transitions — named upfront so the product knows where to look.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Seeds the features</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Gives the AI real context before any session history exists.</div></div></div><div style="border:2px solid transparent;padding:14px 11px 16px;"><div style="background:var(--blue);color:var(--white);border-radius:10px;padding:11px 10px;margin-bottom:6px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:16.5px;line-height:1.2;">Ask Coa</div><div style="font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:.75;margin-top:4px;">Real-time · gpt-5-nano</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">In-the-moment support</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">NVC-framed response while the hard moment is still happening.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Live RAG chatbot</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Routes and safety-checks every message, then retrieves scenarios plus the child’s memory.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Deterministic safety copy</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">High-risk scenarios return human-authored text, never generated output.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Feeds everything else</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Each session becomes the structured memory the other features read from.</div></div></div><div style="border:2px solid var(--coral);background:rgba(192,107,74,0.05);border-radius:14px;padding:14px 11px 16px;"><div style="display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--white);background:var(--coral);border-radius:20px;padding:3px 9px;margin-bottom:8px;">My feature</div><div style="background:var(--coral);color:var(--white);border-radius:10px;padding:11px 10px;margin-bottom:6px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:16.5px;line-height:1.2;">Know My Child</div><div style="font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:.75;margin-top:4px;">Async · Agentic memory synthesis</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">A living portrait</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Who the child is right now, rebuilt from every session rather than written once.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Two pattern cards</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">What the child is working through, each with a need tag and a micro-action.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">What’s been helping</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Confirms what the parent already does that works — gated until there is real evidence.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Parent-corrected memory</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">This Resonates / Not Right Now feeds directly into the next synthesis cycle.</div></div></div><div style="border:2px solid transparent;padding:14px 11px 16px;"><div style="background:var(--blue);color:var(--white);border-radius:10px;padding:11px 10px;margin-bottom:6px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:16.5px;line-height:1.2;">Growth</div><div style="font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:.75;margin-top:4px;">Async · Pattern synthesis</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">The parent’s own patterns</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Surfaces the parent’s reaction patterns, gently, rather than the child’s.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Parent confirms first</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">The model proposes a pattern; the parent confirms before anything is generated from it.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Reflection and action</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Once confirmed, generates a reflection plus one thing to try.</div></div></div><div style="border:2px solid transparent;padding:14px 11px 16px;"><div style="background:var(--blue);color:var(--white);border-radius:10px;padding:11px 10px;margin-bottom:6px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:16.5px;line-height:1.2;">Bedtime Together</div><div style="font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;opacity:.75;margin-top:4px;">Async · Planner + storyteller</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">The week as a story</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Retells the week back to the child as a bedtime story.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Two-model handoff</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">A planner decides what the child needs; a second model writes to that brief.</div></div><div style="background:var(--white);border:1px solid var(--beige);border-radius:8px;padding:10px 11px;margin-bottom:7px;"><div style="font-size:12.5px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:3px;">Shaped to the child</div><div style="font-size:11.5px;line-height:1.5;color:var(--muted);">Length and language follow the child’s age band.</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- PRODUCT ROADMAP -->
 <section id="roadmap" style="background: var(--off-white); padding: 52px 0;">
-  <div class="section-max">
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;" class="opp-wrap">
     <div class="fade-in">
       <h2 class="eyebrow">Product Roadmap</h2>
+      <p style="font-size:15px;line-height:1.7;color:var(--black);max-width:720px;margin-bottom:8px;">All four features were built in parallel, so the roadmap runs by phase rather than by feature.</p>
+      <p style="font-size:12.5px;color:var(--muted);margin-bottom:24px;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;vertical-align:middle;"></span>marks the work I owned on Know My Child</p>
     </div>
-    <div class="placeholder-box fade-in" style="min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-      <strong>Roadmap</strong>
-      Phased rollout across near-term, mid-term, and long-term milestones — coming soon
-    </div>
+    <div class="roadmap-scroll"><div class="fade-in roadmap-grid" style="display:grid;grid-template-columns:150px repeat(4,1fr);align-items:start;">
+      <div></div>
+      <div style="padding:0 10px 12px;border-left:1px solid var(--beige);text-align:center;"><div style="font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);">Phase 1: Foundation</div></div><div style="padding:0 10px 12px;border-left:1px solid var(--beige);text-align:center;"><div style="font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);">Phase 2: Build</div></div><div style="padding:0 10px 12px;border-left:1px solid var(--beige);text-align:center;"><div style="font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);">Phase 3: Test &amp; Validate</div></div><div style="padding:0 10px 12px;border-left:1px solid var(--beige);text-align:center;"><div style="font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);">Launch &amp; Post-MVP</div></div>
+      <div style="padding:16px 12px 16px 0;border-top:1px solid var(--beige);display:flex;align-items:center;"><div style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);line-height:1.25;">AI &amp; Models</div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Select models per task</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Design prompt architecture</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Define AI hypothesis</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Ask Coa live RAG chatbot</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;flex-shrink:0;margin-top:5px;"></span><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Know My Child synthesis prompts</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Growth pattern synthesis</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Bedtime story generation</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Safety cascade and guardrails</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;flex-shrink:0;margin-top:5px;"></span><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">AI proof of concept validated</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Prompt iteration on tone and voice</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Clinical-language checks</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;flex-shrink:0;margin-top:5px;"></span><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">More Know My Child patterns</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;flex-shrink:0;margin-top:5px;"></span><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Change-triggered re-synthesis</span></div><div style="background:#DCE3EA;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#3E5265;font-weight:600;">Open-source model swap at scale</span></div></div><div style="padding:16px 12px 16px 0;border-top:1px solid var(--beige);display:flex;align-items:center;"><div style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);line-height:1.25;">Product &amp; UX</div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Parent research and VoC</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Persona and journey map</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">UI/UX design finalized</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Wireframes for all features</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Coa mascot and brand system</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Onboarding flow</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Ask Coa chat interface</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;flex-shrink:0;margin-top:5px;"></span><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Know My Child portrait and patterns</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Growth reflection screens</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Bedtime story screens for parents</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Bedtime themed backgrounds</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Screen animations and transitions</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">End-to-end flow walkthrough</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Growth to Ask Coa handoff</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Expanded story library</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Multi-child switching</span></div><div style="background:#F6DED2;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#8A4E30;font-weight:600;">Native iOS and Android</span></div></div><div style="padding:16px 12px 16px 0;border-top:1px solid var(--beige);display:flex;align-items:center;"><div style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);line-height:1.25;">Data &amp; Infrastructure</div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">System architecture design</span></div><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Supabase Postgres schema</span></div><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Choose Inngest orchestration</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Inngest async workflows</span></div><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">pgvector memory storage</span></div><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--coral);margin-right:6px;flex-shrink:0;margin-top:5px;"></span><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Atomic commit with unlock state</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Latency profiling</span></div><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Usage and cost instrumentation</span></div><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Mock-data test ingestion</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#DFE5D9;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#4A5740;font-weight:600;">Scale-out retrieval as profiles grow</span></div></div><div style="padding:16px 12px 16px 0;border-top:1px solid var(--beige);display:flex;align-items:center;"><div style="font-family:'DM Serif Display',serif;font-size:16px;color:var(--black);line-height:1.25;">Go-to-Market</div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Market research</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Competitive positioning</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Beachhead market defined</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Pricing model defined</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Unit economics estimated</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">LinkedIn content for early adopters</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Customized messaging to educate about Attuned</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Beta launch campaigns for early adopters</span></div></div><div style="padding:14px 10px;border-left:1px solid var(--beige);border-top:1px solid var(--beige);"><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Gather feedback and testimonials to build social proof</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Run targeted ads and email campaigns to build momentum</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Influencer and creator endorsements</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Adjust strategies based on data insights</span></div><div style="background:#EDE0C8;border-radius:3px;padding:9px 10px;margin-bottom:7px;box-shadow:1.5px 2.5px 3px rgba(20,20,20,0.13);display:flex;align-items:flex-start;"><span style="font-size:11.5px;line-height:1.4;color:#6E5B38;font-weight:600;">Expand into schools and pediatric networks</span></div></div>
+    </div></div>
   </div>
 </section>
 
@@ -912,33 +1016,33 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     <div class="fade-in">
       <h2 class="eyebrow">User Stories &amp; Acceptance Criteria</h2>
     </div>
-    <div class="swipe-hint" style="display:none;font-size:11.5px;color:var(--muted);margin-bottom:8px;">← Swipe to see acceptance criteria →</div>
+    <div class="swipe-hint" style="display:none;font-size:12.5px;color:var(--muted);margin-bottom:8px;">← Swipe to see acceptance criteria →</div>
     <div class="fade-in" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
       <div style="display:grid;grid-template-columns:150px 1fr 1fr;gap:1px;background:var(--beige);border-radius:12px;overflow:hidden;min-width:760px;">
 
-        <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Category</div>
-        <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">User Story</div>
-        <div style="background:var(--beige);padding:16px 20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Acceptance Criteria</div>
+        <div style="background:var(--beige);padding:16px 20px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Category</div>
+        <div style="background:var(--beige);padding:16px 20px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">User Story</div>
+        <div style="background:var(--beige);padding:16px 20px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--black);">Acceptance Criteria</div>
 
-        <div style="background:var(--white);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Portrait Synthesis</div>
-        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to see a warm portrait of who my child is right now, so that I can understand their behaviour without feeling blamed or judged.</div>
-        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">Portrait is 80–120 words, written in Coa's voice, includes at least one positive trait, and ends with a normalising forward-looking statement. No clinical language. Renders within 3 seconds of tab open.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Portrait Synthesis</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">As a parent, I want to see a warm portrait of who my child is right now, so that I can understand their behaviour without feeling blamed or judged.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">Portrait is 80–120 words, written in Coa's voice, includes at least one positive trait, and ends with a normalising forward-looking statement. No clinical language. Renders within 3 seconds of tab open.</div>
 
-        <div style="background:var(--off-cream);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Pattern Cards</div>
-        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to see the patterns behind my child's hard moments, so that the same situations start to make sense instead of feeling random.</div>
-        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">Exactly 2 pattern cards. Each includes a plain-language label (3–6 words), a single approved need tag, a one-sentence explanation (max 20 words), and a micro-action. Patterns must be genuinely distinct from each other.</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:14.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Pattern Cards</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">As a parent, I want to see the patterns behind my child's hard moments, so that the same situations start to make sense instead of feeling random.</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">Exactly 2 pattern cards. Each includes a plain-language label (3–6 words), a single approved need tag, a one-sentence explanation (max 20 words), and a micro-action. Patterns must be genuinely distinct from each other.</div>
 
-        <div style="background:var(--white);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">What's Been Helping</div>
-        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to know what I've been doing that's helping my child, so that I feel my effort is being noticed and I'm encouraged to keep going.</div>
-        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">Insight only generates after ≥2 Tried It signals. Insight is 30–50 words, confirmatory (what parent has done) not prescriptive (what to do next). Warm placeholder renders when threshold not met.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">What's Been Helping</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">As a parent, I want to know what I've been doing that's helping my child, so that I feel my effort is being noticed and I'm encouraged to keep going.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">Insight only generates after ≥2 Tried It signals and a verified drop in escalation level on later sessions. Insight is 30–50 words, confirmatory (what parent has done) not prescriptive (what to do next). Warm placeholder renders when threshold not met.</div>
 
-        <div style="background:var(--off-cream);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Feedback Signals</div>
-        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want to give feedback on whether a pattern resonates, so that future portraits feel increasingly accurate to my specific child.</div>
-        <div style="background:var(--off-cream);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">This Resonates and Not Right Now signals log to the database immediately on tap — not deferred. Not Right Now patterns excluded from next synthesis cycle. Back button after This Resonates returns parent to read-only card.</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:14.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Feedback Signals</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">As a parent, I want to give feedback on whether a pattern resonates, so that future portraits feel increasingly accurate to my specific child.</div>
+        <div style="background:var(--off-cream);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">This Resonates and Not Right Now signals log to the database immediately on tap — not deferred. Not Right Now patterns excluded from next synthesis cycle. Back button after This Resonates returns parent to read-only card.</div>
 
-        <div style="background:var(--white);padding:18px 20px;font-size:13.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Unlock &amp; Analytics</div>
-        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">As a parent, I want Know My Child to unlock naturally after enough sessions, so the insights feel earned rather than arbitrary.</div>
-        <div style="background:var(--white);padding:18px 20px;font-size:13px;line-height:1.6;color:var(--black);">know_my_child_unlocked PostHog event fires exactly once per child profile at session 3. All P0 analytics events verified in PostHog live stream before ticket closes. No PII sent to PostHog.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14.5px;font-weight:700;color:var(--black);display:flex;align-items:center;">Unlock &amp; Analytics</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">As a parent, I want Know My Child to unlock naturally once I've used the app enough, so the insights feel earned rather than arbitrary.</div>
+        <div style="background:var(--white);padding:18px 20px;font-size:14px;line-height:1.6;color:var(--black);">know_my_child_unlocked PostHog event fires exactly once per child profile at session 3. All P0 analytics events verified in PostHog live stream before ticket closes. No PII sent to PostHog.</div>
       </div>
     </div>
   </div>
@@ -953,9 +1057,9 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     <div class="risk-grid fade-in">
       <div class="risk-card"><span class="risk-level risk-high">High</span><div class="risk-title">AI output tone</div><div class="risk-text">Synthesis could produce clinical, diagnostic, or shame-inducing content about a real child.</div><div class="risk-mitigation">→ Output guardrail prompt reviews every component before it reaches the parent. Retry and fallback logic built in.</div></div>
       <div class="risk-card"><span class="risk-level risk-high">High</span><div class="risk-title">Synthesis failure</div><div class="risk-text">Agentic workflow fails silently — parent opens tab and sees broken or empty content.</div><div class="risk-mitigation">→ Fallback to last successful synthesis. If none exists, warm waiting state renders. Parent never sees an error screen.</div></div>
-      <div class="risk-card"><span class="risk-level risk-med">Medium</span><div class="risk-title">Low session volume</div><div class="risk-text">Parents don't reach the 3-session unlock, so Know My Child never surfaces.</div><div class="risk-mitigation">→ Lock screen designed to preview what unlocks. Progress bar shows momentum. Unlock celebration rewards reaching threshold.</div></div>
-      <div class="risk-card"><span class="risk-level risk-med">Medium</span><div class="risk-title">Portrait feels generic</div><div class="risk-text">Synthesis produces output that doesn't feel specific to this child — destroying trust.</div><div class="risk-mitigation">→ Child profile + family context + session history all passed into Prompt 1. Low temperature (0.3) keeps output grounded.</div></div>
-      <div class="risk-card"><span class="risk-level risk-low">Low</span><div class="risk-title">Pattern card duplication</div><div class="risk-text">Two pattern cards surface the same underlying theme — eroding credibility.</div><div class="risk-mitigation">→ patterns_are_distinct validation in Prompt 2. Model must revise until both patterns are genuinely distinct.</div></div>
+      <div class="risk-card"><span class="risk-level risk-med">Medium</span><div class="risk-title">Low session volume</div><div class="risk-text">Parents don't reach the third session, so Know My Child never unlocks.</div><div class="risk-mitigation">→ Lock screen designed to preview what unlocks. Progress bar shows momentum. Unlock celebration rewards reaching threshold.</div></div>
+      <div class="risk-card"><span class="risk-level risk-med">Medium</span><div class="risk-title">Portrait feels generic</div><div class="risk-text">Synthesis produces output that doesn't feel specific to this child — destroying trust.</div><div class="risk-mitigation">→ Child profile, family context, and session history are all passed into the &ldquo;where your child is now&rdquo; prompt. Low temperature (0.3) keeps output grounded.</div></div>
+      <div class="risk-card"><span class="risk-level risk-low">Low</span><div class="risk-title">Pattern card duplication</div><div class="risk-text">Two pattern cards surface the same underlying theme — eroding credibility.</div><div class="risk-mitigation">→ Distinctness is measured in code, not self-reported by the model. If the two patterns come back too similar, the response is discarded and the call retried.</div></div>
       <div class="risk-card"><span class="risk-level risk-low">Low</span><div class="risk-title">Cost scaling</div><div class="risk-text">3 synthesis prompts per child per cycle could become costly at scale.</div><div class="risk-mitigation">→ Prompt caching on system roles reduces input costs 75–90%. Synthesis only triggers per child profile, not per session.</div></div>
     </div>
   </div>
@@ -964,35 +1068,334 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 <!-- BUSINESS MODEL -->
 <section id="bizmodel" style="background: var(--off-white); padding: 52px 0;">
   <div class="section-max fade-in">
-    <h2 class="eyebrow">Business Model</h2>
-    <div class="placeholder-box" style="min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><strong>Business Model</strong>Subscription model, pricing tiers, TAM/SAM/SOM — coming soon</div>
+    <h2 class="eyebrow">Go-to-Market &amp; Business Model</h2>
+    <p style="font-size:15.5px;line-height:1.7;color:var(--black);max-width:680px;margin-bottom:28px;">Enter through the moment. Grow through trust. Start with reflective, tech-comfortable parents, then scale through repeat use, referrals, and trusted family channels.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;" class="mobile-3col-stack">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:22px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Beachhead Market</div>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);">Tech-comfortable parents of children ages 2–12 who regularly seek parenting support online — a frequent, recurring need where existing solutions are fragmented and generic, and trust fuels referrals.</p>
+      </div>
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:22px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">How We Reach Them</div>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);"><strong style="color:var(--black);">Phase 1:</strong> parenting content, creators/communities, and parent referrals. <strong style="color:var(--black);">Phase 2:</strong> schools, pediatric networks, and family benefits/wellness partners.</p>
+      </div>
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:22px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;">Why We Win</div>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);">Unlike general-purpose AI, Attuned remembers family context over time, delivers warm and practical support, and is grounded in child-development research.</p>
+      </div>
+    </div>
+
+    <!-- Growth loop -->
+    <div style="background:var(--blue);border-radius:12px;padding:22px 26px;margin-bottom:28px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);width:100%;margin-bottom:6px;">Growth Engine</div>
+      <span style="color:white;font-size:14.5px;font-weight:600;">Content &amp; communities</span>
+      <span style="color:rgba(255,255,255,0.5);">→</span>
+      <span style="color:white;font-size:14.5px;font-weight:600;">First Coa conversation</span>
+      <span style="color:rgba(255,255,255,0.5);">→</span>
+      <span style="color:white;font-size:14.5px;font-weight:600;">Repeat use</span>
+      <span style="color:rgba(255,255,255,0.5);">→</span>
+      <span style="color:white;font-size:14.5px;font-weight:600;">Referrals</span>
+      <span style="color:rgba(255,255,255,0.5);">→</span>
+      <span style="color:white;font-size:14.5px;font-weight:600;">Organic acquisition</span>
+    </div>
+
+    <!-- Pricing + unit economics -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="mobile-3col-stack">
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:22px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Pricing</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:8px;">7-day freemium → $10–20/month</div>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);">First 7 days of live, in-the-moment Coa support, free — enough to feel the value. Premium unlocks unlimited Coa and the memory that compounds over time, priced to the persona's willingness to pay.</p>
+      </div>
+      <div style="background:var(--off-cream);border:1px solid var(--beige);border-radius:12px;padding:22px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;">Unit Economics (est.)</div>
+        <div style="font-family:'DM Serif Display',serif;font-size:19px;color:var(--black);margin-bottom:8px;">~$0.20 / active parent / month</div>
+        <p style="font-size:14.5px;line-height:1.6;color:var(--muted);">Generation dominates AI cost; retrieval and extraction are cheap. Against a $10–20 price point, gross margin is very high. Conversion metric: free → paid within 7 days.</p>
+      </div>
+    </div>
+
+    <!-- Competitive positioning -->
+    <div class="fade-in" style="margin-top:32px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">Competitive Positioning</div>
+      <p style="font-size:16px;line-height:1.8;color:var(--black);max-width:720px;margin-bottom:18px;">Attuned sits in the corner where long-term family context meets parent reflection. The longer it knows a family, the more useful it gets &mdash; which is the opposite of most parenting tools, where the advice is the same on day one and day two hundred.</p>
+      <img src="img-competitive-positioning.png" alt="Positioning map plotting depth of family understanding against primary support outcome, with Attuned in the upper right quadrant" style="width:100%;height:auto;display:block;border:1px solid var(--beige);border-radius:12px;background:var(--white);"/>
+    </div>
   </div>
 </section>
 
 <!-- DATA PIPELINE / SYSTEM ARCHITECTURE -->
 <section id="architecture" style="background: linear-gradient(135deg, var(--white) 60%, #EBF0F4 100%); padding: 52px 0;">
-  <div class="section-max fade-in">
-    <h2 class="eyebrow">System Architecture</h2>
-    <div class="placeholder-box" style="min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;"><strong>System Architecture Diagram</strong>Agentic workflow, Supabase schema, API pipeline — coming soon</div>
+<style>
+.kmc { background:#F7F3EA; border:1px solid #E2D9D0; border-radius:14px; overflow:hidden; font-family:'Figtree',sans-serif; }
+.kmc-head { background:linear-gradient(135deg,#2E3D2B,#43563C); padding:20px 26px; text-align:center; }
+.kmc-head h3 { font-family:'Figtree',sans-serif; font-size:22px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#fff; margin:0; }
+.kmc-head p { font-size:13.5px; color:rgba(255,255,255,.72); margin-top:6px; }
+.kmc-legend { display:flex; flex-wrap:wrap; justify-content:center; gap:22px; padding:12px 20px; border-bottom:1px solid #E2D9D0; }
+.kmc-legend span { font-size:11.5px; color:#6E685F; display:flex; align-items:center; gap:7px; }
+.kmc-body { padding:26px 30px 32px 62px; position:relative; }
+.kmc-band { border:1px solid #DED4C7; border-radius:12px; padding:16px 18px 20px; margin-bottom:6px; background:rgba(255,255,255,.45); }
+.kmc-band-t { text-align:center; font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#4A5D42; margin-bottom:14px; }
+.kmc-box { border-radius:9px; padding:11px 15px; max-width:560px; margin:0 auto; }
+.kmc-t { font-size:15.5px; font-weight:700; color:#1F2A1C; }
+.kmc-s { font-size:13px; line-height:1.55; color:#6E685F; margin-top:5px; }
+.kmc-pill { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:#fff; border-radius:20px; padding:3px 9px; margin-right:8px; vertical-align:middle; }
+.kmc-arrow { display:flex; flex-direction:column; align-items:center; padding:5px 0; }
+.kmc-arrow i { display:block; width:2.5px; height:9px; background:#4A5D42; }
+.kmc-arrow b { font-size:10.5px; font-weight:800; letter-spacing:.08em; color:#4A5D42; margin-bottom:2px; font-style:normal; }
+.kmc-tri { width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:16px solid #4A5D42;margin-top:-1px; }
+.kmc-dia { width:330px;height:116px;background:#F5E7BC;border:1.5px solid #D8BE72;
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);display:flex;align-items:center;justify-content:center;
+  padding:0 42px;text-align:center;margin:0 auto; }
+.kmc-dia span { font-size:13.5px;font-weight:800;line-height:1.35;color:#6B5A2E; }
+.kmc-no { display:flex;align-items:center;justify-content:center;width:100%; }
+.kmc-no .line { height:2.5px;width:42px;background:#C98A4B; }
+.kmc-no .lbl { font-size:9.5px;font-weight:800;color:#B5772F;padding:0 5px; }
+.kmc-rail { text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#2F7C7C;
+  border-top:2.5px solid #3E8E8E;border-bottom:2.5px solid #3E8E8E;padding:5px 0;margin:12px 0 14px; }
+.kmc-rail-b { border-bottom:none; }
+.kmc-loop { position:absolute; left:26px; border-left:2.5px dashed #E08A3C; border-top:2.5px dashed #E08A3C; border-bottom:2.5px dashed #E08A3C; border-radius:10px 0 0 10px; width:26px; pointer-events:none; }
+.kmc-loop-head { position:absolute; left:45px; width:0; height:0; border-top:11px solid transparent; border-bottom:11px solid transparent; border-left:15px solid #E08A3C; }
+.kmc-loop-lbl { position:absolute; left:2px; font-size:9px; font-weight:800; letter-spacing:.08em; color:#C87A2E; background:#F7F3EA; padding:5px 1px; writing-mode:vertical-rl; }
+.kmc-3 { display:grid;grid-template-columns:repeat(3,1fr);gap:12px; }
+.kmc-comp { border-radius:9px;padding:13px 14px; }
+.kmc-comp h4 { font-size:14px;font-weight:800;color:#1F2A1C;margin-bottom:2px;line-height:1.3; }
+.kmc-comp em { font-size:12px;color:#6E685F;font-style:normal;display:block;margin-bottom:8px; }
+.kmc-gate { font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#4A5D42;margin-bottom:5px; }
+.kmc-comp ul { list-style:none;padding:0;margin:0; }
+.kmc-comp li { font-size:12.5px;line-height:1.55;color:#4A4640;padding-left:12px;position:relative;margin-bottom:5px; }
+.kmc-comp li:before { content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;background:#8FA083; }
+.kmc-paths { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px; }
+.kmc-path-l { font-size:11.5px;font-weight:800;letter-spacing:.06em;margin-bottom:6px;text-align:center; }
+@media (max-width:900px){ .kmc-3,.kmc-paths{grid-template-columns:1fr;} .kmc-dia{width:240px;height:96px;padding:0 26px;} .kmc-body{padding:20px 16px 26px;} }
+</style>
+  <div style="max-width:1080px;margin:0 auto;padding:0 48px;" class="opp-wrap">
+    <div class="fade-in">
+      <h2 class="eyebrow">System Architecture</h2>
+      <p style="font-size:16px;line-height:1.8;color:var(--black);max-width:720px;margin-bottom:10px;">Two flows sit back to back. Ask Coa handles the live conversation and writes the session memory; Know My Child reads that memory and synthesises it into a portrait. Neither works without the other, so both are here.</p>
+      <p style="font-size:13px;line-height:1.6;color:var(--muted);max-width:720px;margin-bottom:26px;">Ask Coa is owned by Geethu, one of the four PMs on the team &mdash; though all of us contributed to and tested it. Know My Child is mine.</p>
+    </div>
+
+    <!-- Upstream: Ask Coa -->
+    <div class="fade-in" style="margin-bottom:14px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Upstream &mdash; Ask Coa, one complete conversation</div>
+      <div style="background:var(--white);border:1px solid var(--beige);border-radius:14px;padding:14px;text-align:center;">
+        <img src="img-askcoa-architecture.png" alt="Ask Coa conversation flow: parent message, routing and safety classification, shared embedding, retrieval, grounded or generic prompt, streamed reply, then background session summary" style="width:100%;max-width:660px;height:auto;display:block;margin:0 auto;border-radius:8px;"/>
+      </div>
+      <p style="font-size:13px;line-height:1.7;color:var(--black);max-width:720px;margin-top:12px;">The last step is the handoff: when a session ends, it is summarised into a strict JSON memory, embedded, and stored. That record is exactly what Know My Child picks up below.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;padding:10px 0 18px;">
+      <div style="font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Session memory handoff</div>
+      <div style="width:2.5px;height:14px;background:#4A5D42;"></div>
+      <div style="width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:16px solid #4A5D42;"></div>
+    </div>
+
+    <div class="fade-in" style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;">My feature &mdash; Know My Child, one synthesis cycle</div>
+    <div class="fade-in"><div class="kmc">
+  <div class="kmc-head">
+    <h3>Know My Child &mdash; Feature Workflow &amp; Validation</h3>
+    <p>Signal detected &rarr; three components generate in parallel &rarr; every one must pass its gate &rarr; publish, or fall back safely</p>
+  </div>
+  <div class="kmc-legend">
+    <span><i style="width:22px;height:1.5px;background:#4A5D42;display:block;"></i> Sequential</span>
+    <span><i style="width:22px;height:2.5px;background:#3E8E8E;display:block;"></i> Parallel fork / join</span>
+    <span><i style="width:22px;height:1.5px;background:#C98A4B;display:block;"></i> Failure path</span>
+    <span><i style="width:22px;height:0;border-top:1.5px dashed #E08A3C;display:block;"></i> Feedback loop</span>
+    <span><i style="width:11px;height:11px;background:#F5E7BC;border:1.5px solid #D8BE72;transform:rotate(45deg);display:block;"></i> Decision</span>
+  </div>
+  <div class="kmc-body">
+
+    <div class="kmc-band">
+      <div class="kmc-band-t">Step 1 &mdash; Trigger &amp; data collection</div>
+      <div class="kmc-box" style="background:#E4EADF;border:1.5px solid #A9BA9D;"><div class="kmc-t"><span class="kmc-pill" style="background:#43563C;">Start</span>Session finalized</div><div class="kmc-s">A reflection session closes and its memory is written.</div></div>
+      <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+      <div class="kmc-dia"><span>Signal strong enough for new content?</span></div>
+      <div class="kmc-no"><div style="flex:1"></div><div class="line"></div><div class="lbl">[NO]</div><div style="width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:15px solid #C98A4B;margin-left:-1px;"></div><div style="background:#F3E4CE;border:1.5px solid #D9B98A;border-radius:9px;padding:10px 13px;max-width:300px;margin-left:7px;"><div style="font-size:13.5px;font-weight:700;color:#1F2A1C;">Skip generation</div><div style="font-size:12.5px;line-height:1.55;color:#6E685F;margin-top:4px;">Existing report stays as-is. Nothing is queued, so we don&rsquo;t pay to regenerate an unchanged portrait.</div></div><div style="flex:1"></div></div>
+      <div class="kmc-arrow"><b>[YES]</b><i></i><div class="kmc-tri"></div></div>
+      <div class="kmc-box" style="background:#DCE7EE;border:1.5px solid #A8BACB;"><div class="kmc-t"><span class="kmc-pill" style="background:#3F6E86;">Fetch</span>Gather context</div><div class="kmc-s">Child profile, family context, the last 10 session memories, and historical parent feedback &mdash; assembled in one read.</div></div>
+    </div>
+
+    <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+
+    <div class="kmc-band">
+      <div class="kmc-band-t">Step 2 &mdash; Parallel AI synthesis &amp; quality gates</div>
+      <div class="kmc-rail">Parallel fork &mdash; three components generate independently</div>
+      <div class="kmc-3">
+        <div class="kmc-comp" style="background:#E9E2F2;border:1.5px solid #BCAAD8;"><h4>Component 1: Child Portrait</h4><em>&ldquo;Current baseline&rdquo;</em><div class="kmc-gate">Gate checks</div><ul><li>80&ndash;120 words</li><li>Non-clinical language filter blocks terms like tantrum, pathology, defiance</li></ul></div>
+        <div class="kmc-comp" style="background:#E9E2F2;border:1.5px solid #BCAAD8;"><h4>Component 2: What&rsquo;s Been Helping</h4><em>&ldquo;Parent micro-effort&rdquo;</em><div class="kmc-gate">Gate checks</div><ul><li>30&ndash;50 words</li><li>Mandatory hedged phrasing (&ldquo;seems to&rdquo;, &ldquo;appears to&rdquo;)</li><li>Non-clinical language filter</li><li>Without enough signal, shows a waiting message instead of a claim</li></ul></div>
+        <div class="kmc-comp" style="background:#E9E2F2;border:1.5px solid #BCAAD8;"><h4>Component 3: Working Through Patterns</h4><em>&ldquo;Pattern cards&rdquo;</em><div class="kmc-gate">Gate checks</div><ul><li>Exactly 2 distinct patterns</li><li>Needs must come from the approved CNVC taxonomy</li><li>Label 3&ndash;6 words</li><li>Explanation max 20 words</li></ul></div>
+      </div>
+      <div class="kmc-rail kmc-rail-b">Join &mdash; wait for all three</div>
+    </div>
+
+    <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+
+    <div class="kmc-band">
+      <div class="kmc-band-t">Step 3 &mdash; Do all three components pass validation?</div>
+      <div class="kmc-dia"><span>All 3 gates pass?</span></div>
+      <div class="kmc-paths">
+        <div>
+          <div class="kmc-path-l" style="color:#3B6B4A;">Path A &mdash; [ALL PASS]</div>
+          <div style="background:#DFEAE0;border:1.5px solid #9FBFA6;border-radius:9px;padding:12px 14px;">
+            <div style="font-size:14px;font-weight:700;color:#1F2A1C;">Publish new report to the parent profile</div>
+            <div style="font-size:12.5px;line-height:1.55;color:#6E685F;margin-top:4px;">Portrait, helping insight, and both pattern cards are committed together with the unlock state &mdash; one transaction, so a parent never sees a half-written report.</div>
+          </div>
+        </div>
+        <div>
+          <div class="kmc-path-l" style="color:#B5772F;">Path B &mdash; [VALIDATION FAIL]</div>
+          <div style="background:#F3E4CE;border:1.5px solid #D9B98A;border-radius:9px;padding:12px 14px;">
+            <div style="font-size:14px;font-weight:700;color:#1F2A1C;">Trigger auto-retry policy</div>
+            <div style="font-size:12.5px;line-height:1.55;color:#6E685F;margin-top:4px;">Any single failed gate sends the whole cycle into failure handling rather than publishing a partial report.</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;height:44px;margin-top:2px;">
+        <div style="position:absolute;right:25%;top:0;width:2.5px;height:20px;background:#C98A4B;"></div>
+        <div style="position:absolute;left:50%;right:25%;top:20px;height:2.5px;background:#C98A4B;"></div>
+        <div style="position:absolute;left:50%;top:20px;width:2.5px;height:12px;background:#C98A4B;"></div>
+        <div style="position:absolute;left:50%;top:31px;transform:translateX(-50%);width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-top:16px solid #C98A4B;"></div>
+      </div>
+    </div>
+
+    <div class="kmc-band">
+      <div class="kmc-band-t">Step 4 &mdash; Failure handling &amp; circuit breaker</div>
+      <div class="kmc-box" style="background:#F3E4CE;border:1.5px solid #D9B98A;"><div class="kmc-t"><span class="kmc-pill" style="background:#B5772F;">Error</span>Malformed output or a failed quality gate</div></div>
+      <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+      <div class="kmc-box" style="background:#F3E4CE;border:1.5px solid #D9B98A;"><div class="kmc-t"><span class="kmc-pill" style="background:#B5772F;">Action</span>Exponential backoff retry</div><div class="kmc-s">Up to 8 attempts, each with a growing delay.</div></div>
+      <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+      <div class="kmc-box" style="background:#F7DED9;border:1.5px solid #D9A79F;"><div class="kmc-t"><span class="kmc-pill" style="background:#8C3B32;">Breaker</span>Safe fallback after 8 failed retries</div><div class="kmc-s">The previous valid report stays on screen and an alert is logged. We would rather show yesterday&rsquo;s portrait than a broken one.</div></div>
+    </div>
+
+    <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+
+    <div class="kmc-band">
+      <div class="kmc-band-t">Step 5 &mdash; Parent feedback &amp; continuous learning loop</div>
+      <div style="position:relative;max-width:620px;margin:0 auto;padding:0 44px;">
+
+        <div class="kmc-box" style="background:#E4EADF;border:1.5px solid #A9BA9D;max-width:none;"><div class="kmc-t"><span class="kmc-pill" style="background:#43563C;">UI</span>Portrait + What&rsquo;s Been Helping + 2 interactive pattern cards</div></div>
+        <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+        <div class="kmc-box" style="background:#E4EADF;border:1.5px solid #A9BA9D;max-width:none;"><div class="kmc-t"><span class="kmc-pill" style="background:#43563C;">Parent</span>Reacts: This Resonates / Not Right Now</div><div class="kmc-s">Each tap is stored against the specific pattern it answered.</div></div>
+        <div class="kmc-arrow"><i></i><div class="kmc-tri"></div></div>
+        <div class="kmc-box" style="background:#FBF0E2;border:1.5px dashed #E08A3C;max-width:none;"><div class="kmc-t"><span class="kmc-pill" style="background:#C87A2E;">Loop back</span>Reaction signals feed into future report contexts</div><div class="kmc-s">The next portrait keeps what resonated and drops what didn&rsquo;t. Enough new signal is also what re-opens the gate at Step 1.</div></div>
+
+        <!-- right rail: UI display down into Loop back -->
+        <div id="s5right" style="position:absolute;pointer-events:none;">
+          <div style="position:absolute;height:2.5px;background:#3E8E8E;" id="s5rtop"></div>
+          <div style="position:absolute;width:2.5px;background:#3E8E8E;" id="s5rline"></div>
+          <div style="position:absolute;height:2.5px;background:#3E8E8E;" id="s5rbottom"></div>
+          <div style="position:absolute;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:10px solid #3E8E8E;" id="s5rhead"></div>
+        </div>
+        <!-- left rail: Loop back up into Parent reacts -->
+        <div id="s5left" style="position:absolute;pointer-events:none;">
+          <div style="position:absolute;height:2.5px;background:#C98A4B;" id="s5lbottom"></div>
+          <div style="position:absolute;width:2.5px;background:#C98A4B;" id="s5lline"></div>
+          <div style="position:absolute;height:2.5px;background:#C98A4B;" id="s5ltop"></div>
+          <div style="position:absolute;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:10px solid #C98A4B;" id="s5lhead"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kmc-loop" id="kmcLoop"></div>
+    <div class="kmc-loop-head" id="kmcLoopHead"></div>
+    <div class="kmc-loop-lbl" id="kmcLoopLbl">FEEDBACK LOOP</div>
+  </div>
+</div>
+<script>
+(function(){
+  function draw(){
+    var body=document.querySelector('.kmc-body'); if(!body) return;
+    var bands=body.querySelectorAll('.kmc-band');
+    if(bands.length<5) return;
+    var bb=body.getBoundingClientRect();
+    var t=bands[0].getBoundingClientRect().top-bb.top+36;
+    var b=bands[4].getBoundingClientRect().bottom-bb.top-34;
+    var loop=document.getElementById('kmcLoop');
+    var head=document.getElementById('kmcLoopHead');
+    var lbl=document.getElementById('kmcLoopLbl');
+    if(!loop||!head||!lbl) return;
+    loop.style.top=t+'px'; loop.style.height=Math.max(0,b-t)+'px';
+    head.style.top=(t-11)+'px';
+    lbl.style.top=(t+(b-t)/2-48)+'px';
+  }
+  if(document.readyState==='complete'){draw();} else {window.addEventListener('load',draw);}
+  window.addEventListener('resize',draw);
+  function s5(){
+    var wrap=document.querySelector('#s5right'); if(!wrap) return;
+    var box=wrap.parentElement;
+    var boxes=box.querySelectorAll('.kmc-box');
+    if(boxes.length<3) return;
+    var bb=box.getBoundingClientRect();
+    var ui=boxes[0].getBoundingClientRect(), pa=boxes[1].getBoundingClientRect(), lb=boxes[2].getBoundingClientRect();
+    var uiMid=ui.top-bb.top+ui.height/2, paMid=pa.top-bb.top+pa.height/2, lbMid=lb.top-bb.top+lb.height/2;
+    var pad=44, rail=26, gap=4;
+
+    // ---- RIGHT (teal): UI Display -> out right -> down -> back left into Loop back ----
+    var R=document.getElementById('s5right');
+    R.style.top='0'; R.style.right='0'; R.style.width=pad+'px'; R.style.height=bb.height+'px';
+    var rx=pad-rail;                    // x of the vertical line inside the rail box
+    var rtop=document.getElementById('s5rtop');
+    rtop.style.top=(uiMid-1)+'px'; rtop.style.left='0'; rtop.style.width=(rx+2.5)+'px';
+    var rline=document.getElementById('s5rline');
+    rline.style.left=rx+'px'; rline.style.top=uiMid+'px'; rline.style.height=(lbMid-uiMid)+'px';
+    var rbot=document.getElementById('s5rbottom');
+    rbot.style.top=(lbMid-1)+'px'; rbot.style.left=(gap+10)+'px'; rbot.style.width=(rx-gap-10+2.5)+'px';
+    var rhead=document.getElementById('s5rhead');
+    rhead.style.top=(lbMid-7)+'px'; rhead.style.left=gap+'px';
+
+    // ---- LEFT (orange): Loop back -> out left -> up -> back right into Parent reacts ----
+    var L=document.getElementById('s5left');
+    L.style.top='0'; L.style.left='0'; L.style.width=pad+'px'; L.style.height=bb.height+'px';
+    var lx=rail-2.5;                    // x of the vertical line
+    var lbot=document.getElementById('s5lbottom');
+    lbot.style.top=(lbMid-1)+'px'; lbot.style.left=lx+'px'; lbot.style.width=(pad-lx)+'px';
+    var lline=document.getElementById('s5lline');
+    lline.style.left=lx+'px'; lline.style.top=paMid+'px'; lline.style.height=(lbMid-paMid)+'px';
+    var ltop=document.getElementById('s5ltop');
+    ltop.style.top=(paMid-1)+'px'; ltop.style.left=lx+'px'; ltop.style.width=(pad-lx-gap-10)+'px';
+    var lhead=document.getElementById('s5lhead');
+    lhead.style.top=(paMid-7)+'px'; lhead.style.left=(pad-gap-10)+'px';
+  }
+  var _d=draw; draw=function(){_d(); s5();};
+  setTimeout(draw,300); setTimeout(draw,1200);
+})();
+</script></div>
   </div>
 </section>
 
 <!-- MVP -->
 <section id="mvp" style="background: var(--blue); padding: 52px 0;">
-  <div class="section-max">
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;" class="opp-wrap">
     <div class="fade-in">
-      <h2 class="eyebrow" style="color:rgba(255,255,255,0.55);">MVP — Demo Day August 2026</h2>
-      <div class="mvp-heading">What ships</div>
-      <p class="mvp-sub">Know My Child must be fully populated with synthesised content for both demo profiles before August 11.</p>
+      <h2 class="eyebrow" style="color:rgba(255,255,255,0.6);font-size:56px;text-align:center;">MVP</h2>
+      <div class="mvp-heading">What shipped</div>
+      <p class="mvp-sub">Know My Child was fully populated with real synthesised content across multiple child profiles.</p>
     </div>
     <div class="mvp-grid fade-in">
       <div class="mvp-card"><div class="mvp-card-title">Lock → Unlock Flow</div><p class="mvp-card-text">Lock screen with progress bar and What Unlocks preview. Celebration unlock screen. All copy and interaction states built to spec.</p></div>
-      <div class="mvp-card"><div class="mvp-card-title">3-Component Portrait</div><p class="mvp-card-text">Where [Name] Is Now portrait, 2 pattern cards with need tags, and What's Been Helping — all rendering from real synthesised content for both demo child profiles.</p></div>
-      <div class="mvp-card"><div class="mvp-card-title">Feedback & Profile</div><p class="mvp-card-text">This Resonates / Not Right Now flow, avatar picker, multi-profile switching — all validated against the feature spec before demo day.</p></div>
+      <div class="mvp-card"><div class="mvp-card-title">3-Component Portrait</div><p class="mvp-card-text">Where [Name] Is Now portrait, 2 pattern cards with need tags, and What's Been Helping — all rendering from real synthesised content across multiple child profiles.</p></div>
+      <div class="mvp-card"><div class="mvp-card-title">Feedback & Profile</div><p class="mvp-card-text">This Resonates / Not Right Now flow, avatar picker, multi-profile switching — all validated against the feature spec.</p></div>
     </div>
     <div class="mvp-screens fade-in">
-      <div class="mvp-screen"><img src="img-attuned.png" alt="Attuned app screen"/></div>
-      <div class="mvp-screen"><img src="img-kmc-screen.png" alt="Know My Child screen showing 'You've been showing up' unlock message with Get Started button"/></div>
+      <div>
+        <div class="mvp-screen"><div><img src="img-attuned.png" alt="Attuned welcome screen reading Hard parenting moments, gently understood"/></div></div>
+        <div class="mvp-caption">Welcome</div>
+      </div>
+      <div>
+        <div class="mvp-screen"><div><img src="img-mvp-home.png" alt="Attuned home screen with Ask Coa prompt, For You insight cards, and the toolkit"/></div></div>
+        <div class="mvp-caption">Home &amp; toolkit</div>
+      </div>
+      <div>
+        <div class="mvp-screen"><div><img src="img-mvp-unlock.png" alt="Know My Child unlock screen reading You've been showing up with a Get Started button"/></div></div>
+        <div class="mvp-caption">Unlock moment</div>
+      </div>
+      <div>
+        <div class="mvp-screen"><div><img src="img-mvp-portrait.png" alt="Know My Child portrait with profile switcher, helping insight, and a pattern card with feedback buttons"/></div></div>
+        <div class="mvp-caption">Portrait &amp; feedback</div>
+      </div>
+      <div>
+        <div class="mvp-screen"><div><img src="img-mvp-avatar.png" alt="Choose an avatar dialog with companion icons and a Done button"/></div></div>
+        <div class="mvp-caption">Avatar picker</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1001,11 +1404,21 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 <section id="scalability" style="background: var(--off-white); padding: 52px 0;">
   <div class="section-max">
     <div class="fade-in">
-      <h2 class="eyebrow">AI Scalability Strategy</h2>
+      <h2 class="eyebrow">AI Product Scalability</h2>
     </div>
-    <div class="placeholder-box fade-in" style="min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-      <strong>Scaling plan</strong>
-      How the model, prompts, and infrastructure hold up as usage and child profiles grow — coming soon
+    <div class="fade-in" style="max-width:760px;">
+      <p style="font-size:16px;line-height:1.8;color:var(--black);margin-bottom:18px;">
+        <strong>To keep responses grounded as the number of families grows</strong>, every portrait is generated only from that family's own session history rather than a shared pool, so more users never means more noise in any one parent's context. A family's history grows without limit but the context window does not, which is why we read the last 10 sessions as compressed structured summaries rather than raw transcripts &mdash; the prompt stays a fixed size no matter how long someone has been with us.
+      </p>
+      <p style="font-size:16px;line-height:1.8;color:var(--black);margin-bottom:18px;">
+        <strong>To reduce bias and unsupported claims in generated content</strong>, we read real outputs, iterate the prompts, and then encode what we learn as a permanent check &mdash; a filter that blocks pathologising language, mandatory hedged phrasing for anything inferred, needs drawn from an approved taxonomy, and word limits on every component. Manual review becomes the way we find a failure mode once; the gate is what catches it on every generation after that.
+      </p>
+      <p style="font-size:16px;line-height:1.8;color:var(--black);">
+        <strong>To keep the system economically viable at volume</strong>, cheap work runs on the small model, prompt caching on system roles cuts input costs by 75&ndash;90%, and synthesis only fires when there is genuinely new signal rather than on every message. None of it depends on a fine-tuned model, so either model can be swapped for something smaller or open-source without rebuilding the product.
+      </p>
+      <p style="font-size:16px;line-height:1.8;color:var(--black);margin-top:18px;">
+        <strong>To catch drift as models and data change underneath us</strong>, I defined a Golden Examples eval set &mdash; a fixed group of scenarios that every prompt change runs against in full, so a fix for one case can't quietly regress another. It is specified and ready rather than in routine use yet, which is the next thing to stand up now the build has settled.
+      </p>
     </div>
   </div>
 </section>
@@ -1014,6 +1427,19 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 <section id="back">
   <p class="back-sub">Want to see more of my work?</p>
   <a href="index.html#work" class="btn btn-coral">← Back to portfolio</a>
+  <div class="contact-icons">
+    <a href="https://linkedin.com/in/thanh-d-tran" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21h-4V9z"/>
+      </svg>
+    </a>
+    <a href="mailto:duythanhtran8700@gmail.com" aria-label="Email" title="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/>
+        <path d="M3 6.5l9 6 9-6"/>
+      </svg>
+    </a>
+  </div>
 </section>
 
 <footer>© 2026 Thanh Tran · Built with care</footer>

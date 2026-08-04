@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Thanh Tran — AI Product Manager with experience across data, growth, and consumer product. Portfolio featuring Attuned (AI parenting companion) and case studies in enterprise data and growth."/>
+<meta name="description" content="Thanh Tran — AI Product Manager with experience across data, growth, and consumer product. Portfolio featuring Attuned (AI parenting companion) and an enterprise data product at Barclays."/>
 <link rel="icon" type="image/png" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="favicon.png"/>
 <title>Thanh Tran — AI Product Manager</title>
@@ -20,11 +20,17 @@
   --blue:      #586E84;
   --blue-dark: #3d5060;
   --black:     #141414;
-  --muted:     #888888;
+  --muted:     #7A7570;
+  --terracotta: #C06B4A;
+  --terracotta-dark: #A5583A;
   --nav-h:     60px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* text selection colour */
+::selection { background: #CAD1D8; color: #141414; }
+::-moz-selection { background: #CAD1D8; color: #141414; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -117,9 +123,6 @@ nav {
   letter-spacing: .08em; text-transform: uppercase;
   color: var(--blue);
 }
-.dropdown-item-disabled { display: flex; flex-direction: column; gap: 2px; padding: 10px 16px; border-bottom: 1px solid var(--off-white); cursor: not-allowed; opacity: 0.55; font-size: 13px; }
-.dropdown-item-disabled .dropdown-tag { color: var(--muted); }
-.dropdown-soon { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; color: var(--coral); margin-left: 4px; }
 
 /* ── SHARED UTILS ────────────────────────────────────── */
 .eyebrow {
@@ -163,6 +166,11 @@ nav {
   border: 1.5px solid var(--blue);
 }
 .btn-outline:hover { background: var(--blue); color: var(--white); }
+
+.btn-coral { background: var(--terracotta); color: var(--white); }
+.btn-coral:hover { background: var(--terracotta-dark); }
+
+.btn-arrow-down:hover svg { transform: translateY(3px); }
 
 .btn-ghost {
   background: transparent; color: var(--white);
@@ -352,6 +360,48 @@ nav {
   margin: 0 auto;
 }
 
+/* 2-card layout — narrower, centered */
+.work-items-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 680px;
+}
+
+/* muted / less-prominent card (Barclays) — logo on quiet background, no color reveal */
+.work-item-muted .work-item-btn { background: var(--white); border-color: var(--beige); }
+.work-item-muted:hover .work-item-btn { background: var(--off-white); border-color: var(--beige); }
+.work-item-muted:hover .work-item-btn .work-item-label { color: var(--black); }
+.work-item-muted:hover .work-item-btn .work-nav-sub { color: var(--muted); }
+
+.work-item-logo-img {
+  aspect-ratio: 16/10;
+  border-radius: 10px;
+  background: var(--off-white);
+  border: 1.5px solid var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  transition: box-shadow .3s ease, transform .3s ease;
+}
+.work-item-logo-img img {
+  max-width: 82%;
+  max-height: 74%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.75;
+  transition: filter .3s ease, opacity .3s ease;
+}
+.work-item-muted:hover .work-item-logo-img img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+.work-item-muted:hover .work-item-logo-img {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(20,20,20,0.10);
+}
+
 .work-item {
   display: flex;
   flex-direction: column;
@@ -514,7 +564,7 @@ nav {
 }
 
 /* ── WORK DETAIL SECTIONS ────────────────────────────── */
-/* case study detail — smaller image, less dominant */
+/* secondary detail layout — smaller image, less dominant */
 .detail-section-case {
   grid-template-columns: 0.65fr 1fr;
 }
@@ -832,7 +882,7 @@ footer {
 
   #work { padding: 48px 20px 64px; }
   .work-heading { font-size: 36px; }
-  .work-items-grid { grid-template-columns: 1fr; }
+  .work-items-grid, .work-items-grid-2 { grid-template-columns: 1fr; }
   .work-item-btn { padding: 14px; }
 
   .detail-section,
@@ -864,15 +914,14 @@ footer {
     </svg>Thanh Tran</a>
   <ul class="nav-links">
     <li><a href="#" class="nav-current">Home</a></li>
-    <li><a href="about.html">About</a></li>
     <li class="nav-dropdown">
       <a href="#work">My Work</a>
       <div class="dropdown-menu">
         <a href="attuned.html"><span class="dropdown-tag">AI Product</span>Attuned</a>
-        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Google Maps</span>
-        <span class="dropdown-item-disabled"><span class="dropdown-tag">Case Study<span class="dropdown-soon">· SOON</span></span>Airbnb</span>
+        <a href="#barclays"><span class="dropdown-tag">Enterprise Data · NDA</span>Barclays</a>
       </div>
     </li>
+    <li><a href="about.html">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -918,12 +967,12 @@ footer {
     <div class="divider" style="margin:20px 0 16px;"></div>
     <p class="about-sub">
       Below are examples of my work — an AI product in parenting wellness
-      and product case studies across consumer tech.
+      and an enterprise data product at Barclays.
     </p>
-    <a href="about.html" class="btn btn-fill">
-      Read more about me
+    <a href="#work" class="btn btn-fill btn-arrow-down">
+      See Product Launch
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 2V12M7 12L3 8M7 12L11 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
   </div>
@@ -934,11 +983,11 @@ footer {
 <section id="work">
   <div class="work-heading-wrap fade-in">
     <h2 class="work-heading">My Work</h2>
-    <p class="work-subhead">AI product &amp; consumer product case studies</p>
+    <p class="work-subhead">AI product &amp; Enterprise data product</p>
   </div>
 
-  <!-- 3 nav buttons — same row -->
-  <div class="work-items-grid">
+  <!-- 2 nav cards — Attuned featured, Barclays muted -->
+  <div class="work-items-grid work-items-grid-2">
 
     <a href="#attuned" class="work-item work-item-featured fade-in fade-in-delay-1">
       <div class="work-item-btn">
@@ -950,23 +999,13 @@ footer {
       </div>
     </a>
 
-    <a href="#google-maps" class="work-item fade-in fade-in-delay-2">
+    <a href="#barclays" class="work-item work-item-muted fade-in fade-in-delay-2">
       <div class="work-item-btn">
-        <span class="work-item-label">Google Maps</span>
-        <span class="work-nav-sub">Case Study</span>
+        <span class="work-item-label">Barclays</span>
+        <span class="work-nav-sub">Enterprise Data Product · NDA</span>
       </div>
-      <div class="work-item-img">
-        <img src="img-google-maps.png" alt="Google Maps"/>
-      </div>
-    </a>
-
-    <a href="#airbnb" class="work-item fade-in fade-in-delay-3">
-      <div class="work-item-btn">
-        <span class="work-item-label">Airbnb</span>
-        <span class="work-nav-sub">Case Study</span>
-      </div>
-      <div class="work-item-img">
-        <img src="img-airbnb.png" alt="Airbnb"/>
+      <div class="work-item-logo-img">
+        <img src="logo-barclays.png" alt="Barclays"/>
       </div>
     </a>
 
@@ -991,12 +1030,9 @@ footer {
       <p class="detail-text">
         Attuned is an AI companion for parents — built for the moment right after a hard parenting moment, when parents need support to reconnect with their child. As the core PM for the <strong>Know My Child</strong> feature, I owned the product strategy, agentic workflow design, scenario corpus design, and AI prompt engineering end-to-end.
       </p>
-      <div class="detail-placeholder">
-        📌 System architecture, user research summary, and outcome metrics coming soon.
-      </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
         <a href="attuned.html" class="btn btn-fill">
-          Full product story
+          Full product launch
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -1016,67 +1052,49 @@ footer {
   </div>
 </div>
 
-<!-- ── GOOGLE MAPS DETAIL ──────────────────────────────── -->
-<div class="section-wrap-alt fade-in" id="google-maps">
-  <div class="detail-section detail-section-case flip">
-    <div class="detail-img detail-img-case" style="padding:0;border:none;overflow:hidden;">
-      <img src="img-google-maps.png" alt="Google Maps" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
+<!-- ── BARCLAYS DETAIL ─────────────────────────────────── -->
+<div class="section-wrap-alt fade-in" id="barclays">
+  <div class="detail-section detail-section-case">
+    <div class="detail-img detail-img-case" style="background:var(--white); border:1px solid var(--beige); border-radius:12px; display:flex; align-items:center; justify-content:center; padding:34px;">
+      <img src="logo-barclays.png" alt="Barclays" style="width:100%; max-width:330px; height:auto; object-fit:contain;"/>
     </div>
     <div>
-      <div class="eyebrow">Product Case Study</div>
-      <h2 class="detail-section-title">Google Maps</h2>
+      <div class="eyebrow">Enterprise Data Product</div>
+      <h2 class="detail-section-title">Barclays</h2>
+      <div class="detail-section-subtitle">Data Product Manager, End-user Experience</div>
       <div class="tag-row">
-        <span class="tag">Consumer Tech</span>
-        <span class="tag">Navigation</span>
-        <span class="tag">Product Strategy</span>
+        <span class="tag">FinTech</span>
+        <span class="tag">Enterprise Data</span>
+        <span class="tag" style="background:rgba(192,107,74,0.10);border-color:#C06B4A;color:#A5583A;font-weight:700;">Confidential / NDA</span>
       </div>
       <p class="detail-text">
-        A product case study analysing Google Maps' feature strategy,
-        user experience opportunities, and competitive positioning.
+        Group Technology Service Management is what keeps Barclays' trading and banking platforms running — the incident, problem, and change management backbone that catches issues before they become outages. As the Product Manager for data products in this space, I own end-to-end ITSM data products for Markets applications, translating Director-level stakeholder requirements into PRDs, roadmaps, and cross-functional delivery with engineers and data scientists.
       </p>
-      <div class="detail-placeholder">
-        📌 Problem framing, analysis, recommendations, and outcomes coming soon.
-      </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <span class="btn btn-fill" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
-          Full case study — Coming Soon
-        </span>
+        <a href="barclays.html" class="btn btn-fill">
+          Product launch overview
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
         <a href="#work" class="btn btn-outline">↑ Back to My Work</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── AIRBNB DETAIL ───────────────────────────────────── -->
-<div class="section-wrap fade-in" id="airbnb">
-  <div class="detail-section detail-section-case">
-    <div class="detail-img detail-img-case" style="padding:0;border:none;overflow:hidden;">
-      <img src="img-airbnb.png" alt="Airbnb" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
-    </div>
-    <div>
-      <div class="eyebrow">Product Case Study</div>
-      <h2 class="detail-section-title">Airbnb</h2>
-      <div class="tag-row">
-        <span class="tag">Marketplace</span>
-        <span class="tag">Travel</span>
-        <span class="tag">Product Strategy</span>
-      </div>
-      <p class="detail-text">
-        A product case study examining Airbnb's marketplace dynamics,
-        host and guest experience, and growth strategy.
-      </p>
-      <div class="detail-placeholder">
-        📌 Problem framing, analysis, recommendations, and outcomes coming soon.
-      </div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap;">
-        <span class="btn btn-fill" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
-          Full case study — Coming Soon
-        </span>
-        <a href="#work" class="btn btn-outline">↑ Back to My Work</a>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- ── ABOUT TEASER ─────────────────────────────────────── -->
+<section class="fade-in" style="padding:60px 48px; text-align:center; background:#E2D9D0;">
+  <p style="font-family:'Figtree',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#7A7570; margin-bottom:20px;">
+    Want to know more about my journey?
+  </p>
+  <a href="about.html" class="btn btn-coral">
+    Read more about me
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
 
 <!-- ── CONTACT ─────────────────────────────────────────── -->
 <section id="contact" class="fade-in">

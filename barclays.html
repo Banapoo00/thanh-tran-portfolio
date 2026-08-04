@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Barclays — Thanh Tran's work as Data Product Manager owning end-to-end ITSM data products for Markets applications within Group Technology Service Management."/>
+<link rel="icon" type="image/png" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<title>Barclays — Thanh Tran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --white:     #FFFFFF;
+  --off-white: #F5F5F5;
+  --beige:     #E2D9D0;
+  --blue:      #586E84;
+  --blue-dark: #3d5060;
+  --black:     #141414;
+  --muted:     #7A7570;
+  --nav-h:     60px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* text selection colour */
+::selection { background: #CAD1D8; color: #141414; }
+::-moz-selection { background: #CAD1D8; color: #141414; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Figtree', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; left: 0; right: 0; height: var(--nav-h);
+  background: rgba(255,255,255,0.98);
+  border-bottom: 1px solid var(--beige); z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 48px;
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 500; color: var(--black); text-decoration: none; padding: 7px 14px; border-radius: 6px; transition: background .18s, color .18s; }
+.nav-links a:hover { background: var(--off-white); color: var(--blue); }
+.nav-current { color: #C06B4A !important; font-weight: 700 !important; }
+
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+.nav-dropdown > a::after { content: ''; display: block; width: 8px; height: 5px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'%3E%3Cpath d='M1 1l3 3 3-3' stroke='%23141414' stroke-width='1.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center; }
+.dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--beige); border-radius: 10px; box-shadow: 0 8px 24px rgba(20,20,20,0.10); min-width: 180px; overflow: hidden; flex-direction: column; }
+.nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu, .nav-dropdown.open .dropdown-menu { display: flex; }
+.dropdown-menu a { font-size: 13px; padding: 10px 16px; border-radius: 0; border-bottom: 1px solid var(--off-white); display: flex; flex-direction: column; gap: 2px; }
+.dropdown-menu a:last-child { border-bottom: none; }
+.dropdown-tag { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+
+/* ── SHARED UTILS ── */
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; background: var(--off-white); color: var(--blue); border: 1px solid var(--beige); }
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Figtree', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 11px 22px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: background .2s, transform .15s, color .2s, border-color .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn svg { transition: transform .2s; }
+.btn:hover svg { transform: translateX(3px); }
+.btn-fill { background: var(--blue); color: var(--white); }
+.btn-fill:hover { background: var(--black); }
+.btn-outline { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); }
+.btn-outline:hover { background: var(--blue); color: var(--white); }
+.btn-coral { background: #C06B4A; color: var(--white); }
+.btn-coral:hover { background: #A5583A; }
+.divider { height: 1px; background: var(--beige); margin: 28px 0; }
+
+/* ── HERO ── */
+.bx-hero {
+  position: relative;
+  min-height: 460px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 104px 48px 96px;
+  background: url('img-barclays-hero.jpg') center 42% / cover no-repeat;
+  overflow: hidden;
+}
+.bx-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(16,20,26,.66) 0%, rgba(16,20,26,.76) 55%, rgba(16,20,26,.86) 100%);
+}
+.bx-hero > * { position: relative; z-index: 1; }
+.bx-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 62px;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -.02em;
+}
+.bx-subtitle {
+  font-size: 14px; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: rgba(255,255,255,.82);
+  margin-bottom: 22px;
+}
+.bx-hero .tag-row { justify-content: center; }
+.bx-hero .tag { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; }
+.bx-body {
+  font-size: 16px; line-height: 1.75;
+  color: var(--black); max-width: 640px;
+  margin-bottom: 8px;
+}
+
+/* ── HIGHLIGHTS ── */
+.bx-section { max-width: 900px; margin: 0 auto; padding: 0 48px 56px; }
+.bx-section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+.bx-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:26px 0 6px; }
+.bx-stat { background:var(--off-white); border:1px solid var(--beige); border-radius:12px; padding:16px 18px; }
+.bx-stat b { display:block; font-family:'DM Serif Display',serif; font-size:26px; color:var(--blue); line-height:1.1; }
+.bx-stat span { display:block; font-size:12.5px; line-height:1.5; color:var(--muted); margin-top:5px; }
+.bx-cr-layout { display:grid; grid-template-columns:1fr 300px; gap:40px; align-items:center; margin-bottom:30px; }
+.bx-cr-logo { width:100%; max-width:300px; height:auto; display:block; justify-self:end; }
+.bx-quotes { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; }
+.bx-quote { background:var(--off-white); border:1px solid var(--beige); border-radius:12px; padding:20px 22px; }
+.bx-quote p { font-size:14.5px; line-height:1.7; color:var(--black); }
+.bx-quote cite { display:block; font-style:normal; font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin-top:10px; }
+.bx-hypo-layout { display:grid; grid-template-columns:1fr 340px; gap:28px; align-items:stretch; }
+.bx-hypo-img { width:100%; height:100%; object-fit:cover; border-radius:14px; display:block; }
+.bx-hypo { background:var(--blue); color:#fff; border-radius:14px; padding:40px; }
+.bx-hypo .lbl { font-size:10.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:10px; }
+.bx-hypo p { font-size:16px; line-height:1.8; }
+.bx-feature { border:2px solid var(--blue); border-radius:14px; padding:26px 30px; background:var(--white); }
+.bx-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px; }
+.bx-metric { background:var(--off-white); border-radius:10px; padding:14px 16px; text-align:center; }
+.bx-metric b { display:block; font-family:'DM Serif Display',serif; font-size:28px; color:var(--blue); line-height:1; }
+.bx-metric span { display:block; font-size:12px; line-height:1.45; color:var(--muted); margin-top:6px; }
+.bx-highlights { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.bx-highlights li {
+  display: flex; gap: 14px;
+  align-items: flex-start;
+  font-size: 15px; line-height: 1.7;
+  color: var(--black);
+  padding: 18px 20px;
+  background: var(--off-white);
+  border: 1px solid var(--beige);
+  border-radius: 10px;
+}
+.bx-highlights li .dot {
+  flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue); margin-top: 7px;
+}
+
+.bx-note {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 640px;
+  margin-top: 4px;
+}
+
+/* ── CTA ── */
+.bx-cta { display: flex; gap: 12px; flex-wrap: wrap; padding: 0 48px 90px; max-width: 900px; margin: 0 auto; }
+
+footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: center; padding: 20px; font-size: 12px; }
+
+@media (max-width: 700px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 0; }
+  .nav-links a { font-size: 12px; padding: 6px 8px; }
+  .nav-logo { font-size: 16px; }
+  .bx-hero { min-height: 380px; padding: 72px 24px 64px; }
+  .bx-cr-layout { grid-template-columns: 1fr; gap: 22px; }
+  .bx-hypo-layout { grid-template-columns: 1fr; gap: 18px; }
+  .bx-hypo-img { height: 220px; }
+  .bx-cr-logo { max-width: 220px; justify-self: start; }
+  .bx-section, .bx-cta { padding-left: 24px; padding-right: 24px; }
+  .bx-stats, .bx-quotes, .bx-metrics, .bx-tech { grid-template-columns: 1fr !important; }
+  .bx-title { font-size: 42px; }
+}
+
+
+/* ── closing / contact ── */
+#back { text-align: center; padding: 60px 24px; background: #E2D9D0; }
+.back-sub { font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.contact-icons { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; }
+.contact-icons a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: var(--blue); color: var(--white); border: none; transition: background .2s, transform .15s; }
+.contact-icons a:hover { background: var(--black); transform: translateY(-2px); }
+.bx-tech { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.bx-tech-card { background:var(--off-white); border:1px solid var(--beige); border-radius:12px; padding:24px; }
+.bx-tech-card .lbl { font-size:11px; font-weight:700; letter-spacing:.10em; text-transform:uppercase; color:var(--blue); margin-bottom:14px; }
+.bx-tech-card ul { list-style:none; padding:0; margin:0; }
+.bx-tech-card li { display:flex; gap:10px; align-items:flex-start; margin-bottom:9px; font-size:14.5px; line-height:1.55; color:var(--black); }
+.bx-tech-card li i { flex:0 0 5px; width:5px; height:5px; border-radius:50%; background:var(--blue); margin-top:7px; display:block; }
+/* ── attuned-matched typography ── */
+.eyebrow { font-family: 'DM Serif Display', serif; font-size: 42px; font-weight: 400; letter-spacing: -0.01em; text-transform: none; color: var(--black); margin-bottom: 28px; }
+.section-max { max-width: 1000px; margin: 0 auto; padding: 0 48px; }
+.bx-body { font-size: 16px; line-height: 1.8; color: var(--black); margin-bottom: 18px; max-width: 760px; }
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="22" height="18" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;">
+      <path d="M12 10 C10 5 3 2 1.5 5.5 C0 9 5 12.5 12 10Z" fill="#586E84"/>
+      <path d="M12 10 C14 5 21 2 22.5 5.5 C24 9 19 12.5 12 10Z" fill="#586E84"/>
+      <path d="M12 10 C8.5 12.5 2.5 14 3 17 C3.5 19.5 7.5 18 12 13Z" fill="#586E84" opacity="0.7"/>
+      <path d="M12 10 C15.5 12.5 21.5 14 21 17 C20.5 19.5 16.5 18 12 13Z" fill="#586E84" opacity="0.7"/>
+      <path d="M12 7 L12 18" stroke="#141414" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 7 C11 5 10 3.5 9 2.5" stroke="#141414" stroke-width="1" stroke-linecap="round"/>
+      <path d="M12 7 C13 5 14 3.5 15 2.5" stroke="#141414" stroke-width="1" stroke-linecap="round"/>
+    </svg>Thanh Tran</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown open">
+      <a href="index.html#work" class="nav-current">My Work</a>
+      <div class="dropdown-menu">
+        <a href="attuned.html"><span class="dropdown-tag">AI Product</span>Attuned</a>
+        <a href="barclays.html" class="nav-current"><span class="dropdown-tag">Enterprise Data · NDA</span>Barclays</a>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<!-- ── HERO ── -->
+<div class="bx-hero">
+  <div style="font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:14px;">Enterprise Data Product</div>
+  <h1 class="bx-title">Barclays</h1>
+  <div class="bx-subtitle">Data Product Manager, End-user Experience</div>
+  <div class="tag-row">
+    <span class="tag">FinTech</span>
+    <span class="tag">Enterprise Data</span>
+    <span class="tag">NLP</span>
+    <span class="tag">Confidential / NDA</span>
+  </div>
+</div>
+
+<!-- ── CONFIDENTIALITY ── -->
+<section style="background: var(--beige-warm, #E8D3C5); padding: 26px 0;">
+  <div class="section-max">
+    <div style="display:flex;align-items:flex-start;gap:14px;max-width:820px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A4A2E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true">
+        <rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>
+      </svg>
+      <p style="font-size:15px;line-height:1.7;color:#5C3A22;">
+        <strong>This is a summary of my work, not a walkthrough of the product.</strong> The systems, dashboards, screens, and data behind it are Barclays' confidential property and stay unpublished &mdash; what I can share is the problem, the approach, and the outcomes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── OVERVIEW ── -->
+<section style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <h2 class="eyebrow">Overview</h2>
+    <p class="bx-body">Group Technology Service Management is what keeps Barclays' trading and banking platforms running: the <strong>incident, problem, and change management</strong> backbone that catches issues before they become outages. Incident response here is measured in minutes, not hours.</p>
+    <p class="bx-body">As the Product Manager for data products in this space, I own end-to-end IT Service Management (ITSM) data products for Corporate and Investment Banking (CIB) and Markets applications, translating Director-level requirements into PRDs and roadmaps and delivering them with engineers and data scientists.</p>
+    <div class="bx-stats">
+      <div class="bx-stat"><b>100+</b><span>Service Managers using the products</span></div>
+      <div class="bx-stat"><b>200+</b><span>CIB and Markets applications in scope</span></div>
+      <div class="bx-stat"><b>4,000+</b><span>end users of those applications</span></div>
+      <div class="bx-stat"><b>12 mo</b><span>consecutive with zero major incidents</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CUSTOMER RESEARCH ── -->
+<section style="background: var(--white); padding: 52px 0;">
+  <div class="section-max">
+    <div class="bx-cr-layout">
+      <div>
+        <h2 class="eyebrow" style="margin-bottom:14px;">Customer Research</h2>
+        <p class="bx-body" style="margin-bottom:0;">Two groups inside the bank felt the same problem from opposite ends.</p>
+      </div>
+      <img src="logo-barclays.png" alt="Barclays" class="bx-cr-logo"/>
+    </div>
+    <div class="bx-quotes">
+      <div class="bx-quote">
+        <p>Service Managers and application support analysts spent their whole week resolving tickets one by one. Nothing summarised <strong>recurring incident themes</strong>, so there was no way to prioritise a real fix plan for the causes underneath.</p>
+        <cite>Service Managers &amp; support analysts</cite>
+      </div>
+      <div class="bx-quote">
+        <p>Directors on the run-the-bank side could see that majors and P1s were high, but couldn't get an <strong>instant explanation</strong> of why. The metric was visible; the reason was not.</p>
+        <cite>Application owners, Director level</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI HYPOTHESIS ── -->
+<section style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <h2 class="eyebrow">AI Hypothesis</h2>
+    <div class="bx-hypo-layout">
+    <div class="bx-hypo">
+      <p style="font-family:'Figtree',sans-serif;font-weight:400;font-size:18px;line-height:1.65;color:white;">"If the <strong style="color:#F6DED2;font-weight:700;">NLP-powered tool</strong> can <strong style="color:#F6DED2;font-weight:700;">cluster incident tickets into recurring themes</strong> <strong style="color:#F6DED2;font-weight:700;">accurately enough for Service Managers to trust the grouping</strong>, they can <strong style="color:#F6DED2;font-weight:700;">identify root causes of recurring issues</strong> and fix the underlying cause rather than the symptom &mdash; <strong style="color:#F6DED2;font-weight:700;">reducing incident analysis time</strong> and <strong style="color:#F6DED2;font-weight:700;">repeat incidents</strong>, which lets Directors <strong style="color:#F6DED2;font-weight:700;">sustain a real incident-reduction strategy</strong> and the bank protect the experience of the people trading on these platforms."</p>
+    </div>
+    <img src="img-barclays-dashboards.jpg" alt="Wall-mounted dashboards displaying operational metrics in an office" class="bx-hypo-img"/>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECHNOLOGIES ── -->
+<section style="background: var(--white); padding: 52px 0;">
+  <div class="section-max">
+    <h2 class="eyebrow">Technologies</h2>
+    <p class="bx-body" style="margin-bottom:26px;">Incident data comes straight from the systems the bank already runs on, so nothing depends on a parallel data pipeline that could drift out of sync with the source of truth.</p>
+    <div class="bx-tech">
+<div class="bx-tech-card"><div class="lbl">Data Sources</div><ul><li><i></i><span><strong>ServiceNow:</strong> incident, problem, and change records pulled directly from the system Service Managers already work in</span></li><li><i></i><span><strong>Microsoft SQL Server:</strong> the warehouse those records land in, and where the classified themes are written back</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Modelling &amp; Analysis</div><ul><li><i></i><span><strong>Python:</strong> used by the data scientists for cleaning, feature work, and the classification model itself</span></li><li><i></i><span><strong>SQL:</strong> extraction and shaping of incident history before it reaches the model</span></li><li><i></i><span><strong>NLP classification:</strong> groups free-text incident descriptions into recurring themes</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Platform</div><ul><li><i></i><span><strong>OpenShift:</strong> containerised deployment on the bank&rsquo;s internal platform</span></li><li><i></i><span><strong>Tableau:</strong> how Service Managers and Directors actually see the themes and metrics</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Delivery</div><ul><li><i></i><span><strong>Agile / Scrum:</strong> sprint delivery with data scientists and engineers, from PRD through launch</span></li><li><i></i><span><strong>Jira &amp; Confluence:</strong> backlog, user stories, and specification</span></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OUTCOME ── -->
+<section style="background: var(--off-white); padding: 52px 0;">
+  <div class="section-max">
+    <h2 class="eyebrow">Outcome</h2>
+    <div class="bx-feature">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">NLP Incident Classification Tool &middot; 0&rarr;1</div>
+      <p class="bx-body" style="margin-bottom:8px;">An NLP tool that reads incident tickets and classifies them into recurring themes automatically, turning a queue of individual incidents into a ranked picture of what is actually going wrong.</p>
+      <p style="font-size:14.5px;line-height:1.75;color:var(--muted);max-width:760px;">I directed full Agile SDLC delivery with data scientists and engineers, from requirements and PRD through launch, and defined what "accurate enough to trust" had to mean before Service Managers would change how they worked.</p>
+      <div class="bx-metrics">
+        <div class="bx-metric"><b>30%</b><span>less incident analysis time</span></div>
+        <div class="bx-metric"><b>40%</b><span>lower system alert volume</span></div>
+        <div class="bx-metric"><b>20%</b><span>lower memory utilisation</span></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'DM Serif Display',serif;font-size:24px;color:var(--black);margin:38px 0 18px;">Other work in this role</h3>
+    <ul class="bx-highlights">
+      <li><span class="dot"></span>Drove stakeholder adoption of end-to-end ITSM dashboard products across 10+ teams, replacing 6 manual reports and cutting reporting effort by 50%.</li>
+      <li><span class="dot"></span>Defined incident-response KPIs and partnered cross-functionally to sustain 12 consecutive months with zero major incidents, reducing MTTR by 15%.</li>
+      <li><span class="dot"></span>Led a cross-functional compliance initiative for Research applications, cutting 400+ violations down to 70 (95%+ compliance) and achieving 0 security audit findings.</li>
+      <li><span class="dot"></span>Prioritized and led the annual trade capacity roadmap assessment across 200+ eTrading and Algorithmic applications, scaling systems to 1.5x capacity ahead of peak-volume trading periods.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ── BACK ── -->
+<section id="back">
+  <p class="back-sub">Want to see more of my work?</p>
+  <a href="index.html#work" class="btn btn-coral">&larr; Back to portfolio</a>
+  <div class="contact-icons">
+    <a href="https://linkedin.com/in/thanh-d-tran" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21h-4V9z"/></svg>
+    </a>
+    <a href="mailto:duythanhtran8700@gmail.com" aria-label="Email" title="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6 9-6"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 Thanh Tran · Built with care</footer>
+
+<script>
+(function() {
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var trigger = dropdown.querySelector('a');
+    var open = false;
+    trigger.addEventListener('click', function(e) {
+      var canHover = window.matchMedia('(hover: hover)').matches;
+      if (canHover) return;
+      if (!open) {
+        e.preventDefault();
+        dropdown.classList.add('open');
+        open = true;
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+        open = false;
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
