@@ -123,8 +123,13 @@ nav {
 .project-marquee-track { display: flex; gap: 20px; width: max-content; }
 .project-marquee-track .project-card { flex: 0 0 300px; width: 300px; }
 .marquee-controls { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
-.marquee-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--beige); background: var(--white); color: var(--black); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; transition: background .18s, border-color .18s; }
-.marquee-btn:hover { background: var(--off-cream); border-color: var(--coral); }
+.marquee-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--beige); background: var(--white); color: var(--blue); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; line-height: 0; transition: background .18s, border-color .18s, color .18s; }
+@media (hover: hover) {
+  .marquee-btn:hover { background: var(--off-cream); border-color: var(--coral); color: var(--coral); }
+}
+.marquee-btn:active { background: var(--off-cream); border-color: var(--blue); color: var(--blue); }
+.marquee-btn:focus { outline: none; }
+.marquee-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .project-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 8px 22px rgba(20,20,20,0.06); display: flex; flex-direction: column; }
 .project-logo-box { background: var(--off-white); padding: 16px 24px; display: flex; align-items: center; justify-content: center; height: 160px; }
 .project-logo-box img { max-width: 220px; max-height: 90px; object-fit: contain; }
@@ -147,7 +152,7 @@ nav {
 
 /* ── BACK/CTA ── */
 #end-cta { background: var(--blue); padding: 56px 48px; text-align: center; }
-.end-cta-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--white); margin-bottom: 20px; }
+.end-cta-title { font-family: 'Figtree', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--white); margin-bottom: 20px; }
 footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: center; padding: 20px; font-size: 12px; }
 
 /* ── RESPONSIVE ── */
@@ -206,7 +211,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       <div class="hero-badge fade-in"><span class="dot"></span>Open to new opportunities</div>
       <h1 class="hero-name fade-in fade-in-delay-1">Thanh Tran</h1>
       <div class="hero-role fade-in fade-in-delay-1">Product Manager · AI, Data, &amp; Growth</div>
-      <p class="hero-bio fade-in fade-in-delay-2">Hey, I'm Thanh — a <strong>Product Manager</strong> with experience shipping products, from enterprise dashboards at Barclays to an AI parenting companion at Attuned. I care about users, and I enjoy the moment a vague requirement becomes an actionable solution that moves the needle.</p>
+      <p class="hero-bio fade-in fade-in-delay-2">Hey, I'm Thanh — a <strong>Product Manager</strong> with experience shipping products, from enterprise data products at Barclays to an AI parenting companion at Attuned. I care about users, and I enjoy the moment a vague requirement becomes an actionable solution that moves the needle.</p>
       <p class="hero-bio fade-in fade-in-delay-2">My background spans <strong>AI</strong>, <strong>data</strong>, <strong>growth</strong>, and <strong>consumer product</strong> — with a degree in Business &amp; Psychology (plus a Studio Arts minor) — together creating a diverse yet harmonized product mindset. I'm currently pursuing a Master of Applied Science in Computer Science at the University of Pennsylvania to go deeper on the technical side of AI product work.</p>
       <div class="hero-actions fade-in fade-in-delay-2">
         <a href="#" class="btn btn-coral" target="_blank" rel="noopener">View Résumé →</a>
@@ -346,7 +351,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
           <div class="confidential-badge"><svg width="11" height="13" viewBox="0 0 11 13" fill="none"><rect x="1" y="5.5" width="9" height="6.5" rx="1" stroke="currentColor" stroke-width="1"/><path d="M3 5.5V3.5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1" fill="none"/></svg>Confidential — NDA</div>
           <div class="project-role">Data Product Manager, End-User Experience</div>
           <div class="project-dates">Aug 2022 – Present</div>
-          <p class="project-desc">Own end-to-end ITSM dashboard products and the NLP Incident Classification Tool, serving 100+ Service Managers across 200+ CIB and Markets applications.</p>
+          <p class="project-desc">Own end-to-end enterprise data products — the NLP Incident Classification Tool plus 5+ ITSM dashboards — serving 100+ Service Managers across 200+ CIB and Markets applications.</p>
           <div class="project-tags">
             <span class="project-tag">Data Product</span>
             <span class="project-tag">Service Management</span>
@@ -421,9 +426,9 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       </div>
     </div>
     <div class="marquee-controls">
-      <button class="marquee-btn" id="marqueePrev" aria-label="Previous">←</button>
-      <button class="marquee-btn" id="marqueePlayPause" aria-label="Pause">⏸</button>
-      <button class="marquee-btn" id="marqueeNext" aria-label="Next">→</button>
+      <button class="marquee-btn" id="marqueePrev" aria-label="Previous"><svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6H2M2 6l4-4M2 6l4 4"/></svg></button>
+      <button class="marquee-btn" id="marqueePlayPause" aria-label="Pause"><svg width="12" height="13" viewBox="0 0 12 13" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3.4" height="11" rx="1"/><rect x="7.6" y="1" width="3.4" height="11" rx="1"/></svg></button>
+      <button class="marquee-btn" id="marqueeNext" aria-label="Next"><svg width="14" height="12" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h10M12 6L8 2M12 6l-4 4"/></svg></button>
     </div>
   </div>
 </section>
@@ -439,6 +444,11 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
         <div class="skill-group-title">Product Management</div>
         <div class="skill-pills">
           <span class="skill-pill">PRD &amp; User Stories</span>
+          <span class="skill-pill">Specs &amp; Acceptance Criteria</span>
+          <span class="skill-pill">User Research &amp; Discovery</span>
+          <span class="skill-pill">Customer Segmentation</span>
+          <span class="skill-pill">Persona &amp; Journey Mapping</span>
+          <span class="skill-pill">Experimentation</span>
           <span class="skill-pill">Roadmapping &amp; Prioritization</span>
           <span class="skill-pill">Agile / Scrum</span>
           <span class="skill-pill">A/B Testing</span>
@@ -446,6 +456,11 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
           <span class="skill-pill">Voice of Customer</span>
           <span class="skill-pill">Go-to-Market Strategy</span>
           <span class="skill-pill">Stakeholder Management</span>
+          <span class="skill-pill">0&rarr;1 Product Delivery</span>
+          <span class="skill-pill">Feature Prioritization (RICE)</span>
+          <span class="skill-pill">North Star Metrics</span>
+          <span class="skill-pill">Competitive Analysis</span>
+          <span class="skill-pill">Unit Economics</span>
         </div>
       </div>
       <div class="skill-group">
@@ -456,6 +471,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
           <span class="skill-pill">R</span>
           <span class="skill-pill">SPSS</span>
           <span class="skill-pill">Tableau</span>
+          <span class="skill-pill">Statistical Analysis</span>
+          <span class="skill-pill">Data Modeling</span>
         </div>
       </div>
       <div class="skill-group">
@@ -470,14 +487,37 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
           <span class="skill-pill">Asana</span>
           <span class="skill-pill">Excel</span>
           <span class="skill-pill">ServiceNow</span>
+          <span class="skill-pill">Supabase Postgres</span>
+          <span class="skill-pill">pgvector</span>
+          <span class="skill-pill">Inngest</span>
+          <span class="skill-pill">OpenShift</span>
+          <span class="skill-pill">Vercel</span>
+          <span class="skill-pill">PostHog</span>
+          <span class="skill-pill">Microsoft SQL Server</span>
+          <span class="skill-pill">Qualtrics</span>
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">NestJS</span>
+          <span class="skill-pill">PowerPoint</span>
+          <span class="skill-pill">Visio</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title" style="color:var(--blue);">AI Tools</div>
+        <div class="skill-group-title" style="color:var(--blue);">AI &amp; ML</div>
         <div class="skill-pills">
+          <span class="skill-pill">Retrieval-Augmented Generation (RAG)</span>
+          <span class="skill-pill">LLM Orchestration</span>
+          <span class="skill-pill">Prompt Engineering</span>
+          <span class="skill-pill">Prompt Caching</span>
+          <span class="skill-pill">Vector Search &amp; Embeddings</span>
+          <span class="skill-pill">AI Evaluation &amp; Guardrails</span>
+          <span class="skill-pill">NLP Classification</span>
+          <span class="skill-pill">Async Workflow Orchestration</span>
+          <span class="skill-pill">Agentic Workflows</span>
+          <span class="skill-pill">Semantic Retrieval</span>
+          <span class="skill-pill">Model Selection</span>
+          <span class="skill-pill">OpenAI API</span>
           <span class="skill-pill">Claude</span>
           <span class="skill-pill">Microsoft Copilot</span>
-          <span class="skill-pill">Prompt Engineering</span>
         </div>
       </div>
     </div>
@@ -549,7 +589,8 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
   playPauseBtn.addEventListener('click', function() {
     userPaused = !userPaused;
-    playPauseBtn.textContent = userPaused ? '▶' : '⏸';
+    playPauseBtn.innerHTML = userPaused ? '<svg width="12" height="13" viewBox="0 0 12 13" fill="currentColor" aria-hidden="true"><path d="M2 1.6a1 1 0 0 1 1.53-.85l7 4.9a1 1 0 0 1 0 1.7l-7 4.9A1 1 0 0 1 2 11.4V1.6z"/></svg>' : '<svg width="12" height="13" viewBox="0 0 12 13" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3.4" height="11" rx="1"/><rect x="7.6" y="1" width="3.4" height="11" rx="1"/></svg>';
+    playPauseBtn.setAttribute('aria-label', userPaused ? 'Play' : 'Pause');
     playPauseBtn.setAttribute('aria-label', userPaused ? 'Play' : 'Pause');
   });
 
