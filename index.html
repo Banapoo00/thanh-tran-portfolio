@@ -262,12 +262,13 @@ nav {
 /* ── MY WORK SECTION ─────────────────────────────────── */
 #work {
   background: var(--off-white);
-  padding: 80px 48px 0;
+  padding: 80px 0 40px;
 }
 
 .work-heading-wrap {
   text-align: center;
   margin-bottom: 0;
+  padding: 0 48px;
 }
 
 .work-heading {
@@ -644,8 +645,8 @@ nav {
 }
 
 /* section separators */
-.section-wrap { background: var(--off-white); }
-.section-wrap-alt { background: var(--off-white); }
+.section-wrap { background: transparent; }
+.section-wrap-alt { background: transparent; }
 
 /* ── CONTACT SECTION ─────────────────────────────────── */
 #contact {
@@ -717,7 +718,7 @@ footer {
   nav { padding: 0 20px; }
   .nav-logo { font-size: 15px; }
   .nav-links a { font-size: 12px; padding: 6px 8px; }
-  #work { padding: 60px 24px 0; }
+  #work { padding: 60px 0 32px; }
   #contact { padding: 60px 24px; }
 }
 
@@ -917,7 +918,7 @@ footer {
   .collage-main { width: 160px; height: 220px; }
   .about-name { font-size: 40px; }
 
-  #work { padding: 48px 20px 0; }
+  #work { padding: 48px 0 24px; }
   .work-heading { font-size: 36px; }
   .work-items-grid, .work-items-grid-2 { grid-template-columns: 1fr; }
   .work-item-btn { padding: 14px; }
@@ -993,7 +994,7 @@ footer {
     <div class="kicker">AI Product Manager</div>
     <h1 class="about-name">Thanh Tran</h1>
     <p class="about-bio">
-      Hey! I'm Thanh — a Product Manager with experience across <span style="color:#C06B4A;font-weight:600;">data</span>, <span style="color:#C06B4A;font-weight:600;">growth</span>,
+      Hey! I'm Thanh, a Product Manager with experience across <span style="color:#C06B4A;font-weight:600;">data</span>, <span style="color:#C06B4A;font-weight:600;">growth</span>,
       and <span style="color:#C06B4A;font-weight:600;">consumer product</span>, spanning Barclays, a Top 20 European EdTech startup,
       ecommerce, and <span style="color:#C06B4A;font-weight:600;">AI product</span> at a parenting wellness startup.
     </p>
@@ -1003,7 +1004,7 @@ footer {
     </p>
     <div class="divider" style="margin:20px 0 16px;"></div>
     <p class="about-sub">
-      Below are examples of my work — an AI product in parenting wellness
+      Below are examples of my work: an AI product in parenting wellness
       and an enterprise data product at Barclays.
     </p>
     <a href="#work" class="btn btn-fill btn-arrow-down">
@@ -1022,8 +1023,6 @@ footer {
     <h2 class="work-heading">My Work</h2>
     <p class="work-subhead">AI product &amp; Enterprise data product</p>
   </div>
-
-</section>
 
 <!-- ── ATTUNED DETAIL ──────────────────────────────────── -->
 <div class="section-wrap fade-in" id="attuned">
@@ -1047,7 +1046,7 @@ footer {
         <span class="tag">0 → 1</span>
       </div>
       <p class="detail-text">
-        Attuned is an AI companion for parents — built for the moment right after a hard parenting moment, when parents need support to reconnect with their child. As the core PM for the <strong>Know My Child</strong> feature, I owned the product strategy, agentic workflow design, scenario corpus design, and AI prompt engineering end-to-end.
+        Attuned is an AI companion for parents, built for the moment right after a hard parenting moment, when parents need support to reconnect with their child. As the core PM for the <strong>Know My Child</strong> feature, I owned the product strategy, agentic workflow design, scenario corpus design, and AI prompt engineering end-to-end.
       </p>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
         <a href="attuned.html" class="btn btn-fill">
@@ -1093,7 +1092,7 @@ footer {
         <span class="tag" style="background:rgba(192,107,74,0.10);border-color:#C06B4A;color:#A5583A;font-weight:700;">Confidential / NDA</span>
       </div>
       <p class="detail-text">
-        Group Technology Service Management is what keeps Barclays' trading and banking platforms running — the incident, problem, and change management backbone that catches issues before they become outages. As the Product Manager for data products in this space, I own end-to-end ITSM data products for Markets applications, translating Director-level stakeholder requirements into PRDs, roadmaps, and cross-functional delivery with engineers and data scientists.
+        Group Technology Service Management is what keeps Barclays' trading and banking platforms running: the incident, problem, and change management backbone that catches issues before they become outages. As the Product Manager for data products in this space, I own end-to-end ITSM data products for Markets applications, translating Director-level stakeholder requirements into PRDs, roadmaps, and cross-functional delivery with engineers and data scientists.
       </p>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
         <a href="barclays.html" class="btn btn-fill">
@@ -1107,6 +1106,8 @@ footer {
     </div>
   </div>
 </div>
+
+</section>
 
 <!-- ── ABOUT TEASER ─────────────────────────────────────── -->
 <section class="fade-in" style="padding:60px 48px; text-align:center; background:#E2D9D0;">

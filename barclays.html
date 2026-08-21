@@ -20,6 +20,7 @@
   --blue-dark: #3d5060;
   --black:     #141414;
   --muted:     #7A7570;
+  --terracotta: #C06B4A;
   --nav-h:     60px;
 }
 
@@ -101,6 +102,7 @@ nav {
 }
 .bx-hero .tag-row { justify-content: center; }
 .bx-hero .tag { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; }
+.bx-hero .tag-nda { background: var(--terracotta); border-color: var(--terracotta); color: #fff; }
 .bx-body {
   font-size: 16px; line-height: 1.75;
   color: var(--black); max-width: 640px;
@@ -240,7 +242,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     <span class="tag">FinTech</span>
     <span class="tag">Enterprise Data</span>
     <span class="tag">NLP</span>
-    <span class="tag">Confidential / NDA</span>
+    <span class="tag tag-nda">Confidential / NDA</span>
   </div>
 </div>
 
@@ -285,11 +287,11 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
     </div>
     <div class="bx-quotes">
       <div class="bx-quote">
-        <p>Service Managers and application support analysts spent their whole week resolving tickets one by one. Nothing summarised <strong>recurring incident themes</strong>, so there was no way to prioritise a real fix plan for the causes underneath.</p>
+        <p>Service Managers and application support analysts spent their whole week resolving tickets one by one. Nothing summarized <strong>recurring incident themes</strong>, so there was no way to prioritize a real fix plan for the causes underneath.</p>
         <cite>Service Managers &amp; support analysts</cite>
       </div>
       <div class="bx-quote">
-        <p>Directors on the run-the-bank side could see that majors and P1s were high, but couldn't get an <strong>instant explanation</strong> of why. The metric was visible; the reason was not.</p>
+        <p>Directors on the run-the-bank side could see that majors and P1s were high, but couldn't get an <strong>instant explanation</strong> of why. They could see the number, not the reason.</p>
         <cite>Application owners, Director level</cite>
       </div>
     </div>
@@ -481,9 +483,9 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 <section style="background: var(--white); padding: 52px 0;">
   <div class="section-max">
     <h2 class="eyebrow">Technologies</h2>
-    <p class="bx-body" style="margin-bottom:26px;">Incident data comes straight from the systems the bank already runs on, so nothing depends on a parallel data pipeline that could drift out of sync with the source of truth.</p>
+    <p class="bx-body" style="margin-bottom:26px;">Incident data comes straight from the systems the bank already runs on, so there is no second pipeline to keep in sync.</p>
     <div class="bx-tech">
-<div class="bx-tech-card"><div class="lbl">Data Sources</div><ul><li><i></i><span><strong>ServiceNow:</strong> incident, problem, and change records pulled directly from the system Service Managers already work in</span></li><li><i></i><span><strong>Microsoft SQL Server:</strong> the warehouse those records land in, and where the classified themes are written back</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Modelling &amp; Analysis</div><ul><li><i></i><span><strong>Python:</strong> used by the data scientists for cleaning, feature work, and the classification model itself</span></li><li><i></i><span><strong>SQL:</strong> extraction and shaping of incident history before it reaches the model</span></li><li><i></i><span><strong>NLP classification:</strong> groups free-text incident descriptions into recurring themes</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Platform</div><ul><li><i></i><span><strong>OpenShift:</strong> containerised deployment on the bank&rsquo;s internal platform</span></li><li><i></i><span><strong>Tableau:</strong> how Service Managers and Directors actually see the themes and metrics</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Delivery</div><ul><li><i></i><span><strong>Agile / Scrum:</strong> sprint delivery with data scientists and engineers, from PRD through launch</span></li><li><i></i><span><strong>Jira &amp; Confluence:</strong> backlog, user stories, and specification</span></li></ul></div>
+<div class="bx-tech-card"><div class="lbl">Data Sources</div><ul><li><i></i><span><strong>ServiceNow:</strong> incident, problem, and change records pulled directly from the system Service Managers already work in</span></li><li><i></i><span><strong>Microsoft SQL Server:</strong> the warehouse those records land in, and where the classified themes are written back</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Modeling &amp; Analysis</div><ul><li><i></i><span><strong>Python:</strong> used by the data scientists for cleaning, feature work, and the classification model itself</span></li><li><i></i><span><strong>SQL:</strong> extraction and shaping of incident history before it reaches the model</span></li><li><i></i><span><strong>NLP classification:</strong> groups free-text incident descriptions into recurring themes</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Platform</div><ul><li><i></i><span><strong>ServiceNow:</strong> where the themes are surfaced, inside the system Service Managers already work in</span></li><li><i></i><span><strong>OpenShift:</strong> containerized deployment on the bank&rsquo;s internal platform</span></li><li><i></i><span><strong>Tableau:</strong> Directors&rsquo; reporting layer, used to compare the NLP themes against existing central reporting</span></li></ul></div><div class="bx-tech-card"><div class="lbl">Delivery</div><ul><li><i></i><span><strong>Agile / Scrum:</strong> sprint delivery with data scientists and engineers, from PRD through launch</span></li><li><i></i><span><strong>Jira &amp; Confluence:</strong> backlog, user stories, and specification</span></li></ul></div>
     </div>
   </div>
 </section>
@@ -499,7 +501,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
       <div class="bx-metrics">
         <div class="bx-metric"><b>30%</b><span>less incident analysis time</span></div>
         <div class="bx-metric"><b>60%</b><span>lower system incident volume</span></div>
-        <div class="bx-metric"><b>20%</b><span>lower memory utilisation</span></div>
+        <div class="bx-metric"><b>20%</b><span>lower memory utilization</span></div>
         <div class="bx-metric"><b>25%</b><span>lower MTTR</span></div>
         <div class="bx-metric"><b>50%</b><span>less reporting effort</span></div>
         <div class="bx-metric"><b>95%+</b><span>compliance, with zero security audit findings</span></div>
