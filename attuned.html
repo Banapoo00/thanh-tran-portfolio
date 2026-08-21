@@ -319,7 +319,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.4); text-align: cen
 @media (max-width: 900px) {
   .hero-inner, .overview-grid, .persona-layout, .features-grid, .story-card, .criteria-row, .risk-grid, .mvp-grid { grid-template-columns: 1fr; }
   .mvp-screens { grid-template-columns: 1fr !important; max-width: 300px; margin-left: auto; margin-right: auto; }
-  .poc-mascot { display: none; }
+  /* mascot moves below the content instead of overlapping it */
+  .poc-mascot { position: static !important; display: block; width: 76px; margin: 22px 0 0 auto; opacity: 0.9; }
   .overview-grid { gap: 24px; }
   .overview-cards { margin-top: 0 !important; }
   .journey-stages { grid-template-columns: 1fr; }
