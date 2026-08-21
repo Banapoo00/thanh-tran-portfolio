@@ -65,7 +65,7 @@ nav {
   white-space: nowrap;
 }
 
-.nav-current { color: var(--coral) !important; font-weight: 700 !important; }
+.nav-current { color: var(--terracotta) !important; font-weight: 700 !important; }
 
 .nav-links {
   display: flex;
@@ -261,13 +261,13 @@ nav {
 
 /* ── MY WORK SECTION ─────────────────────────────────── */
 #work {
-  background: var(--beige);
-  padding: 80px 48px 100px;
+  background: var(--off-white);
+  padding: 80px 48px 0;
 }
 
 .work-heading-wrap {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 0;
 }
 
 .work-heading {
@@ -450,6 +450,7 @@ nav {
 /* Attuned stays in color always */
 .work-item-featured .work-item-img img { filter: grayscale(0%); }
 .work-item-featured .work-item-btn { background: var(--blue); border-color: var(--blue); }
+.work-item-featured .work-item-btn .work-nav-sub { color: var(--white); }
 
 /* hover — whole item lifts, button and image both react */
 .work-item:hover .work-item-btn {
@@ -572,7 +573,7 @@ nav {
   aspect-ratio: 4/3;
 }
 .detail-section {
-  padding: 80px 48px;
+  padding: 40px 48px 64px;
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
@@ -643,8 +644,8 @@ nav {
 }
 
 /* section separators */
-.section-wrap { border-top: 1px solid var(--beige); }
-.section-wrap-alt { background: var(--off-white); border-top: 1px solid var(--beige); }
+.section-wrap { background: var(--off-white); }
+.section-wrap-alt { background: var(--off-white); }
 
 /* ── CONTACT SECTION ─────────────────────────────────── */
 #contact {
@@ -711,12 +712,12 @@ footer {
   .photo-accent { width: 200px; height: 200px; }
   .about-name { font-size: 42px; }
   .work-grid { grid-template-columns: 1fr; }
-  .detail-section { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+  .detail-section { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px 48px; }
   .detail-section.flip { direction: ltr; }
   nav { padding: 0 20px; }
   .nav-logo { font-size: 15px; }
   .nav-links a { font-size: 12px; padding: 6px 8px; }
-  #work { padding: 60px 24px 80px; }
+  #work { padding: 60px 24px 0; }
   #contact { padding: 60px 24px; }
 }
 
@@ -741,7 +742,41 @@ footer {
   filter: grayscale(0%);
 }
 
-.detail-img { overflow: hidden; transition: box-shadow .3s ease; }
+.detail-img { overflow: hidden; transition: box-shadow .3s ease, transform .3s ease; }
+/* both case images are links now; Attuned stays the more prominent of the two */
+/* whole case block is one link: button + image react together */
+.case-link { display: block; text-decoration: none; cursor: pointer; }
+.case-link .detail-img { transition: box-shadow .3s ease, transform .3s ease; }
+/* match the old nav-card proportion so the image is not taller than the text column */
+.case-link .detail-img { aspect-ratio: 16/10; border-radius: 10px; }
+/* featured/muted case buttons, restored above each case image */
+.case-btn {
+  transition: background .2s, border-color .2s, transform .15s, color .2s;
+  border-radius: 10px; padding: 11px 16px; margin-bottom: 12px;
+  text-align: center; border: 1px solid transparent;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.case-btn-featured { background: var(--blue); border-color: var(--blue); }
+.case-btn-muted { background: var(--white); border-color: var(--beige); }
+.case-btn-name { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1; color: #E8A882; }
+.case-btn-name-muted { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1; color: var(--black); }
+.case-btn-sub, .case-btn-sub-muted {
+  font-family: 'Figtree', sans-serif; font-size: 9.5px; font-weight: 600;
+  letter-spacing: .10em; text-transform: uppercase;
+}
+.case-btn-sub { color: var(--white); }
+.case-btn-sub-muted { color: var(--muted); }
+.case-link-featured .detail-img { box-shadow: 0 10px 30px rgba(88,110,132,0.22); }
+.case-link-featured:hover .detail-img { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(88,110,132,0.30); }
+.case-link-muted .detail-img { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+.case-link-muted:hover .detail-img { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,0.10); }
+
+/* hover states, matching the original nav cards */
+.case-link:hover .case-btn { transform: translateY(-2px); }
+.case-link-featured:hover .case-btn { background: var(--blue-dark); border-color: var(--blue-dark); }
+.case-link-muted:hover .case-btn { background: var(--blue); border-color: var(--blue); }
+.case-link-muted:hover .case-btn-name-muted { color: var(--white); }
+.case-link-muted:hover .case-btn-sub-muted { color: rgba(255,255,255,0.7); }
 .detail-img img { transition: transform .4s ease; display: block; width: 100%; height: 100%; object-fit: cover; }
 .detail-img:hover { box-shadow: 0 16px 48px rgba(20,20,20,0.18); }
 .detail-img:hover img { transform: scale(1.04); }
@@ -880,7 +915,7 @@ footer {
   .collage-main { width: 160px; height: 220px; }
   .about-name { font-size: 40px; }
 
-  #work { padding: 48px 20px 64px; }
+  #work { padding: 48px 20px 0; }
   .work-heading { font-size: 36px; }
   .work-items-grid, .work-items-grid-2 { grid-template-columns: 1fr; }
   .work-item-btn { padding: 14px; }
@@ -986,38 +1021,20 @@ footer {
     <p class="work-subhead">AI product &amp; Enterprise data product</p>
   </div>
 
-  <!-- 2 nav cards — Attuned featured, Barclays muted -->
-  <div class="work-items-grid work-items-grid-2">
-
-    <a href="#attuned" class="work-item work-item-featured fade-in fade-in-delay-1">
-      <div class="work-item-btn">
-        <span class="work-nav-name">Attuned</span>
-        <span class="work-nav-sub">AI Product</span>
-      </div>
-      <div class="work-item-img">
-        <img src="img-attuned-coa.png" alt="Attuned"/>
-      </div>
-    </a>
-
-    <a href="#barclays" class="work-item work-item-muted fade-in fade-in-delay-2">
-      <div class="work-item-btn">
-        <span class="work-item-label">Barclays</span>
-        <span class="work-nav-sub">Enterprise Data Product · NDA</span>
-      </div>
-      <div class="work-item-logo-img">
-        <img src="logo-barclays.png" alt="Barclays"/>
-      </div>
-    </a>
-
-  </div>
 </section>
 
 <!-- ── ATTUNED DETAIL ──────────────────────────────────── -->
 <div class="section-wrap fade-in" id="attuned">
   <div class="detail-section">
-    <div class="detail-img detail-img-attuned" style="padding:0;border:none;overflow:hidden;">
-      <img src="img-attuned.png" alt="Attuned app" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
-    </div>
+    <a href="attuned.html" class="case-link case-link-featured">
+      <div class="case-btn case-btn-featured">
+        <span class="case-btn-name">Attuned</span>
+        <span class="case-btn-sub">Consumer AI &middot; 0 &rarr; 1</span>
+      </div>
+      <div class="detail-img detail-img-attuned" style="padding:0;border:none;overflow:hidden;">
+        <img src="img-attuned-coa.png" alt="Attuned" style="width:100%;height:100%;object-fit:cover;border-radius:12px;"/>
+      </div>
+    </a>
     <div>
       <div class="kicker">AI Product</div>
       <h2 class="detail-section-title-attuned">Attuned</h2>
@@ -1055,9 +1072,15 @@ footer {
 <!-- ── BARCLAYS DETAIL ─────────────────────────────────── -->
 <div class="section-wrap-alt fade-in" id="barclays">
   <div class="detail-section detail-section-case">
-    <div class="detail-img detail-img-case" style="background:var(--white); border:1px solid var(--beige); border-radius:12px; display:flex; align-items:center; justify-content:center; padding:34px;">
-      <img src="logo-barclays.png" alt="Barclays" style="width:100%; max-width:330px; height:auto; object-fit:contain;"/>
-    </div>
+    <a href="barclays.html" class="case-link case-link-muted">
+      <div class="case-btn case-btn-muted">
+        <span class="case-btn-name-muted">Barclays</span>
+        <span class="case-btn-sub-muted">Enterprise Data Product &middot; NDA</span>
+      </div>
+      <div class="detail-img detail-img-case" style="background:var(--white); border:1px solid var(--beige); border-radius:12px; display:flex; align-items:center; justify-content:center; padding:34px;">
+        <img src="logo-barclays.png" alt="Barclays" style="width:100%; max-width:330px; height:auto; object-fit:contain;"/>
+      </div>
+    </a>
     <div>
       <div class="kicker">Enterprise Data Product</div>
       <h2 class="detail-section-title">Barclays</h2>
@@ -1178,5 +1201,93 @@ footer {
   });
 })();
 </script>
+<!-- ── IMAGE LIGHTBOX ── -->
+<style>
+.lb-zoomable { cursor: zoom-in; }
+#lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(20,20,20,0.92);
+  padding: 40px 20px;
+  opacity: 0; transition: opacity .22s ease;
+}
+#lightbox.open { display: flex; opacity: 1; }
+#lightbox img {
+  max-width: 100%; max-height: 100%;
+  width: auto; height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+#lightbox .lb-close {
+  position: absolute; top: 18px; right: 20px;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: none; cursor: pointer;
+  background: rgba(255,255,255,0.14); color: #FFFFFF;
+  font-family: 'Figtree', sans-serif; font-size: 20px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s ease;
+}
+#lightbox .lb-close:hover { background: rgba(255,255,255,0.3); }
+#lightbox .lb-hint {
+  position: absolute; bottom: 18px; left: 0; right: 0;
+  text-align: center; color: rgba(255,255,255,0.55);
+  font-family: 'Figtree', sans-serif; font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+</style>
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded image">
+  <button class="lb-close" type="button" aria-label="Close image">&times;</button>
+  <img alt=""/>
+  <div class="lb-hint">Click anywhere or press Esc to close</div>
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  if (!box) return;
+  var pic = box.querySelector('img');
+  var lastFocus = null;
+
+  // every content image becomes zoomable, except logos, favicons, and images that are already links
+  var skip = /favicon|^logo-/;
+  document.querySelectorAll('img').forEach(function(img){
+    var src = img.getAttribute('src') || '';
+    var file = src.split('/').pop();
+    if (skip.test(file)) return;
+    if (img.closest('a')) return;
+    if (img.closest('#lightbox')) return;
+    if (img.getAttribute('aria-hidden') === 'true') return;  // decorative
+    img.classList.add('lb-zoomable');
+    img.setAttribute('tabindex','0');
+    img.setAttribute('role','button');
+    img.setAttribute('aria-label','Expand image');
+    img.addEventListener('click', function(){ open(img); });
+    img.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); }
+    });
+  });
+
+  function open(img){
+    lastFocus = document.activeElement;
+    pic.src = img.currentSrc || img.src;
+    pic.alt = img.alt || '';
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    box.querySelector('.lb-close').focus();
+  }
+  function close(){
+    box.classList.remove('open');
+    document.body.style.overflow = '';
+    pic.removeAttribute('src');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && box.classList.contains('open')) close();
+  });
+})();
+</script>
+
 </body>
 </html>
